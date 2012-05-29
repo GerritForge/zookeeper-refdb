@@ -38,6 +38,8 @@ limitations under the License.
         <configuration>
           <archive>
             <manifestEntries>
+              <Gerrit-StartupModule>com.google.gerrit.plugins.zookeeper.ZookeeperModule</Gerrit-StartupModule>
+
               <Implementation-Vendor>Gerrit Code Review</Implementation-Vendor>
               <Implementation-URL>http://code.google.com/p/gerrit/</Implementation-URL>
 
@@ -60,6 +62,37 @@ limitations under the License.
           <target>1.6</target>
           <encoding>UTF-8</encoding>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <artifactSet>
+                <excludes>
+                  <exclude>log4j:log4j</exclude>
+                  <exclude>org.slf4j:slf4j-api</exclude>
+                  <exclude>org.slf4j:slf4j-log4j12</exclude>
+                  <exclude>com.google.code.findbugs:jsr305</exclude>
+                </excludes>
+              </artifactSet>
+              <relocations>
+                <relocation>
+                  <pattern>com.google.common</pattern>
+                  <shadedPattern>com.google.gerrit.plugins.zookeeper.shaded.com.google.common</shadedPattern>
+                </relocation>
+              </relocations>
+              <minimizeJar>true</minimizeJar>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
