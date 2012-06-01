@@ -77,10 +77,13 @@ limitations under the License.
             <configuration>
               <artifactSet>
                 <excludes>
+                  <exclude>asm:asm</exclude>
+                  <exclude>com.google.code.findbugs:jsr305</exclude>
+                  <exclude>com.google.gerrit:gerrit-${Gerrit-ApiType}-api</exclude>
                   <exclude>log4j:log4j</exclude>
+                  <exclude>org.antlr:antlr</exclude>
                   <exclude>org.slf4j:slf4j-api</exclude>
                   <exclude>org.slf4j:slf4j-log4j12</exclude>
-                  <exclude>com.google.code.findbugs:jsr305</exclude>
                 </excludes>
               </artifactSet>
               <relocations>
@@ -94,6 +97,29 @@ limitations under the License.
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <finalName>init-all-projects</finalName>
+              <archive>
+                <manifest>
+                  <mainClass>com.google.gerrit.plugins.zookeeper.InitAllProjects</mainClass>
+                </manifest>
+              </archive>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -102,7 +128,8 @@ limitations under the License.
       <groupId>com.google.gerrit</groupId>
       <artifactId>gerrit-${Gerrit-ApiType}-api</artifactId>
       <version>${Gerrit-ApiVersion}</version>
-      <scope>provided</scope>
+      <!-- Normally would be in provided scope, but we need it in standalone
+        jars. Instead, manually excluded in the shade goal. -->
     </dependency>
 
     <dependency>
@@ -116,12 +143,41 @@ limitations under the License.
       <artifactId>curator-recipes</artifactId>
       <version>${curatorVersion}</version>
     </dependency>
+
+    <!-- Dependencies of Gerrit that are excluded from the API jar or can't be
+      determined statically but are needed for standalone jars. -->
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>antlr</artifactId>
+      <version>3.2</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.antlr</groupId>
+          <artifactId>stringtemplate</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>antlr</groupId>
+          <artifactId>antlr</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>asm</groupId>
+      <artifactId>asm</artifactId>
+      <version>3.3.1</version>
+    </dependency>
   </dependencies>
 
   <repositories>
     <repository>
       <id>gerrit-api-repository</id>
       <url>https://gerrit-api.commondatastorage.googleapis.com/snapshot/</url>
+    </repository>
+
+    <repository>
+      <id>objectweb-repository</id>
+      <url>http://maven.objectweb.org/maven2/</url>
     </repository>
   </repositories>
 </project>
