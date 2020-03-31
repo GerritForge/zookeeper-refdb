@@ -4,6 +4,11 @@
       "state": "SCHEDULED",
       "created": "2020-03-31T13:11:26Z",
       "updated": "2020-03-31T13:11:26Z"
+    },
+    "gerritforge:zookeeper-refdb-format-8b1e7fb8ce34448cc425": {
+      "state": "SCHEDULED",
+      "created": "2020-03-31T13:11:27Z",
+      "updated": "2020-03-31T13:11:27Z"
     }
   }
 }
