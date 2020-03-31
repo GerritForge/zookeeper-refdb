@@ -1,7 +1,13 @@
 pipeline {
-    options { checkoutToSubdirectory('zookeeper-refdb') }
+    options { skipDefaultCheckout true }
     agent { label 'bazel-debian' }
     stages {
+        stage('Checkout') {
+            steps {
+                sh "git clone -b ${env.GERRIT_BRANCH} https://gerrit.googlesource.com/plugins/zookeeper-refdb"
+                sh "cd zookeeper-refdb && git fetch origin refs/changes/${BRANCH_NAME} && git merge FETCH_HEAD"
+            }
+        }
         stage('Formatting') {
             steps {
                 sh "find zookeeper-refdb -name '*.java' | xargs /home/jenkins/format/google-java-format-1.7 -i"
