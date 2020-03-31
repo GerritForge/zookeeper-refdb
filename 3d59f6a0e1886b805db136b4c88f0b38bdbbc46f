@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb6dd6d8_fe03ff5b",
+        "filename": "Jenkinsfile",
+        "patchSetId": 25
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2020-03-31T12:31:34Z",
+      "side": 1,
+      "message": "Not needed anymore as only changes are selected by Checks",
+      "range": {
+        "startLine": 41,
+        "startChar": 18,
+        "endLine": 41,
+        "endChar": 58
+      },
+      "revId": "3d59f6a0e1886b805db136b4c88f0b38bdbbc46f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
