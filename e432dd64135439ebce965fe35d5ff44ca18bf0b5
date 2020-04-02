@@ -22,6 +22,30 @@
       "revId": "e432dd64135439ebce965fe35d5ff44ca18bf0b5",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75e5ee41_6914d57d",
+        "filename": "Jenkinsfile",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2020-04-02T14:12:21Z",
+      "side": 1,
+      "message": "it doesn\u0027t really make so much difference if it is expanded by the shell or Groovy.",
+      "parentUuid": "387a528c_76014b91",
+      "range": {
+        "startLine": 37,
+        "startChar": 44,
+        "endLine": 37,
+        "endChar": 59
+      },
+      "revId": "e432dd64135439ebce965fe35d5ff44ca18bf0b5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
