@@ -1,34 +1,56 @@
 pipeline {
-    options { checkoutToSubdirectory('zookeeper') }
+    options { skipDefaultCheckout true }
     agent { label 'bazel-debian' }
     stages {
-        stage('GJF') {
+        stage('Checkout') {
             steps {
-                sh "find zookeeper -name '*.java' | xargs /home/jenkins/format/google-java-format-1.7 -i"
+                sh "git clone -b ${env.GERRIT_BRANCH} https://gerrit.googlesource.com/plugins/zookeeper-refdb"
+                sh "cd zookeeper-refdb && git fetch origin refs/changes/${BRANCH_NAME} && git merge FETCH_HEAD"
+            }
+        }
+        stage('Formatting') {
+            steps {
+                gerritCheck (checks: ['gerritforge:zookeeper-refdb-format-8b1e7fb8ce34448cc425': 'RUNNING'], url: "${env.BUILD_URL}console")
+                sh "find zookeeper-refdb -name '*.java' | xargs /home/jenkins/format/google-java-format-1.7 -i"
                 script {
-                    def formatOut = sh (script: 'cd zookeeper && git status --porcelain', returnStdout: true)
+                    def formatOut = sh (script: 'cd zookeeper-refdb && git status --porcelain', returnStdout: true)
                     if (formatOut.trim()) {
                         def files = formatOut.split('\n').collect { it.split(' ').last() }
                         files.each { gerritComment path:it, message: 'Needs reformatting with GJF' }
-                        gerritReview labels: [Formatting: -1]
+                        gerritCheck (checks: ['gerritforge:zookeeper-refdb-format-8b1e7fb8ce34448cc425': 'FAILED'], url: "${env.BUILD_URL}console")
                     } else {
-                        gerritReview labels: [Formatting: 1]
+                        gerritCheck (checks: ['gerritforge:zookeeper-refdb-format-8b1e7fb8ce34448cc425': 'SUCCESSFUL'], url: "${env.BUILD_URL}console")
                     }
                 }
             }
         }
         stage('build') {
+             environment {
+                 DOCKER_HOST = """${sh(
+                     returnStdout: true,
+                     script: "/sbin/ip route|awk '/default/ {print  \"tcp://\"\$3\":2375\"}'"
+                 )}"""
+            }
             steps {
-                gerritReview labels: [Verified: 0], message: "Build started: ${env.BUILD_URL}"
-                sh "git clone --recursive -b stable-3.1 https://gerrit.googlesource.com/gerrit"
-                sh 'cd gerrit/plugins && ln -sf ../../zookeeper . && ln -sf zookeeper/external_plugin_deps.bzl .'
-                sh 'cd gerrit && bazelisk build plugins/zookeeper && bazelisk test plugins/zookeeper:zookeeper_tests'
+                gerritCheck (checks: ['gerritforge:zookeeper-refdb-8b1e7fb8ce34448cc425': 'RUNNING'], url: "${env.BUILD_URL}console")
+                sh 'git clone --recursive -b $GERRIT_BRANCH https://gerrit.googlesource.com/gerrit'
+                sh 'cd gerrit/plugins && ln -sf ../../zookeeper-refdb . && ln -sf zookeeper-refdb/external_plugin_deps.bzl .'
+                dir ('gerrit') {
+                    sh 'bazelisk build plugins/zookeeper-refdb'
+                    sh 'bazelisk test --test_env DOCKER_HOST=$DOCKER_HOST plugins/zookeeper-refdb:zookeeper-refdb_tests'
+                }
             }
         }
     }
     post {
-        success { gerritReview labels: [Verified: 1] }
-        unstable { gerritReview labels: [Verified: 0], message: "Build is unstable: ${env.BUILD_URL}" }
-        failure { gerritReview labels: [Verified: -1], message: "Build failed: ${env.BUILD_URL}" }
+        success {
+          gerritCheck (checks: ['gerritforge:zookeeper-refdb-8b1e7fb8ce34448cc425': 'SUCCESSFUL'], url: "${env.BUILD_URL}console")
+        }
+        unstable {
+          gerritCheck (checks: ['gerritforge:zookeeper-refdb-8b1e7fb8ce34448cc425': 'FAILED'], url: "${env.BUILD_URL}console")
+        }
+        failure {
+          gerritCheck (checks: ['gerritforge:zookeeper-refdb-8b1e7fb8ce34448cc425': 'FAILED'], url: "${env.BUILD_URL}console")
+        }
     }
 }
