@@ -29,8 +29,14 @@ def external_plugin_deps():
 
     maven_jar(
         name = "zookeeper",
-        artifact = "org.apache.zookeeper:zookeeper:3.4.14",
-        sha1 = "c114c1e1c8172a7cd3f6ae39209a635f7a06c1a1",
+        artifact = "org.apache.zookeeper:zookeeper:3.5.5",
+        sha1 = "dd9c924e9d4be7c79e46261691e96d030736a8ac",
+    )
+
+    maven_jar(
+        name = "zookeeper-jute",
+        artifact = "org.apache.zookeeper:zookeeper-jute:3.5.5",
+        sha1 = "3785011a665bd5c7dedd025110543d967f17f8e3",
     )
 
     maven_jar(

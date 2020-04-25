@@ -197,7 +197,7 @@ public class ZkSharedRefDatabase implements GlobalRefDatabase {
   }
 
   private boolean refNotInZk(Project.NameKey projectName, Ref oldRef) throws Exception {
-    return client.checkExists().forPath(pathFor(projectName, oldRef.getName())) == null;
+   return client.checkExists().forPath(pathFor(projectName, oldRef.getName())) == null;
   }
 
   private boolean refNotInZk(Project.NameKey projectName, String oldRef) throws Exception {
