@@ -9,6 +9,10 @@ nodes.
 
 Originally this code was a part of [multi-site plugin](https://gerrit.googlesource.com/plugins/multi-site/) but currently can be use independently.
 
+## Requirements
+
+Supported Zookeeper version is 3.5.x. For SSL connection minimal Zookeeper version is 3.5.1[ZOOKEEPER-2125](https://issues.apache.org/jira/browse/ZOOKEEPER-2125).
+
 ## Setup
 
 * Install @PLUGIN@ plugin
