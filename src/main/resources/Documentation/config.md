@@ -16,6 +16,15 @@ File '@PLUGIN@.config'
   transactionLockTimeoutMs = 1000
 ```
 
+## Sample SSL configuration
+```
+[ref-database "zookeeper"]
+  connectString = "zookeeperhost:2281"
+  sslConnection = true
+  rootNode = "/gerrit/multi-site"
+  transactionLockTimeoutMs = 1000
+```
+
 ## Configuration parameters
 
 ```ref-database.zookeeper.connectString```
@@ -81,3 +90,25 @@ File '@PLUGIN@.config'
     acquires the exclusive lock for a reference.
 
     Defaults: 1000
+
+```ref-database.zookeeper.sslConnection```
+:   Enable ssl for Zookeeper connection.
+
+    Defaults: false
+
+```ref-database.zookeeper.sslKeyStoreLocation```
+:   Optional configuration of the path to the ssl key store location.
+
+```ref-database.zookeeper.sslTrustStoreLocation```
+:   Optional configuration of the path to the ssl trust store for server-side X.509 certificate validation.
+
+File '@PLUGIN@.secure.config'
+--------------------
+
+## Configuration parameters
+
+```ref-database.zookeeper.sslKeyStorePassword```
+:   Optional configuration for the password to the ssl key store.
+
+```ref-database.zookeeper.sslTrustStorePassword```
+:   Optional configuration for the password to the ssl trust store.
