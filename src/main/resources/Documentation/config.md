@@ -81,3 +81,38 @@ File '@PLUGIN@.config'
     acquires the exclusive lock for a reference.
 
     Defaults: 1000
+
+```ref-database.zookeeper.sslConnection```
+:   Enable ssl for Zookeeper connection.
+
+    Defaults: false
+
+```ref-database.zookeeper.sslKeyStoreLocation```
+:   Configuration for the path to the ssl key store location.
+
+    Defaults: "./etc/keystore.jks"
+
+```ref-database.zookeeper.sslTrustStoreLocation```
+:   Configuration for the path to the local ssl trust store location.
+
+    Defaults: "./etc/truststore.jks"
+
+
+File '@PLUGIN@.secure.config'
+--------------------
+
+## Sample configuration.
+
+```
+[ref-database "zookeeper"]
+    sslKeyStorePassword = test_passw
+    sslTrustStorePassword = test_passw
+```
+
+## Configuration parameters
+
+```ref-database.zookeeper.sslKeyStorePassword```
+:   Configuration for the password to the ssl key store location.
+
+```ref-database.zookeeper.sslTrustStorePassword```
+:   Configuration for the password to the ssl trust store location.
