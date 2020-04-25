@@ -41,6 +41,12 @@ public class ZookeeperConfig {
   private final int DEFAULT_CAS_RETRY_POLICY_MAX_SLEEP_TIME_MS = 300;
   private final int DEFAULT_CAS_RETRY_POLICY_MAX_RETRIES = 3;
   private final int DEFAULT_TRANSACTION_LOCK_TIMEOUT = 1000;
+  private final boolean DEFAULT_SSH_CONNECTION = false;
+  private final String DEFAULT_SSL_KEYSTORE_LOCATION = "./etc/keystore.jks";
+  private final String DEFAULT_SSL_TRUSTSTORE_LOCATION = "./etc/truststore.jks";
+
+  private final String DEFAULT_SSL_KEYSTORE_PASSWORD = "";
+  private final String DEFAULT_SSL_TRUSTSTORE_PASSWORD = "";
 
   static {
     CuratorFrameworkFactory.Builder b = CuratorFrameworkFactory.builder();
@@ -56,6 +62,13 @@ public class ZookeeperConfig {
   public static final String KEY_RETRY_POLICY_MAX_SLEEP_TIME_MS = "retryPolicyMaxSleepTimeMs";
   public static final String KEY_RETRY_POLICY_MAX_RETRIES = "retryPolicyMaxRetries";
   public static final String KEY_ROOT_NODE = "rootNode";
+  public static final String SSL_CONNECTION = "sslConnection";
+  public static final String SSL_KEYSTORE_LOCATION = "sslKeyStoreLocation";
+  public static final String SSL_TRUSTSTORE_LOCATION = "sslTrustStoreLocation";
+
+  public static final String SSL_KEYSTORE_PASSWORD = "sslKeyStorePassword";
+  public static final String SSL_TRUSTSTORE_PASSWORD = "sslTrustStorePassword";
+
   public final String KEY_CAS_RETRY_POLICY_BASE_SLEEP_TIME_MS = "casRetryPolicyBaseSleepTimeMs";
   public final String KEY_CAS_RETRY_POLICY_MAX_SLEEP_TIME_MS = "casRetryPolicyMaxSleepTimeMs";
   public final String KEY_CAS_RETRY_POLICY_MAX_RETRIES = "casRetryPolicyMaxRetries";
@@ -72,7 +85,14 @@ public class ZookeeperConfig {
   private final int casMaxSleepTimeMs;
   private final int casMaxRetries;
 
+  private boolean isSshEnabled;
+  private String sslKeyStoreLocation;
+  private String sslTrustStoreLocation;
+  private String sslKeyStorePassword;
+  private String sslTrustStorePassword;
+
   public static final String SECTION = "ref-database";
+
   private final Long transactionLockTimeOut;
 
   private CuratorFramework build;
@@ -145,10 +165,54 @@ public class ZookeeperConfig {
             TRANSACTION_LOCK_TIMEOUT_KEY,
             DEFAULT_TRANSACTION_LOCK_TIMEOUT);
 
+    isSshEnabled =
+        getBoolean(zkConfig, SECTION, SUBSECTION, SSL_CONNECTION, DEFAULT_SSH_CONNECTION);
+
+    sslKeyStoreLocation =
+        getString(
+            zkConfig, SECTION, SUBSECTION, SSL_KEYSTORE_LOCATION, DEFAULT_SSL_KEYSTORE_LOCATION);
+
+    sslTrustStoreLocation =
+        getString(
+            zkConfig,
+            SECTION,
+            SUBSECTION,
+            SSL_TRUSTSTORE_LOCATION,
+            DEFAULT_SSL_TRUSTSTORE_LOCATION);
+
+    sslKeyStorePassword =
+        getString(
+            zkConfig, SECTION, SUBSECTION, SSL_KEYSTORE_PASSWORD, DEFAULT_SSL_KEYSTORE_PASSWORD);
+
+    sslTrustStorePassword =
+        getString(
+            zkConfig,
+            SECTION,
+            SUBSECTION,
+            SSL_TRUSTSTORE_PASSWORD,
+            DEFAULT_SSL_TRUSTSTORE_PASSWORD);
+
     checkArgument(StringUtils.isNotEmpty(connectionString), "zookeeper.%s contains no servers");
   }
 
   public CuratorFramework buildCurator() {
+    if (isSshEnabled) {
+      checkArgument(
+          StringUtils.isNotEmpty(sslKeyStorePassword),
+          "zookeeper.ssl.sslKeyStorePassword cannot be empty");
+      checkArgument(
+          StringUtils.isNotEmpty(sslTrustStorePassword),
+          "zookeeper.ssl.sslTrustStorePassword cannot be empty");
+
+      System.setProperty(
+          "zookeeper.clientCnxnSocket", "org.apache.zookeeper.ClientCnxnSocketNetty");
+      System.setProperty("zookeeper.client.secure", "true");
+      System.setProperty("zookeeper.ssl.keyStore.location", sslKeyStoreLocation);
+      System.setProperty("zookeeper.ssl.trustStore.location", sslTrustStoreLocation);
+      System.setProperty("zookeeper.ssl.keyStore.password", sslKeyStorePassword);
+      System.setProperty("zookeeper.ssl.trustStore.password", sslTrustStorePassword);
+    }
+
     if (build == null) {
       this.build =
           CuratorFrameworkFactory.builder()
@@ -201,5 +265,16 @@ public class ZookeeperConfig {
       return value;
     }
     return defaultValue;
+  }
+
+  private Boolean getBoolean(
+      Config cfg, String section, String subSection, String name, Boolean defaultValue) {
+    try {
+      return cfg.getBoolean(section, subSection, name, defaultValue);
+    } catch (IllegalArgumentException e) {
+      log.error("invalid value for {}; using default value {}", name, defaultValue);
+      log.debug("Failed to retrieve boolean value: {}", e.getMessage(), e);
+      return defaultValue;
+    }
   }
 }
