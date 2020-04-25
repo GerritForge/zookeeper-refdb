@@ -1,0 +1,9 @@
+{
+  "checks": {
+    "gerritforge:zookeeper-refdb-8b1e7fb8ce34448cc425": {
+      "state": "SCHEDULED",
+      "created": "2020-04-25T18:35:34Z",
+      "updated": "2020-04-25T18:35:34Z"
+    }
+  }
+}
