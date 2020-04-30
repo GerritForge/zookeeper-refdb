@@ -114,6 +114,30 @@
       "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55555b3e_06c9c481",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-04-30T12:09:27Z",
+      "side": 1,
+      "message": "\u003e Why do we need to set the system properties? Is that the way that Curator requires them?\nYes I know that it\u0027s not the most convenient way of setting up things but this is the way how zookeeper client ssl must be setup:\nhttps://zookeeper.apache.org/doc/r3.5.5/api/org/apache/zookeeper/server/auth/X509AuthenticationProvider.html\nhttps://cwiki.apache.org/confluence/display/ZOOKEEPER/ZooKeeper+SSL+User+Guide",
+      "parentUuid": "a2c09b4d_9480619d",
+      "range": {
+        "startLine": 210,
+        "startChar": 6,
+        "endLine": 213,
+        "endChar": 85
+      },
+      "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
