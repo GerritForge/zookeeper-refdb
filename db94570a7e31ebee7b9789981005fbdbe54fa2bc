@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f058e602_e023ac32",
+        "filename": "external_plugin_deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-04-30T19:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98da7026_27c86768",
+      "range": {
+        "startLine": 32,
+        "startChar": 53,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55290170_fa6d2170",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7169920_01990de8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-04-30T19:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55290170_fa6d2170",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 80
+      },
+      "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "75546931_43d1f729",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-04-30T19:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "415e5805_2a0591ab",
+      "range": {
+        "startLine": 201,
+        "startChar": 10,
+        "endLine": 202,
+        "endChar": 63
+      },
+      "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a867922_187ff2d0",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "493ffa3a_d26d0bb8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-04-30T19:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a867922_187ff2d0",
+      "range": {
+        "startLine": 204,
+        "startChar": 10,
+        "endLine": 205,
+        "endChar": 63
+      },
+      "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     },
     {
       "key": {
@@ -138,6 +234,30 @@
       "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da232b76_2fd8f17a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-04-30T19:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55555b3e_06c9c481",
+      "range": {
+        "startLine": 210,
+        "startChar": 6,
+        "endLine": 213,
+        "endChar": 85
+      },
+      "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
