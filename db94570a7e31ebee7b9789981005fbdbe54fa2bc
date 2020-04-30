@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98da7026_27c86768",
+        "filename": "external_plugin_deps.bzl",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2020-04-30T10:06:47Z",
+      "side": 1,
+      "message": "This should also be mentioned in the commit message.",
+      "range": {
+        "startLine": 32,
+        "startChar": 53,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55290170_fa6d2170",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2020-04-30T10:06:47Z",
+      "side": 1,
+      "message": "Those should be empty by default: the simplest use-case is to connect over SSL with a valid X.509 Certificate and no client validation.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 80
+      },
+      "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "415e5805_2a0591ab",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2020-04-30T10:06:47Z",
+      "side": 1,
+      "message": "Why? If I do not require client validation, then it will be empty.",
+      "range": {
+        "startLine": 201,
+        "startChar": 10,
+        "endLine": 202,
+        "endChar": 63
+      },
+      "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a867922_187ff2d0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2020-04-30T10:06:47Z",
+      "side": 1,
+      "message": "Why? If the server has a valid X.509 certificate, then it will be empty.",
+      "range": {
+        "startLine": 204,
+        "startChar": 10,
+        "endLine": 205,
+        "endChar": 63
+      },
+      "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2c09b4d_9480619d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2020-04-30T10:06:47Z",
+      "side": 1,
+      "message": "Check for null values and make the System.setProperty conditional.\nWhy do we need to set the system properties? Is that the way that Curator requires them?",
+      "range": {
+        "startLine": 210,
+        "startChar": 6,
+        "endLine": 213,
+        "endChar": 85
+      },
+      "revId": "db94570a7e31ebee7b9789981005fbdbe54fa2bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
