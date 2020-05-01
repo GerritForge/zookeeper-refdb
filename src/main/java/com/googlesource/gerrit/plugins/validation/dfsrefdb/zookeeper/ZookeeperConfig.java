@@ -20,7 +20,6 @@ import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.inject.Inject;
-import java.util.Optional;
 import org.apache.commons.lang.StringUtils;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
@@ -42,7 +41,6 @@ public class ZookeeperConfig {
   private final int DEFAULT_CAS_RETRY_POLICY_MAX_SLEEP_TIME_MS = 300;
   private final int DEFAULT_CAS_RETRY_POLICY_MAX_RETRIES = 3;
   private final int DEFAULT_TRANSACTION_LOCK_TIMEOUT = 1000;
-  private final boolean DEFAULT_SSH_CONNECTION = false;
 
   static {
     CuratorFrameworkFactory.Builder b = CuratorFrameworkFactory.builder();
@@ -58,13 +56,6 @@ public class ZookeeperConfig {
   public static final String KEY_RETRY_POLICY_MAX_SLEEP_TIME_MS = "retryPolicyMaxSleepTimeMs";
   public static final String KEY_RETRY_POLICY_MAX_RETRIES = "retryPolicyMaxRetries";
   public static final String KEY_ROOT_NODE = "rootNode";
-  public static final String SSL_CONNECTION = "sslConnection";
-  public static final String SSL_KEYSTORE_LOCATION = "sslKeyStoreLocation";
-  public static final String SSL_TRUSTSTORE_LOCATION = "sslTrustStoreLocation";
-
-  public static final String SSL_KEYSTORE_PASSWORD = "sslKeyStorePassword";
-  public static final String SSL_TRUSTSTORE_PASSWORD = "sslTrustStorePassword";
-
   public final String KEY_CAS_RETRY_POLICY_BASE_SLEEP_TIME_MS = "casRetryPolicyBaseSleepTimeMs";
   public final String KEY_CAS_RETRY_POLICY_MAX_SLEEP_TIME_MS = "casRetryPolicyMaxSleepTimeMs";
   public final String KEY_CAS_RETRY_POLICY_MAX_RETRIES = "casRetryPolicyMaxRetries";
@@ -81,14 +72,7 @@ public class ZookeeperConfig {
   private final int casMaxSleepTimeMs;
   private final int casMaxRetries;
 
-  private Boolean isSshEnabled;
-  private Optional<String> sslKeyStoreLocation;
-  private Optional<String> sslTrustStoreLocation;
-  private Optional<String> sslKeyStorePassword;
-  private Optional<String> sslTrustStorePassword;
-
   public static final String SECTION = "ref-database";
-
   private final Long transactionLockTimeOut;
 
   private CuratorFramework build;
@@ -161,39 +145,10 @@ public class ZookeeperConfig {
             TRANSACTION_LOCK_TIMEOUT_KEY,
             DEFAULT_TRANSACTION_LOCK_TIMEOUT);
 
-    isSshEnabled =
-        getBoolean(zkConfig, SECTION, SUBSECTION, SSL_CONNECTION, DEFAULT_SSH_CONNECTION);
-
-    sslKeyStoreLocation = getOptionalString(zkConfig, SECTION, SUBSECTION, SSL_KEYSTORE_LOCATION);
-
-    sslTrustStoreLocation =
-        getOptionalString(zkConfig, SECTION, SUBSECTION, SSL_TRUSTSTORE_LOCATION);
-
-    sslKeyStorePassword = getOptionalString(zkConfig, SECTION, SUBSECTION, SSL_KEYSTORE_PASSWORD);
-
-    sslTrustStorePassword =
-        getOptionalString(zkConfig, SECTION, SUBSECTION, SSL_TRUSTSTORE_PASSWORD);
-
     checkArgument(StringUtils.isNotEmpty(connectionString), "zookeeper.%s contains no servers");
   }
 
   public CuratorFramework buildCurator() {
-    if (isSshEnabled) {
-
-      System.setProperty(
-          "zookeeper.clientCnxnSocket", "org.apache.zookeeper.ClientCnxnSocketNetty");
-      System.setProperty("zookeeper.client.secure", "true");
-
-      sslKeyStoreLocation.ifPresent(
-          location -> System.setProperty("zookeeper.ssl.keyStore.location", location));
-      sslTrustStoreLocation.ifPresent(
-          location -> System.setProperty("zookeeper.ssl.trustStore.location", location));
-      sslKeyStorePassword.ifPresent(
-          passw -> System.setProperty("zookeeper.ssl.keyStore.password", passw));
-      sslTrustStorePassword.ifPresent(
-          passw -> System.setProperty("zookeeper.ssl.trustStore.password", passw));
-    }
-
     if (build == null) {
       this.build =
           CuratorFrameworkFactory.builder()
@@ -239,11 +194,6 @@ public class ZookeeperConfig {
     }
   }
 
-  private Optional<String> getOptionalString(
-      Config cfg, String section, String subsection, String name) {
-    return Optional.ofNullable(cfg.getString(section, subsection, name)).filter(s -> !s.isEmpty());
-  }
-
   private String getString(
       Config cfg, String section, String subsection, String name, String defaultValue) {
     String value = cfg.getString(section, subsection, name);
@@ -251,16 +201,5 @@ public class ZookeeperConfig {
       return value;
     }
     return defaultValue;
-  }
-
-  private Boolean getBoolean(
-      Config cfg, String section, String subSection, String name, Boolean defaultValue) {
-    try {
-      return cfg.getBoolean(section, subSection, name, defaultValue);
-    } catch (IllegalArgumentException e) {
-      log.error("invalid value for {}; using default value {}", name, defaultValue);
-      log.debug("Failed to retrieve boolean value: {}", e.getMessage(), e);
-      return defaultValue;
-    }
   }
 }

@@ -33,7 +33,7 @@ import org.testcontainers.containers.wait.strategy.Wait;
 public class ZookeeperTestContainerSupport {
 
   static class ZookeeperContainer extends GenericContainer<ZookeeperContainer> {
-    public static String ZOOKEEPER_VERSION = "3.5.5";
+    public static String ZOOKEEPER_VERSION = "3.4.13";
 
     public ZookeeperContainer() {
       super("zookeeper:" + ZOOKEEPER_VERSION);
