@@ -16,6 +16,15 @@ File '@PLUGIN@.config'
   transactionLockTimeoutMs = 1000
 ```
 
+## Sample SSL configuration
+```
+[ref-database "zookeeper"]
+  connectString = "zookeeperhost:2281"
+  sslConnection = true
+  rootNode = "/gerrit/multi-site"
+  transactionLockTimeoutMs = 1000
+```
+
 ## Configuration parameters
 
 ```ref-database.zookeeper.connectString```
@@ -88,14 +97,10 @@ File '@PLUGIN@.config'
     Defaults: false
 
 ```ref-database.zookeeper.sslKeyStoreLocation```
-:   Configuration for the path to the ssl key store location.
-
-    Defaults: "./etc/keystore.jks"
+:  Optional configuration for the path of the ssl key store.
 
 ```ref-database.zookeeper.sslTrustStoreLocation```
-:   Configuration for the path to the local ssl trust store location.
-
-    Defaults: "./etc/truststore.jks"
+:  Optional configuration for the path of the ssl trust store location.
 
 
 File '@PLUGIN@.secure.config'
@@ -112,7 +117,7 @@ File '@PLUGIN@.secure.config'
 ## Configuration parameters
 
 ```ref-database.zookeeper.sslKeyStorePassword```
-:   Configuration for the password to the ssl key store location.
+:   Optional configuration for the password to the ssl key store location.
 
 ```ref-database.zookeeper.sslTrustStorePassword```
-:   Configuration for the password to the ssl trust store location.
+:  Optional configuration for the password to the ssl trust store location.
