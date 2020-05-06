@@ -71,6 +71,78 @@
     },
     {
       "key": {
+        "uuid": "4d308084_f0ec1709",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-05-06T08:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdb0a3ab_b7e245f3",
+      "range": {
+        "startLine": 96,
+        "startChar": 18,
+        "endLine": 96,
+        "endChar": 25
+      },
+      "revId": "7628a10a2ab43528b53923e1fa1cc575bc8d11f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6503b099_f0967c1c",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-05-06T08:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "910f60a0_2af995e9",
+      "range": {
+        "startLine": 96,
+        "startChar": 60,
+        "endLine": 96,
+        "endChar": 68
+      },
+      "revId": "7628a10a2ab43528b53923e1fa1cc575bc8d11f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d340058_ea3e9cc8",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-05-06T08:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60df7bdb_038f7342",
+      "range": {
+        "startLine": 96,
+        "startChar": 34,
+        "endLine": 96,
+        "endChar": 43
+      },
+      "revId": "7628a10a2ab43528b53923e1fa1cc575bc8d11f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86ba9bf4_bbfcc874",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2020-05-05T20:07:16Z",
       "side": 1,
       "message": "Why can\u0027t we point to the Java truststore by default?",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "7628a10a2ab43528b53923e1fa1cc575bc8d11f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e74e5646_f10d1876",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-05-06T08:50:04Z",
+      "side": 1,
+      "message": "It\u0027s an optional parameter if it\u0027s not set we are not using it. I\u0027ve mentioned that in the newest patch set. I\u0027m not sure if we need defaults for optional parameters",
+      "parentUuid": "86ba9bf4_bbfcc874",
       "range": {
         "startLine": 98,
         "startChar": 4,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "2bde09f2_7dadd749",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-05-06T08:50:04Z",
+      "side": 1,
+      "message": "same as above, optional param",
+      "parentUuid": "3ac532af_31a5c13b",
+      "range": {
+        "startLine": 109,
+        "startChar": 28,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "7628a10a2ab43528b53923e1fa1cc575bc8d11f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c11efd28_99637814",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "d9184566_aaa0af04",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-05-06T08:50:04Z",
+      "side": 1,
+      "message": "same as above, optional param",
+      "parentUuid": "c11efd28_99637814",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 65
+      },
+      "revId": "7628a10a2ab43528b53923e1fa1cc575bc8d11f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb3ec78e_e60c6c0c",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
@@ -174,6 +318,24 @@
       "writtenOn": "2020-05-05T20:07:16Z",
       "side": 1,
       "message": "What\u0027s the default?",
+      "revId": "7628a10a2ab43528b53923e1fa1cc575bc8d11f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74f3912e_03d8791a",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-05-06T08:50:04Z",
+      "side": 1,
+      "message": "same as above, optional param",
+      "parentUuid": "eb3ec78e_e60c6c0c",
       "revId": "7628a10a2ab43528b53923e1fa1cc575bc8d11f6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
