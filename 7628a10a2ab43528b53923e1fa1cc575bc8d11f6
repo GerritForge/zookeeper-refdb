@@ -362,6 +362,30 @@
       "revId": "7628a10a2ab43528b53923e1fa1cc575bc8d11f6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26fc3486_7604a0cc",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperTestContainerSupport.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-05-06T09:18:56Z",
+      "side": 1,
+      "message": "Done in the newest patch set",
+      "parentUuid": "b52ce396_84ac796f",
+      "range": {
+        "startLine": 36,
+        "startChar": 46,
+        "endLine": 36,
+        "endChar": 51
+      },
+      "revId": "7628a10a2ab43528b53923e1fa1cc575bc8d11f6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
