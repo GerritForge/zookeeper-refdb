@@ -6,9 +6,9 @@
       "updated": "2020-05-12T20:29:03Z"
     },
     "gerritforge:zookeeper-refdb-format-8b1e7fb8ce34448cc425": {
-      "state": "SCHEDULED",
+      "state": "NOT_STARTED",
       "created": "2020-05-12T20:29:03Z",
-      "updated": "2020-05-12T20:29:03Z"
+      "updated": "2020-05-12T20:34:55Z"
     }
   }
 }
