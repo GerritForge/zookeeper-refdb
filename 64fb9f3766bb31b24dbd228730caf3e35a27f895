@@ -1,9 +1,9 @@
 {
   "checks": {
     "gerritforge:zookeeper-refdb-8b1e7fb8ce34448cc425": {
-      "state": "NOT_STARTED",
+      "state": "SCHEDULED",
       "created": "2020-05-12T20:29:03Z",
-      "updated": "2020-05-12T20:34:56Z"
+      "updated": "2020-05-12T20:41:02Z"
     },
     "gerritforge:zookeeper-refdb-format-8b1e7fb8ce34448cc425": {
       "state": "NOT_STARTED",
