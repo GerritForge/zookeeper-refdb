@@ -28,21 +28,27 @@ def external_plugin_deps():
     )
 
     maven_jar(
-        name = "zookeeper",
+        name = "zookeeper_3.5",
         artifact = "org.apache.zookeeper:zookeeper:3.5.7",
         sha1 = "12bdf55ba8be7fc891996319d37f35eaad7e63ea",
     )
 
     maven_jar(
-        name = "zookeeper-jute",
+        name = "zookeeper-jute_3.5",
         artifact = "org.apache.zookeeper:zookeeper-jute:3.5.7",
         sha1 = "1270f80b08904499a6839a2ee1800da687ad96b4",
     )
 
     maven_jar(
-        name = "netty-all",
+        name = "netty-all_3.5",
         artifact = "io.netty:netty-all:4.1.45.Final",
         sha1 = "e830eae36d22f2bba3118a3bc08e17f15263a01d",
+    )
+
+    maven_jar(
+        name = "zookeeper_3.4",
+        artifact = "org.apache.zookeeper:zookeeper:3.4.14",
+        sha1 = "c114c1e1c8172a7cd3f6ae39209a635f7a06c1a1",
     )
 
     maven_jar(
