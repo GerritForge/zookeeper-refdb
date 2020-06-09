@@ -45,6 +45,30 @@
       "revId": "2b536327ebd76a221243a1928b919e9a17611018",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85dbdc50_eb5f381d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-06-09T11:37:28Z",
+      "side": 1,
+      "message": "They don\u0027t have to, if we don\u0027t specify it default jvm security will be used and that\u0027s actually what we want",
+      "parentUuid": "e8453c9a_69635ac6",
+      "range": {
+        "startLine": 187,
+        "startChar": 6,
+        "endLine": 194,
+        "endChar": 83
+      },
+      "revId": "2b536327ebd76a221243a1928b919e9a17611018",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
