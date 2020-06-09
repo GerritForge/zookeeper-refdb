@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5de4f8f0_bef04ccb",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2020-06-09T11:11:01Z",
+      "side": 1,
+      "message": "is this supposed to be isSSLEnabled ?",
+      "range": {
+        "startLine": 84,
+        "startChar": 18,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "2b536327ebd76a221243a1928b919e9a17611018",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8453c9a_69635ac6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2020-06-09T11:11:01Z",
+      "side": 1,
+      "message": "When in this branch, aren\u0027t those parameters meant to be mandatory, i.e.: if they are not defined we need to die?",
+      "range": {
+        "startLine": 187,
+        "startChar": 6,
+        "endLine": 194,
+        "endChar": 83
+      },
+      "revId": "2b536327ebd76a221243a1928b919e9a17611018",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
