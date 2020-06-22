@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e385a59_e9d66b86",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2020-06-22T08:26:55Z",
+      "side": 1,
+      "message": "did you mean: \"of the ssl key store\"?",
+      "range": {
+        "startLine": 120,
+        "startChar": 44,
+        "endLine": 120,
+        "endChar": 73
+      },
+      "revId": "1fb6b42117b6a8f68bfd31119ca0ab4f3cadef7a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db2effe4_f816eaf9",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2020-06-22T08:26:55Z",
+      "side": 1,
+      "message": "did you mean: \"of the ssl trust store location\"?",
+      "range": {
+        "startLine": 123,
+        "startChar": 43,
+        "endLine": 123,
+        "endChar": 75
+      },
+      "revId": "1fb6b42117b6a8f68bfd31119ca0ab4f3cadef7a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
