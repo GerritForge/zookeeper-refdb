@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "929b71bb_e285afda",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2020-06-25T16:18:01Z",
+      "side": 1,
+      "message": "nit: unrelated change",
+      "revId": "b14f7eaca5d378d9da32c9c15abeb0e4a5f44fb0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fb97946_3823273f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2020-06-25T16:18:01Z",
+      "side": 1,
+      "message": "This is a pattern over-abused in this plugin, unfortunately :-(\nIf the configuration is incorrect and we fail to parse it, we should throw an exception and NOT return a default value.",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 5
+      },
+      "revId": "b14f7eaca5d378d9da32c9c15abeb0e4a5f44fb0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3beffff2_7bc347c4",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2020-06-25T16:18:01Z",
+      "side": 1,
+      "message": "Should this be highlighted as a breaking change? It won\u0027t work at all if upgrading from an earlier version of the plugin, unless Zookeeper is upgraded as well.\n\nHow would the zero-downtime work in that case?",
+      "revId": "b14f7eaca5d378d9da32c9c15abeb0e4a5f44fb0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
