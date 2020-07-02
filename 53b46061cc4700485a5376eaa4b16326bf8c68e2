@@ -1,11 +1,12 @@
 {
   "checks": {
     "gerritforge:zookeeper-refdb-8b1e7fb8ce34448cc425": {
-      "state": "RUNNING",
+      "state": "SUCCESSFUL",
       "url": "https://gerrit-ci.gerritforge.com/job/plugin-zookeeper-refdb-verifier/job/52%252F266052%252F5/1/console",
       "started": "2020-07-02T18:17:39Z",
+      "finished": "2020-07-02T18:21:28Z",
       "created": "2020-07-02T18:17:02Z",
-      "updated": "2020-07-02T18:17:40Z"
+      "updated": "2020-07-02T18:21:28Z"
     },
     "gerritforge:zookeeper-refdb-format-8b1e7fb8ce34448cc425": {
       "state": "SUCCESSFUL",
