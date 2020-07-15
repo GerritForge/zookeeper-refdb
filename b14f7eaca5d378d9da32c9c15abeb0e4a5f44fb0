@@ -116,6 +116,24 @@
       "revId": "b14f7eaca5d378d9da32c9c15abeb0e4a5f44fb0",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f7347bc_3189c6cb",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2020-07-15T23:15:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7165a042_b738baa9",
+      "revId": "b14f7eaca5d378d9da32c9c15abeb0e4a5f44fb0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
