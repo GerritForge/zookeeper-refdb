@@ -7,6 +7,28 @@ load(
 )
 
 gerrit_plugin(
+    name = "zookeeper-refdb-zk-3.5",
+    srcs = glob(["src/main/java/**/*.java"]),
+    manifest_entries = [
+        "Gerrit-PluginName: zookeeper-refdb",
+        "Gerrit-Module: com.googlesource.gerrit.plugins.validation.dfsrefdb.zookeeper.ZkValidationModule",
+        "Implementation-Title: zookeeper ref-db plugin",
+        "Implementation-URL: https://review.gerrithub.io/admin/repos/GerritForge/plugins_zookeeper",
+    ],
+    resources = glob(["src/main/resources/**/*"]),
+    dir_name = "zookeeper-refdb",
+    deps = [
+        "@curator-client//jar",
+        "@curator-framework//jar",
+        "@curator-recipes//jar",
+        "@global-refdb//jar",
+        "@zookeeper_3.5//jar",
+        "@zookeeper-jute_3.5//jar",
+        "@netty-all_3.5//jar",
+    ],
+)
+
+gerrit_plugin(
     name = "zookeeper-refdb",
     srcs = glob(["src/main/java/**/*.java"]),
     manifest_entries = [
@@ -21,7 +43,7 @@ gerrit_plugin(
         "@curator-framework//jar",
         "@curator-recipes//jar",
         "@global-refdb//jar",
-        "@zookeeper//jar",
+        "@zookeeper_3.4//jar",
     ],
 )
 
@@ -43,7 +65,7 @@ java_library(
     testonly = 1,
     visibility = ["//visibility:public"],
     exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
-        ":zookeeper-refdb__plugin",
+        ":zookeeper-refdb-zk-3.5__plugin",
         "@curator-framework//jar",
         "@curator-recipes//jar",
         "@curator-test//jar",
