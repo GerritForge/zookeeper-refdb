@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04de4ca4_834f7ae4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2020-12-02T10:36:33Z",
+      "side": 1,
+      "message": "Verified that the Docker tests are passing with this CL.",
+      "revId": "1466413708476b014dc8ccd7133bd6e689dd30e0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42bb62e8_0263bf0e",
+        "filename": "external_plugin_deps.bzl",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2020-12-02T10:36:33Z",
+      "side": 1,
+      "message": "Should we publish final 3.3.0 version for com.gerritforge:global-refdb on Central and update it here?",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 59
+      },
+      "revId": "1466413708476b014dc8ccd7133bd6e689dd30e0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
