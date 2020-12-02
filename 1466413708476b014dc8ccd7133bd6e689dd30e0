@@ -39,6 +39,30 @@
       },
       "revId": "1466413708476b014dc8ccd7133bd6e689dd30e0",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1321cf7_11dd093f",
+        "filename": "external_plugin_deps.bzl",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2020-12-02T13:41:23Z",
+      "side": 1,
+      "message": "Sure, let me do that.",
+      "parentUuid": "42bb62e8_0263bf0e",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 59
+      },
+      "revId": "1466413708476b014dc8ccd7133bd6e689dd30e0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
