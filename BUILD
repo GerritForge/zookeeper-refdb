@@ -48,6 +48,9 @@ java_library(
         "@curator-recipes//jar",
         "@curator-test//jar",
         "@curator-client//jar",
+	"//lib/jackson:jackson-annotations",
         "//lib/testcontainers",
+        "//lib/testcontainers:docker-java-api",
+        "//lib/testcontainers:docker-java-transport",
     ],
 )
