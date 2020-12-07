@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf6e6c44_8dc75c22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2020-12-07T11:27:59Z",
+      "side": 1,
+      "message": "Tested with zk, 3.4 without ssl and with 3.5.8 with ssl",
+      "revId": "d0a5e7211411048ae0dd75dcbb6eb141d6bcc9c5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
