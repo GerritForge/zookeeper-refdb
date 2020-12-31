@@ -9,6 +9,7 @@ load(
 gerrit_plugin(
     name = "zookeeper-refdb-zk-3.5",
     srcs = glob(["src/main/java/**/*.java"]),
+    dir_name = "zookeeper-refdb",
     manifest_entries = [
         "Gerrit-PluginName: zookeeper-refdb",
         "Gerrit-Module: com.googlesource.gerrit.plugins.validation.dfsrefdb.zookeeper.ZkValidationModule",
@@ -16,15 +17,14 @@ gerrit_plugin(
         "Implementation-URL: https://review.gerrithub.io/admin/repos/GerritForge/plugins_zookeeper",
     ],
     resources = glob(["src/main/resources/**/*"]),
-    dir_name = "zookeeper-refdb",
     deps = [
         "@curator-client//jar",
         "@curator-framework//jar",
         "@curator-recipes//jar",
         "@global-refdb//jar",
-        "@zookeeper_3.5//jar",
-        "@zookeeper-jute_3.5//jar",
         "@netty-all_3.5//jar",
+        "@zookeeper-jute_3.5//jar",
+        "@zookeeper_3.5//jar",
     ],
 )
 
