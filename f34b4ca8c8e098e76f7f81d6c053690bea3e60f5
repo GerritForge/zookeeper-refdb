@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9cf8853_701d3e63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2020-12-31T13:31:07Z",
+      "side": 1,
+      "message": "The vulnerability says \"An attacker could send a large ZlibEncoded byte stream to the Netty server,\" whilst we do not use that component in zookeeper-refdb.\n\nWe use the Netty client stack and do not accept connections from the internet.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 51
+      },
+      "revId": "f34b4ca8c8e098e76f7f81d6c053690bea3e60f5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
