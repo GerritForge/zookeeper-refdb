@@ -22,7 +22,7 @@ gerrit_plugin(
         "@curator-framework//jar",
         "@curator-recipes//jar",
         "@global-refdb//jar",
-        "@netty-all_3.5//jar",
+        "@netty-all//jar",
         "@zookeeper-jute_3.5//jar",
         "@zookeeper_3.5//jar",
     ],
