@@ -17,9 +17,11 @@ package com.googlesource.gerrit.plugins.validation.dfsrefdb.zookeeper;
 import static com.google.common.base.Preconditions.checkArgument;
 
 import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.inject.Inject;
+import java.util.List;
 import java.util.Optional;
 import org.apache.commons.lang.StringUtils;
 import org.apache.curator.RetryPolicy;
@@ -58,6 +60,7 @@ public class ZookeeperConfig {
   public static final String KEY_RETRY_POLICY_MAX_SLEEP_TIME_MS = "retryPolicyMaxSleepTimeMs";
   public static final String KEY_RETRY_POLICY_MAX_RETRIES = "retryPolicyMaxRetries";
   public static final String KEY_ROOT_NODE = "rootNode";
+
   public static final String SSL_CONNECTION = "sslConnection";
   public static final String SSL_KEYSTORE_LOCATION = "sslKeyStoreLocation";
   public static final String SSL_TRUSTSTORE_LOCATION = "sslTrustStoreLocation";
@@ -65,10 +68,32 @@ public class ZookeeperConfig {
   public static final String SSL_KEYSTORE_PASSWORD = "sslKeyStorePassword";
   public static final String SSL_TRUSTSTORE_PASSWORD = "sslTrustStorePassword";
 
-  public final String KEY_CAS_RETRY_POLICY_BASE_SLEEP_TIME_MS = "casRetryPolicyBaseSleepTimeMs";
-  public final String KEY_CAS_RETRY_POLICY_MAX_SLEEP_TIME_MS = "casRetryPolicyMaxSleepTimeMs";
-  public final String KEY_CAS_RETRY_POLICY_MAX_RETRIES = "casRetryPolicyMaxRetries";
-  public final String TRANSACTION_LOCK_TIMEOUT_KEY = "transactionLockTimeoutMs";
+  public static final String KEY_CAS_RETRY_POLICY_BASE_SLEEP_TIME_MS =
+      "casRetryPolicyBaseSleepTimeMs";
+  public static final String KEY_CAS_RETRY_POLICY_MAX_SLEEP_TIME_MS =
+      "casRetryPolicyMaxSleepTimeMs";
+  public static final String KEY_CAS_RETRY_POLICY_MAX_RETRIES = "casRetryPolicyMaxRetries";
+  public static final String TRANSACTION_LOCK_TIMEOUT_KEY = "transactionLockTimeoutMs";
+
+  public static final List<String> KEYS =
+      new ImmutableList.Builder<String>()
+          .add(
+              KEY_CONNECT_STRING,
+              KEY_SESSION_TIMEOUT_MS,
+              KEY_CONNECTION_TIMEOUT_MS,
+              KEY_RETRY_POLICY_BASE_SLEEP_TIME_MS,
+              KEY_RETRY_POLICY_MAX_SLEEP_TIME_MS,
+              KEY_RETRY_POLICY_MAX_RETRIES,
+              KEY_ROOT_NODE,
+              KEY_CAS_RETRY_POLICY_BASE_SLEEP_TIME_MS,
+              KEY_CAS_RETRY_POLICY_MAX_SLEEP_TIME_MS,
+              KEY_CAS_RETRY_POLICY_MAX_RETRIES,
+              SSL_CONNECTION,
+              SSL_KEYSTORE_LOCATION,
+              SSL_TRUSTSTORE_LOCATION,
+              SSL_KEYSTORE_PASSWORD,
+              SSL_TRUSTSTORE_PASSWORD)
+          .build();
 
   private final String connectionString;
   private final String root;
@@ -94,7 +119,10 @@ public class ZookeeperConfig {
 
   @Inject
   public ZookeeperConfig(PluginConfigFactory cfgFactory, @PluginName String pluginName) {
-    Config zkConfig = cfgFactory.getGlobalPluginConfig(pluginName);
+    this(cfgFactory.getGlobalPluginConfig(pluginName));
+  }
+
+  public ZookeeperConfig(Config zkConfig) {
     connectionString =
         getString(zkConfig, SECTION, SUBSECTION, KEY_CONNECT_STRING, DEFAULT_ZK_CONNECT);
     root = getString(zkConfig, SECTION, SUBSECTION, KEY_ROOT_NODE, "gerrit/multi-site");
