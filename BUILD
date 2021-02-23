@@ -34,6 +34,7 @@ gerrit_plugin(
     manifest_entries = [
         "Gerrit-PluginName: zookeeper-refdb",
         "Gerrit-Module: com.googlesource.gerrit.plugins.validation.dfsrefdb.zookeeper.ZkValidationModule",
+        "Gerrit-InitStep: com.googlesource.gerrit.plugins.validation.dfsrefdb.zookeeper.ZkInit",
         "Implementation-Title: zookeeper ref-db plugin",
         "Implementation-URL: https://review.gerrithub.io/admin/repos/GerritForge/plugins_zookeeper",
     ],
