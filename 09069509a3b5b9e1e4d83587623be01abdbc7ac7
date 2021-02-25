@@ -22,6 +22,30 @@
       },
       "revId": "09069509a3b5b9e1e4d83587623be01abdbc7ac7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3491274_f8ecce41",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2021-02-25T08:28:14Z",
+      "side": 1,
+      "message": "Don\u0027t we have AllProjectsNameOnInitProvider for that, that is used in Jira plugin: [2]?\n\n[2] https://cs.bazel.build/search?q\u003dr%3Agerrit+AllProjectsNameOnInitProvider",
+      "parentUuid": "38f7dfaa_97ce3dcc",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "09069509a3b5b9e1e4d83587623be01abdbc7ac7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
