@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b851051_dbe2bc05",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2021-02-26T06:49:36Z",
+      "side": 1,
+      "message": "Have you tried to replace it with:\n\n  AllProjectsNameOnInitProvider allProjectsNameProvider,\n  AllUsersNameOnInitProvider allUsersNameProvider\n\nThis is supposed to be used in nit steps, in gerrit core and in plugins.",
+      "range": {
+        "startLine": 54,
+        "startChar": 70,
+        "endLine": 54,
+        "endChar": 91
+      },
+      "revId": "cf98982c657284e4644947316f559a8a77b1909c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
