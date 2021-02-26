@@ -46,6 +46,30 @@
       },
       "revId": "09069509a3b5b9e1e4d83587623be01abdbc7ac7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "271ac4d4_5527d9a0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-02-26T00:33:47Z",
+      "side": 1,
+      "message": "\u003e Don\u0027t we have AllProjectsNameOnInitProvider for that, that is used in Jira plugin: [2]?\n\u003e \n\u003e [2] https://cs.bazel.build/search?q\u003dr%3Agerrit+AllProjectsNameOnInitProvider\n\nThat isn\u0027t useful, as I do need the AllProjectsName injected, and not the provider of the associated string.\n\nThere aren\u0027t any reasons why the injection shouldn\u0027t be available here, I believe is just a misplaced statement in Gerrit at the moment.",
+      "parentUuid": "b3491274_f8ecce41",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "09069509a3b5b9e1e4d83587623be01abdbc7ac7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
