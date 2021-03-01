@@ -24,6 +24,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19f5cf6a_5b239ee0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-01T22:53:33Z",
+      "side": 1,
+      "message": "Yes, and it won\u0027t work because they are not necessarily needed here but rather in NoteDbSchemaVersionManager.",
+      "parentUuid": "8b851051_dbe2bc05",
+      "range": {
+        "startLine": 54,
+        "startChar": 70,
+        "endLine": 54,
+        "endChar": 91
+      },
+      "revId": "cf98982c657284e4644947316f559a8a77b1909c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f458519f_24464fd5",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ad4d200_e857497e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-01T22:53:33Z",
+      "side": 1,
+      "message": "Unfortunately, it isn\u0027t bound at this point in time.",
+      "parentUuid": "f458519f_24464fd5",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 18
+      },
+      "revId": "cf98982c657284e4644947316f559a8a77b1909c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a85710e_2e6266b0",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
         "patchSetId": 5
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-26T08:49:15Z",
       "side": 1,
       "message": "should we throw exception here? Isn\u0027t that critical situation when we have zookeeper plugin but configuration is missing?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 5
+      },
+      "revId": "cf98982c657284e4644947316f559a8a77b1909c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "323a412c_0a6875d5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-01T22:53:33Z",
+      "side": 1,
+      "message": "I don\u0027t think so: if you don\u0027t have any configuration settings it means you have the plugin installed but you haven\u0027t started using it.\n\nTherefore Zookeeper is empty for sure and this upgrade step doesn\u0027t need to do anything anyway.",
+      "parentUuid": "0a85710e_2e6266b0",
       "range": {
         "startLine": 67,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be858169_5e1a1bb7",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrationsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-01T22:53:33Z",
+      "side": 1,
+      "message": "I checked the body and look to me that is simply setting up the mocks. I am missing something?",
+      "parentUuid": "9cc46106_534bb893",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "cf98982c657284e4644947316f559a8a77b1909c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "279116dc_47705bba",
         "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrationsTest.java",
         "patchSetId": 5
@@ -106,6 +202,30 @@
       "writtenOn": "2021-02-26T08:49:15Z",
       "side": 1,
       "message": "times(1)? When we can have multiple calls to delete?",
+      "range": {
+        "startLine": 73,
+        "startChar": 24,
+        "endLine": 73,
+        "endChar": 35
+      },
+      "revId": "cf98982c657284e4644947316f559a8a77b1909c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18454bd0_87c77aff",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrationsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-01T22:53:33Z",
+      "side": 1,
+      "message": "We are asserting what is expected from the schema 182 migration, but we cannot exclude the further migration won\u0027t also remove stuff from zookeeper.\n\nThat\u0027s why it is atLeastOnce(): once for 182 and possibly more for the others.",
+      "parentUuid": "279116dc_47705bba",
       "range": {
         "startLine": 73,
         "startChar": 24,
@@ -139,6 +259,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e43c73eb_8f18eb06",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrationsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-01T22:53:33Z",
+      "side": 1,
+      "message": "Good catch: copy\u0026paste error on the method name. It *should* call delete for Schema_183.",
+      "parentUuid": "bb946636_85d6ac9f",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 27
+      },
+      "revId": "cf98982c657284e4644947316f559a8a77b1909c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48ca924d_276cb83b",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-02-26T08:49:15Z",
       "side": 1,
       "message": "if we do not call delete we should check verify(curatorMock, never())",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "cf98982c657284e4644947316f559a8a77b1909c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4f097f5_a9786a6b",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrationsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-01T22:53:33Z",
+      "side": 1,
+      "message": "See above: it was a typo on the test method name.",
+      "parentUuid": "48ca924d_276cb83b",
       "range": {
         "startLine": 82,
         "startChar": 3,
