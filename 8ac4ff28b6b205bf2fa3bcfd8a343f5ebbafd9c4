@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb29fb3_e41926c5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2021-03-03T20:59:47Z",
+      "side": 1,
+      "message": "Why this optional injection is needed? Because of:\n\n  public static Injector getInjector(Injector parentInjector)\n\nRemove it and just inject them as is into ctor on line 45 below?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "8ac4ff28b6b205bf2fa3bcfd8a343f5ebbafd9c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3fea5ed_6d88c50f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2021-03-03T20:59:47Z",
+      "side": 1,
+      "message": "Remove it?",
+      "range": {
+        "startLine": 54,
+        "startChar": 70,
+        "endLine": 54,
+        "endChar": 91
+      },
+      "revId": "8ac4ff28b6b205bf2fa3bcfd8a343f5ebbafd9c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c431c21b_a2efc438",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigration_Schema_182.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2021-03-03T20:59:47Z",
+      "side": 1,
+      "message": "You could inject here instead:\n\n  AllUsersNameOnInitProvider allUsersNameProvider\n\nand then say in ctor body:\n\n  this.allUsers \u003d allUsersNameProvider.get();",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "8ac4ff28b6b205bf2fa3bcfd8a343f5ebbafd9c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fffe3af_2665e99e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigration_Schema_183.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2021-03-03T20:59:47Z",
+      "side": 1,
+      "message": "You could inject here instead:\n\n  AllProjectsNameOnInitProvider allProjectsNameProvider\n\nand then say in ctor body:\n\n  this.allProjects \u003d allProjectsNameProvider.get();",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 40
+      },
+      "revId": "8ac4ff28b6b205bf2fa3bcfd8a343f5ebbafd9c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}

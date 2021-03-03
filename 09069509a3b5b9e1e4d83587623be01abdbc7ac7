@@ -118,6 +118,30 @@
       },
       "revId": "09069509a3b5b9e1e4d83587623be01abdbc7ac7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2965446a_0b95cc40",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2021-03-03T20:59:47Z",
+      "side": 1,
+      "message": "\u003e \n\nI added the comments on Schema_182 and Schema_183. Also see similar fix/discussion in check plugin: in change 271153. I would rather try to avoid this hack and use AllProjectsNameOnInitProvider and AllUsersNameOnInitProvider that are already bound in init step.",
+      "parentUuid": "53e9eaf7_7dc44ea8",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "09069509a3b5b9e1e4d83587623be01abdbc7ac7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
