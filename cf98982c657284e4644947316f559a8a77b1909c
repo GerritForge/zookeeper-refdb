@@ -215,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c73cdad_3bc47c31",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrationsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-03-03T19:47:59Z",
+      "side": 1,
+      "message": "What about ZkMigrations? But again this is nit",
+      "parentUuid": "be858169_5e1a1bb7",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "cf98982c657284e4644947316f559a8a77b1909c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "279116dc_47705bba",
         "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrationsTest.java",
         "patchSetId": 5
@@ -250,6 +274,30 @@
       "side": 1,
       "message": "We are asserting what is expected from the schema 182 migration, but we cannot exclude the further migration won\u0027t also remove stuff from zookeeper.\n\nThat\u0027s why it is atLeastOnce(): once for 182 and possibly more for the others.",
       "parentUuid": "279116dc_47705bba",
+      "range": {
+        "startLine": 73,
+        "startChar": 24,
+        "endLine": 73,
+        "endChar": 35
+      },
+      "revId": "cf98982c657284e4644947316f559a8a77b1909c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4dd5ff1_6fd9903c",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrationsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-03-03T19:47:59Z",
+      "side": 1,
+      "message": "Ah now I got it, 182 is the current version not the version of the migration we want to call. But if 182 is current version why we run migration for it, shouldn\u0027t we start from the next version?",
+      "parentUuid": "18454bd0_87c77aff",
       "range": {
         "startLine": 73,
         "startChar": 24,
