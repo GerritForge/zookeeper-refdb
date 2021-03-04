@@ -142,6 +142,30 @@
       },
       "revId": "09069509a3b5b9e1e4d83587623be01abdbc7ac7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "060c6037_92b01dc0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-04T01:14:07Z",
+      "side": 1,
+      "message": "Thanks for the pointer, however, Change 271153 did not use NoteDbSchemaVersionManager that we use here. Hence we cannot follow the same approach, sadly :-(",
+      "parentUuid": "2965446a_0b95cc40",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "09069509a3b5b9e1e4d83587623be01abdbc7ac7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }

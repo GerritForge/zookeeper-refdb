@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b1e0802_3c6c84cf",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-04T01:14:07Z",
+      "side": 1,
+      "message": "That won\u0027t work, because NoteDbSchemaVersionManager needs an extra binding that otherwise won\u0027t be present: AllProjectsName.\n\nThe injection is made optional so that the init won\u0027t fail loading. However, before running the step, the injector is \"completed\" and then the instance is re-injected, so that the optional injections are assigned with their values.\n\nWithout a change in Gerrit core, I could not find a better way to achieve it. DO you have other suggestions?",
+      "parentUuid": "1cb29fb3_e41926c5",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "8ac4ff28b6b205bf2fa3bcfd8a343f5ebbafd9c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3fea5ed_6d88c50f",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-03T20:59:47Z",
       "side": 1,
       "message": "Remove it?",
+      "range": {
+        "startLine": 54,
+        "startChar": 70,
+        "endLine": 54,
+        "endChar": 91
+      },
+      "revId": "8ac4ff28b6b205bf2fa3bcfd8a343f5ebbafd9c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd4fdf7d_01e87b48",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-04T01:14:07Z",
+      "side": 1,
+      "message": "It is needed and actually used at L84 as parent injector.",
+      "parentUuid": "c3fea5ed_6d88c50f",
       "range": {
         "startLine": 54,
         "startChar": 70,
@@ -83,6 +131,30 @@
       "writtenOn": "2021-03-03T20:59:47Z",
       "side": 1,
       "message": "You could inject here instead:\n\n  AllProjectsNameOnInitProvider allProjectsNameProvider\n\nand then say in ctor body:\n\n  this.allProjects \u003d allProjectsNameProvider.get();",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 40
+      },
+      "revId": "8ac4ff28b6b205bf2fa3bcfd8a343f5ebbafd9c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f686274_5808d30a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigration_Schema_183.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-04T01:14:07Z",
+      "side": 1,
+      "message": "True, but what about NoteDbSchemaVersionManager? We inject that class into ZkInit and that uses:\n\n  public NoteDbSchemaVersionManager(\n      AllProjectsName allProjectsName,\n      ...)\n\nFor using AllProjectsNameOnInitProvider instead of AllProjectName we would also need to change Gerrit core, isn\u0027t it? That class is used at both init and runtime step.",
+      "parentUuid": "4fffe3af_2665e99e",
       "range": {
         "startLine": 28,
         "startChar": 25,

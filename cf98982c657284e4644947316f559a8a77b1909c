@@ -239,6 +239,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df44de35_c691c9e7",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrationsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-04T01:14:07Z",
+      "side": 1,
+      "message": "Ah, gotcha. Let me rename it then.",
+      "parentUuid": "1c73cdad_3bc47c31",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "cf98982c657284e4644947316f559a8a77b1909c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "279116dc_47705bba",
         "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrationsTest.java",
         "patchSetId": 5
@@ -298,6 +322,30 @@
       "side": 1,
       "message": "Ah now I got it, 182 is the current version not the version of the migration we want to call. But if 182 is current version why we run migration for it, shouldn\u0027t we start from the next version?",
       "parentUuid": "18454bd0_87c77aff",
+      "range": {
+        "startLine": 73,
+        "startChar": 24,
+        "endLine": 73,
+        "endChar": 35
+      },
+      "revId": "cf98982c657284e4644947316f559a8a77b1909c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a265836_09e0e2b0",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrationsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-04T01:14:07Z",
+      "side": 1,
+      "message": "\u003e Ah now I got it, 182 is the current version not the version of the migration we want to call.\n\nExactly.\n\n\u003e But if 182 is current version why we run migration for it, shouldn\u0027t we start from the next version?\n\nThe migration is a loop of all schema versions from the current to the target.\nThis test is asserting the validity of the migration from 182 to 183 (the N+1). Because the migration will also run beyond 183, we need to put \"atLeastOnce\u0027 and not \u0027times(1)\u0027.\n\nIf you clone this project and you replace atLeastOnce() with times(1) you will clearly see the failure.",
+      "parentUuid": "a4dd5ff1_6fd9903c",
       "range": {
         "startLine": 73,
         "startChar": 24,
