@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce8fad8d_2d25cfec",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-03-08T16:58:15Z",
+      "side": 1,
+      "message": "In which case we wouldn\u0027t have a global-refdb configuration? If this shouldn\u0027t happen should we try an exception and make the error more evident?",
+      "revId": "1d428c83ce785f4226e6f968b5b0aa2b9f4ddba1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc0068a3_52093ac1",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-03-08T16:58:15Z",
+      "side": 1,
+      "message": "Is it worthy logging this?",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 80,
+        "endChar": 79
+      },
+      "revId": "1d428c83ce785f4226e6f968b5b0aa2b9f4ddba1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbff023_f663936d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrations.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-03-08T16:58:15Z",
+      "side": 1,
+      "message": "What about checking here if currentVersion \u003d\u003d LATEST and just return? This way we can get rid of the logic to check if we have already printed the header or not (line #49):\n\nif (currentVersion \u003d\u003d LATEST) {\n    ui.header(\"%s migration, nothing to do\", pluginName);\n    return;\n}",
+      "revId": "1d428c83ce785f4226e6f968b5b0aa2b9f4ddba1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
