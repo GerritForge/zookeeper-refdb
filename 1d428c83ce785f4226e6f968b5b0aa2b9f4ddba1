@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efeab98c_83f9654e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-09T00:10:10Z",
+      "side": 1,
+      "message": "I am not really sure about that. You could have installed the plugin but started using it yet.",
+      "parentUuid": "ce8fad8d_2d25cfec",
+      "revId": "1d428c83ce785f4226e6f968b5b0aa2b9f4ddba1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc0068a3_52093ac1",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
         "patchSetId": 7
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40afd244_6041bdd8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-09T00:10:10Z",
+      "side": 1,
+      "message": "We could, but then we\u0027ll give warnings for new sites, which could be misleading.",
+      "parentUuid": "dc0068a3_52093ac1",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 80,
+        "endChar": 79
+      },
+      "revId": "1d428c83ce785f4226e6f968b5b0aa2b9f4ddba1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4cbff023_f663936d",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrations.java",
         "patchSetId": 7
@@ -54,6 +96,24 @@
       "writtenOn": "2021-03-08T16:58:15Z",
       "side": 1,
       "message": "What about checking here if currentVersion \u003d\u003d LATEST and just return? This way we can get rid of the logic to check if we have already printed the header or not (line #49):\n\nif (currentVersion \u003d\u003d LATEST) {\n    ui.header(\"%s migration, nothing to do\", pluginName);\n    return;\n}",
+      "revId": "1d428c83ce785f4226e6f968b5b0aa2b9f4ddba1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36ee4483_5556cdda",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrations.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-09T00:10:10Z",
+      "side": 1,
+      "message": "Not really, as you could be NOT on the latest version but still do not require any migration, hence the header should not be displayed.",
+      "parentUuid": "4cbff023_f663936d",
       "revId": "1d428c83ce785f4226e6f968b5b0aa2b9f4ddba1",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
