@@ -36,6 +36,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee001bf6_d047404e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-03-09T08:16:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "efeab98c_83f9654e",
+      "revId": "1d428c83ce785f4226e6f968b5b0aa2b9f4ddba1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc0068a3_52093ac1",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "We could, but then we\u0027ll give warnings for new sites, which could be misleading.",
       "parentUuid": "dc0068a3_52093ac1",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 80,
+        "endChar": 79
+      },
+      "revId": "1d428c83ce785f4226e6f968b5b0aa2b9f4ddba1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42669b0_a5dff138",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2021-03-09T08:16:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "40afd244_6041bdd8",
       "range": {
         "startLine": 80,
         "startChar": 6,
