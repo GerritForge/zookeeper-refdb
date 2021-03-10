@@ -261,6 +261,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cee163d7_0e81e9bf",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrationsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-10T21:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df44de35_c691c9e7",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "cf98982c657284e4644947316f559a8a77b1909c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "279116dc_47705bba",

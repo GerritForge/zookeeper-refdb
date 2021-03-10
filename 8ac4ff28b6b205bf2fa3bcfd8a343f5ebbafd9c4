@@ -95,6 +95,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6767fc3_fe4ea852",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-10T21:59:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bd4fdf7d_01e87b48",
+      "range": {
+        "startLine": 54,
+        "startChar": 70,
+        "endLine": 54,
+        "endChar": 91
+      },
+      "revId": "8ac4ff28b6b205bf2fa3bcfd8a343f5ebbafd9c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c431c21b_a2efc438",
@@ -142,6 +166,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "240fcecc_c77cea05",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigration_Schema_182.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-10T21:59:25Z",
+      "side": 1,
+      "message": "Marking this as resolved, unless Davido has other suggestions on how to make it simpler :-)",
+      "parentUuid": "db09da6c_5d84845b",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "8ac4ff28b6b205bf2fa3bcfd8a343f5ebbafd9c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fffe3af_2665e99e",
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "True, but what about NoteDbSchemaVersionManager? We inject that class into ZkInit and that uses:\n\n  public NoteDbSchemaVersionManager(\n      AllProjectsName allProjectsName,\n      ...)\n\nFor using AllProjectsNameOnInitProvider instead of AllProjectName we would also need to change Gerrit core, isn\u0027t it? That class is used at both init and runtime step.",
       "parentUuid": "4fffe3af_2665e99e",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 40
+      },
+      "revId": "8ac4ff28b6b205bf2fa3bcfd8a343f5ebbafd9c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bee66f85_6a8151f0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigration_Schema_183.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-10T21:59:25Z",
+      "side": 1,
+      "message": "Marking this as answered, as the suggestion won\u0027t work with NoteDbSchemaVersionManager.",
+      "parentUuid": "0f686274_5808d30a",
       "range": {
         "startLine": 28,
         "startChar": 25,
