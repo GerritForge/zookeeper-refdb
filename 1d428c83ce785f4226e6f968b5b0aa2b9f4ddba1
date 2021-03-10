@@ -158,6 +158,29 @@
       "parentUuid": "4cbff023_f663936d",
       "revId": "1d428c83ce785f4226e6f968b5b0aa2b9f4ddba1",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ab0815e_aefb9286",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/migration/ZkMigrations.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2021-03-10T08:15:28Z",
+      "side": 1,
+      "message": "I still do not understand one thing here, if the current version is 100, should we start migrations from 101. In this loop we will start from 100, so we will run one extra migration for the current version",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 70
+      },
+      "revId": "1d428c83ce785f4226e6f968b5b0aa2b9f4ddba1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
