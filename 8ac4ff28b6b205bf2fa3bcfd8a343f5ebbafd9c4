@@ -72,6 +72,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d56de03e_b6ae3db7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2021-03-16T00:40:43Z",
+      "side": 1,
+      "message": "Going to merge this as we\u0027ve got +2. @Davido feel free to post your comment and I\u0027ll address it in a follow-up change.",
+      "parentUuid": "b36d0695_676a8226",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "8ac4ff28b6b205bf2fa3bcfd8a343f5ebbafd9c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3fea5ed_6d88c50f",
