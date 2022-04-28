@@ -9,6 +9,7 @@ load(
 gerrit_plugin(
     name = "zookeeper-refdb-zk-3.5",
     srcs = glob(["src/main/java/**/*.java"]),
+    dir_name = "zookeeper-refdb",
     manifest_entries = [
         "Gerrit-PluginName: zookeeper-refdb",
         "Gerrit-Module: com.googlesource.gerrit.plugins.validation.dfsrefdb.zookeeper.ZkValidationModule",
@@ -16,15 +17,14 @@ gerrit_plugin(
         "Implementation-URL: https://review.gerrithub.io/admin/repos/GerritForge/plugins_zookeeper",
     ],
     resources = glob(["src/main/resources/**/*"]),
-    dir_name = "zookeeper-refdb",
     deps = [
         "@curator-client//jar",
         "@curator-framework//jar",
         "@curator-recipes//jar",
         "@global-refdb//jar",
-        "@zookeeper_3.5//jar",
-        "@zookeeper-jute_3.5//jar",
         "@netty-all_3.5//jar",
+        "@zookeeper-jute_3.5//jar",
+        "@zookeeper_3.5//jar",
     ],
 )
 
@@ -70,9 +70,15 @@ java_library(
         "@curator-recipes//jar",
         "@curator-test//jar",
         "@curator-client//jar",
-        "//lib/jackson:jackson-annotations",
-        "//lib/testcontainers",
-        "//lib/testcontainers:docker-java-api",
-        "//lib/testcontainers:docker-java-transport",
+        "@jackson-annotations//jar",
+        "@jna//jar",
+        "@visible-assertions//jar",
+        "@testcontainers//jar",
+        "@docker-java-api//jar",
+        "@docker-java-transport//jar",
+        "@duct-tape//jar",
+        "@testcontainer-localstack//jar",
+        "@jackson-dataformat-cbor//jar",
+        "@jackson-databind//jar",
     ],
 )
