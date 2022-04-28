@@ -53,6 +53,78 @@ def external_plugin_deps():
 
     maven_jar(
         name = "global-refdb",
-        artifact = "com.gerritforge:global-refdb:3.3.0",
-        sha1 = "8ef0600757b7468dc023c5030ce2cfeaa8ea0b64",
+        artifact = "com.gerritforge:global-refdb:3.6.0-rc3",
+        sha1 = "b21e71882f5b72d0966384f0b0d22df903154afc",
+    )
+
+    JACKSON_VER = "2.10.4"
+
+    maven_jar(
+        name = "jackson-annotations",
+        artifact = "com.fasterxml.jackson.core:jackson-annotations:" + JACKSON_VER,
+        sha1 = "6ae6028aff033f194c9710ad87c224ccaadeed6c",
+    )
+
+    maven_jar(
+        name = "jackson-core",
+        artifact = "com.fasterxml.jackson.core:jackson-core:" + JACKSON_VER,
+        sha1 = "8796585e716440d6dd5128b30359932a9eb74d0d",
+    )
+
+    maven_jar(
+        name = "jackson-dataformat-cbor",
+        artifact = "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:" + JACKSON_VER,
+        sha1 = "c854bb2d46138198cb5d4aae86ef6c04b8bc1e70",
+    )
+
+    maven_jar(
+        name = "jackson-databind",
+        artifact = "com.fasterxml.jackson.core:jackson-databind:" + JACKSON_VER,
+        sha1 = "76e9152e93d4cf052f93a64596f633ba5b1c8ed9",
+    )
+
+    TESTCONTAINERS_VERSION = "1.15.3"
+
+    maven_jar(
+        name = "testcontainers",
+        artifact = "org.testcontainers:testcontainers:" + TESTCONTAINERS_VERSION,
+        sha1 = "95c6cfde71c2209f0c29cb14e432471e0b111880",
+    )
+
+    DOCKER_JAVA_VERS = "3.2.8"
+
+    maven_jar(
+        name = "docker-java-api",
+        artifact = "com.github.docker-java:docker-java-api:" + DOCKER_JAVA_VERS,
+        sha1 = "4ac22a72d546a9f3523cd4b5fabffa77c4a6ec7c",
+    )
+
+    maven_jar(
+        name = "docker-java-transport",
+        artifact = "com.github.docker-java:docker-java-transport:" + DOCKER_JAVA_VERS,
+        sha1 = "c3b5598c67d0a5e2e780bf48f520da26b9915eab",
+    )
+
+    maven_jar(
+        name = "duct-tape",
+        artifact = "org.rnorth.duct-tape:duct-tape:1.0.8",
+        sha1 = "92edc22a9ab2f3e17c9bf700aaee377d50e8b530",
+    )
+
+    maven_jar(
+        name = "visible-assertions",
+        artifact = "org.rnorth.visible-assertions:visible-assertions:2.1.2",
+        sha1 = "20d31a578030ec8e941888537267d3123c2ad1c1",
+    )
+
+    maven_jar(
+        name = "jna",
+        artifact = "net.java.dev.jna:jna:5.5.0",
+        sha1 = "0e0845217c4907822403912ad6828d8e0b256208",
+    )
+
+    maven_jar(
+        name = "testcontainer-localstack",
+        artifact = "org.testcontainers:localstack:" + TESTCONTAINERS_VERSION,
+        sha1 = "7aa69995bdaafb4b06e69fdab9bd98c4fddee43d",
     )
