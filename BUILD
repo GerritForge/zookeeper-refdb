@@ -70,9 +70,13 @@ java_library(
         "@curator-recipes//jar",
         "@curator-test//jar",
         "@curator-client//jar",
-        "//lib/jackson:jackson-annotations",
-        "//lib/testcontainers",
-        "//lib/testcontainers:docker-java-api",
-        "//lib/testcontainers:docker-java-transport",
+        "@jackson-annotations//jar",
+        "@testcontainers//jar",
+        "@docker-java-api//jar",
+        "@docker-java-transport//jar",
+        "@duct-tape//jar",
+        "@testcontainer-localstack//jar",
+        "@jackson-dataformat-cbor//jar",
+        "@jackson-databind//jar"
     ],
 )
