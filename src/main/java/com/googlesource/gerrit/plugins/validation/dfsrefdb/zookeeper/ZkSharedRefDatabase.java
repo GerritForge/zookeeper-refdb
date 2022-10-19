@@ -204,7 +204,7 @@ public class ZkSharedRefDatabase implements GlobalRefDatabase {
     return client.checkExists().forPath(pathFor(projectName, oldRef)) == null;
   }
 
-  static String pathFor(Project.NameKey projectName, String refName) {
+  public static String pathFor(Project.NameKey projectName, String refName) {
     return "/" + projectName + "/" + refName;
   }
 
