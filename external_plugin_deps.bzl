@@ -2,6 +2,8 @@ load("//tools/bzl:maven_jar.bzl", "maven_jar")
 
 def external_plugin_deps():
     CURATOR_VER = "4.2.0"
+    TESTCONTAINERS_VERSION = "1.15.3"
+    DOCKER_JAVA_VERS = "3.2.8"
 
     maven_jar(
         name = "curator-test",
@@ -29,20 +31,20 @@ def external_plugin_deps():
 
     maven_jar(
         name = "zookeeper_3.5",
-        artifact = "org.apache.zookeeper:zookeeper:3.5.7",
-        sha1 = "12bdf55ba8be7fc891996319d37f35eaad7e63ea",
+        artifact = "org.apache.zookeeper:zookeeper:3.5.8",
+        sha1 = "fc0d02657ed5b26029daa50d7f98b9806a0b13af",
     )
 
     maven_jar(
         name = "zookeeper-jute_3.5",
-        artifact = "org.apache.zookeeper:zookeeper-jute:3.5.7",
-        sha1 = "1270f80b08904499a6839a2ee1800da687ad96b4",
+        artifact = "org.apache.zookeeper:zookeeper-jute:3.5.8",
+        sha1 = "b399078f6ccfd6c258e42054091052e8f3e05824",
     )
 
     maven_jar(
-        name = "netty-all_3.5",
-        artifact = "io.netty:netty-all:4.1.45.Final",
-        sha1 = "e830eae36d22f2bba3118a3bc08e17f15263a01d",
+        name = "netty-all",
+        artifact = "io.netty:netty-all:4.1.48.Final",
+        sha1 = "ebb3666ba4883ba81920cec8ccb1a3adcc827eb1",
     )
 
     maven_jar(
@@ -53,6 +55,7 @@ def external_plugin_deps():
 
     maven_jar(
         name = "global-refdb",
+<<<<<<< HEAD
         artifact = "com.gerritforge:global-refdb:3.6.0-rc3.1",
         sha1 = "9e28fdc65dcdecefd852f6c24dd7eec339a01870",
     )
@@ -84,6 +87,18 @@ def external_plugin_deps():
     )
 
     TESTCONTAINERS_VERSION = "1.15.3"
+
+    maven_jar(
+=======
+        artifact = "com.gerritforge:global-refdb:3.4.0",
+        sha1 = "a1c7b02ddabe0dd0a989fb30ca18b61fe95ee894",
+    )
+
+    maven_jar(
+        name = "jackson-annotations",
+        artifact = "com.fasterxml.jackson.core:jackson-annotations:2.10.3",
+        sha1 = "0f63b3b1da563767d04d2e4d3fc1ae0cdeffebe7",
+    )
 
     maven_jar(
         name = "testcontainers",
