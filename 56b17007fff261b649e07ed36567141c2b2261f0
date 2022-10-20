@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f74b913_6aad5345",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2022-10-20T15:49:43Z",
+      "side": 1,
+      "message": "Broken merge (already in `stable-3.6`) I will upload new PS in a minute",
+      "revId": "56b17007fff261b649e07ed36567141c2b2261f0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
