@@ -168,7 +168,7 @@ public class ZkSharedRefDatabase implements GlobalRefDatabase {
       String message =
           String.format(
               "Error trying to perform CAS of generic value at path %s", pathFor(project, refName));
-      logger.atWarning().withCause(e).log(message);
+      logger.atWarning().withCause(e).log("%s", message);
       throw new GlobalRefDbSystemError(message, e);
     }
   }
@@ -204,7 +204,7 @@ public class ZkSharedRefDatabase implements GlobalRefDatabase {
     return client.checkExists().forPath(pathFor(projectName, oldRef)) == null;
   }
 
-  static String pathFor(Project.NameKey projectName, String refName) {
+  public static String pathFor(Project.NameKey projectName, String refName) {
     return "/" + projectName + "/" + refName;
   }
 
