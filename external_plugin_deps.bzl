@@ -29,20 +29,20 @@ def external_plugin_deps():
 
     maven_jar(
         name = "zookeeper_3.5",
-        artifact = "org.apache.zookeeper:zookeeper:3.5.7",
-        sha1 = "12bdf55ba8be7fc891996319d37f35eaad7e63ea",
+        artifact = "org.apache.zookeeper:zookeeper:3.5.8",
+        sha1 = "fc0d02657ed5b26029daa50d7f98b9806a0b13af",
     )
 
     maven_jar(
         name = "zookeeper-jute_3.5",
-        artifact = "org.apache.zookeeper:zookeeper-jute:3.5.7",
-        sha1 = "1270f80b08904499a6839a2ee1800da687ad96b4",
+        artifact = "org.apache.zookeeper:zookeeper-jute:3.5.8",
+        sha1 = "b399078f6ccfd6c258e42054091052e8f3e05824",
     )
 
     maven_jar(
-        name = "netty-all_3.5",
-        artifact = "io.netty:netty-all:4.1.45.Final",
-        sha1 = "e830eae36d22f2bba3118a3bc08e17f15263a01d",
+        name = "netty-all",
+        artifact = "io.netty:netty-all:4.1.48.Final",
+        sha1 = "ebb3666ba4883ba81920cec8ccb1a3adcc827eb1",
     )
 
     maven_jar(
@@ -91,6 +91,12 @@ def external_plugin_deps():
         sha1 = "95c6cfde71c2209f0c29cb14e432471e0b111880",
     )
 
+    maven_jar(
+        name = "testcontainer-localstack",
+        artifact = "org.testcontainers:localstack:" + TESTCONTAINERS_VERSION,
+        sha1 = "7aa69995bdaafb4b06e69fdab9bd98c4fddee43d",
+    )
+
     DOCKER_JAVA_VERS = "3.2.8"
 
     maven_jar(
@@ -121,10 +127,4 @@ def external_plugin_deps():
         name = "jna",
         artifact = "net.java.dev.jna:jna:5.5.0",
         sha1 = "0e0845217c4907822403912ad6828d8e0b256208",
-    )
-
-    maven_jar(
-        name = "testcontainer-localstack",
-        artifact = "org.testcontainers:localstack:" + TESTCONTAINERS_VERSION,
-        sha1 = "7aa69995bdaafb4b06e69fdab9bd98c4fddee43d",
     )
