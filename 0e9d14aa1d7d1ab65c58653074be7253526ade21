@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde2b31b_f22e9a1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2022-10-20T12:23:49Z",
+      "side": 1,
+      "message": "Merge is broken and I\u0027m in process of fixing it",
+      "revId": "0e9d14aa1d7d1ab65c58653074be7253526ade21",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
