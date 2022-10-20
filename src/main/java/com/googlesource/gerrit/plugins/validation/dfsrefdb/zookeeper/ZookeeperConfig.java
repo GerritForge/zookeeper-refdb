@@ -94,7 +94,10 @@ public class ZookeeperConfig {
 
   @Inject
   public ZookeeperConfig(PluginConfigFactory cfgFactory, @PluginName String pluginName) {
-    Config zkConfig = cfgFactory.getGlobalPluginConfig(pluginName);
+    this(cfgFactory.getGlobalPluginConfig(pluginName));
+  }
+
+  public ZookeeperConfig(Config zkConfig) {
     connectionString =
         getString(zkConfig, SECTION, SUBSECTION, KEY_CONNECT_STRING, DEFAULT_ZK_CONNECT);
     root = getString(zkConfig, SECTION, SUBSECTION, KEY_ROOT_NODE, "gerrit/multi-site");
