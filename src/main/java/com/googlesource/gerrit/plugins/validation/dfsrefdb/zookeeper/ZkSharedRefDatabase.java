@@ -165,8 +165,10 @@ public class ZkSharedRefDatabase implements GlobalRefDatabase {
 
       return newDistributedValue.succeeded();
     } catch (Exception e) {
-      logger.atWarning().withCause(e).log(
-          "Error trying to perform CAS of generic value at path %s", pathFor(project, refName));
+      String message =
+          String.format(
+              "Error trying to perform CAS of generic value at path %s", pathFor(project, refName));
+      logger.atWarning().withCause(e).log("%s", message);
       throw new GlobalRefDbSystemError(message, e);
     }
   }
