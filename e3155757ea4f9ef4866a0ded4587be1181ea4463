@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ad38041_187676e1",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkSharedRefDatabase.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2023-01-30T09:54:30Z",
+      "side": 1,
+      "message": "Does that compile? AFAIU the `message` is no missing...",
+      "range": {
+        "startLine": 170,
+        "startChar": 39,
+        "endLine": 170,
+        "endChar": 46
+      },
+      "revId": "e3155757ea4f9ef4866a0ded4587be1181ea4463",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
