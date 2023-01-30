@@ -22,6 +22,30 @@
       },
       "revId": "e3155757ea4f9ef4866a0ded4587be1181ea4463",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a294e6_c1166f91",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkSharedRefDatabase.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2023-01-30T11:18:42Z",
+      "side": 1,
+      "message": "You are right, my bad. Addressed here: https://gerrit-review.googlesource.com/c/plugins/zookeeper-refdb/+/356832",
+      "parentUuid": "2ad38041_187676e1",
+      "range": {
+        "startLine": 170,
+        "startChar": 39,
+        "endLine": 170,
+        "endChar": 46
+      },
+      "revId": "e3155757ea4f9ef4866a0ded4587be1181ea4463",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ],
   "submitRequirementResults": [
