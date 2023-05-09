@@ -176,7 +176,10 @@ public class ZookeeperConfig {
     sslTrustStorePassword =
         getOptionalString(zkConfig, SECTION, SUBSECTION, SSL_TRUSTSTORE_PASSWORD);
 
-    checkArgument(StringUtils.isNotEmpty(connectionString), "zookeeper.%s contains no servers");
+    checkArgument(
+        StringUtils.isNotEmpty(connectionString),
+        "zookeeper.%s contains no servers",
+        connectionString);
   }
 
   public CuratorFramework buildCurator() {
