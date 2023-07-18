@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c37d3c_2f7244ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2023-07-18T14:47:19Z",
+      "side": 1,
+      "message": "I struggle to run the testcontainer based tests on my Mac (also when using current master branch), looks like there is an issue running testcontainers on Mac M1",
+      "revId": "9d46e2a65cf69f24381f735fa61eee7fae800601",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
