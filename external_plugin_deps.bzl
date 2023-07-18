@@ -1,114 +1,111 @@
 load("//tools/bzl:maven_jar.bzl", "maven_jar")
 
 def external_plugin_deps():
-    CURATOR_VER = "4.2.0"
+    CURATOR_VER = "5.5.0"
 
     maven_jar(
         name = "curator-test",
         artifact = "org.apache.curator:curator-test:" + CURATOR_VER,
-        sha1 = "98ac2dd69b8c07dcaab5e5473f93fdb9e320cd73",
+        sha1 = "065586d87700aa29855e6aa566b210eadd1bb38d",
     )
 
     maven_jar(
         name = "curator-framework",
         artifact = "org.apache.curator:curator-framework:" + CURATOR_VER,
-        sha1 = "5b1cc87e17b8fe4219b057f6025662a693538861",
+        sha1 = "b706a216e49352103bd2527e83b1ec2410924494",
     )
 
     maven_jar(
         name = "curator-recipes",
         artifact = "org.apache.curator:curator-recipes:" + CURATOR_VER,
-        sha1 = "7f775be5a7062c2477c51533b9d008f70411ba8e",
+        sha1 = "4aa0cfb129c36cd91528fc1b8775705280e60285",
     )
 
     maven_jar(
         name = "curator-client",
         artifact = "org.apache.curator:curator-client:" + CURATOR_VER,
-        sha1 = "d5d50930b8dd189f92c40258a6ba97675fea3e15",
+        sha1 = "db2d83bdc0bac7b4f25fc113d8ce3eedc0a4e89c",
+    )
+
+    ZOOKEEPER_VER = "3.8.2"
+
+    maven_jar(
+        name = "zookeeper",
+        artifact = "org.apache.zookeeper:zookeeper:" + ZOOKEEPER_VER,
+        sha1 = "963e953f8e362fc3f253832876be2ae2dcde58d7",
     )
 
     maven_jar(
-        name = "zookeeper_3.5",
-        artifact = "org.apache.zookeeper:zookeeper:3.5.8",
-        sha1 = "fc0d02657ed5b26029daa50d7f98b9806a0b13af",
-    )
-
-    maven_jar(
-        name = "zookeeper-jute_3.5",
-        artifact = "org.apache.zookeeper:zookeeper-jute:3.5.8",
-        sha1 = "b399078f6ccfd6c258e42054091052e8f3e05824",
+        name = "zookeeper-jute",
+        artifact = "org.apache.zookeeper:zookeeper-jute:" + ZOOKEEPER_VER,
+        sha1 = "f644829e30004ff4a079c357c4bb34bf5aa5fb94",
     )
 
     maven_jar(
         name = "netty-all",
-        artifact = "io.netty:netty-all:4.1.48.Final",
-        sha1 = "ebb3666ba4883ba81920cec8ccb1a3adcc827eb1",
-    )
-
-    maven_jar(
-        name = "zookeeper_3.4",
-        artifact = "org.apache.zookeeper:zookeeper:3.4.14",
-        sha1 = "c114c1e1c8172a7cd3f6ae39209a635f7a06c1a1",
+        artifact = "io.netty:netty-all:4.1.94.Final",
+        attach_source = False,
+        sha1 = "2a7df0424eed81818157f22613f36b72487ceb34",
     )
 
     maven_jar(
         name = "global-refdb",
-        artifact = "com.gerritforge:global-refdb:3.6.0-rc3.1",
-        sha1 = "9e28fdc65dcdecefd852f6c24dd7eec339a01870",
+        artifact = "com.gerritforge:global-refdb:3.7.2.1",
+        sha1 = "be8177669a281f8d14e9e3b3231ee86a806710d3",
     )
 
-    JACKSON_VER = "2.10.4"
+    JACKSON_VER = "2.15.2"
 
     maven_jar(
         name = "jackson-annotations",
         artifact = "com.fasterxml.jackson.core:jackson-annotations:" + JACKSON_VER,
-        sha1 = "6ae6028aff033f194c9710ad87c224ccaadeed6c",
+        sha1 = "4724a65ac8e8d156a24898d50fd5dbd3642870b8",
     )
 
     maven_jar(
         name = "jackson-core",
         artifact = "com.fasterxml.jackson.core:jackson-core:" + JACKSON_VER,
-        sha1 = "8796585e716440d6dd5128b30359932a9eb74d0d",
+        sha1 = "a6fe1836469a69b3ff66037c324d75fc66ef137c",
     )
 
     maven_jar(
         name = "jackson-dataformat-cbor",
         artifact = "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:" + JACKSON_VER,
-        sha1 = "c854bb2d46138198cb5d4aae86ef6c04b8bc1e70",
+        sha1 = "baafc85c70765594add14bd93f3efd68e1945b76",
     )
 
     maven_jar(
         name = "jackson-databind",
         artifact = "com.fasterxml.jackson.core:jackson-databind:" + JACKSON_VER,
-        sha1 = "76e9152e93d4cf052f93a64596f633ba5b1c8ed9",
+        sha1 = "9353b021f10c307c00328f52090de2bdb4b6ff9c",
     )
 
-    TESTCONTAINERS_VERSION = "1.15.3"
+    TESTCONTAINERS_VERSION = "1.18.3"
 
     maven_jar(
         name = "testcontainers",
         artifact = "org.testcontainers:testcontainers:" + TESTCONTAINERS_VERSION,
-        sha1 = "95c6cfde71c2209f0c29cb14e432471e0b111880",
+        sha1 = "a82f6258f92d50d278b9c67bdf5eabcaa5c08654",
     )
 
     maven_jar(
         name = "testcontainer-localstack",
         artifact = "org.testcontainers:localstack:" + TESTCONTAINERS_VERSION,
-        sha1 = "7aa69995bdaafb4b06e69fdab9bd98c4fddee43d",
+        sha1 = "2b7a8d4522330217545c4234b916b6b77f5c6f95",
     )
 
-    DOCKER_JAVA_VERS = "3.2.8"
+    DOCKER_JAVA_VERS = "3.3.2"
 
     maven_jar(
         name = "docker-java-api",
         artifact = "com.github.docker-java:docker-java-api:" + DOCKER_JAVA_VERS,
-        sha1 = "4ac22a72d546a9f3523cd4b5fabffa77c4a6ec7c",
+        sha1 = "0de6345d2f69638a224f73d9e62de83c7692e436",
     )
 
     maven_jar(
         name = "docker-java-transport",
         artifact = "com.github.docker-java:docker-java-transport:" + DOCKER_JAVA_VERS,
-        sha1 = "c3b5598c67d0a5e2e780bf48f520da26b9915eab",
+        sha1 = "a4c2cba248ccfefe9c5c8d8d4726f3e0b2b51104",
     )
 
     maven_jar(
@@ -125,6 +122,6 @@ def external_plugin_deps():
 
     maven_jar(
         name = "jna",
-        artifact = "net.java.dev.jna:jna:5.5.0",
-        sha1 = "0e0845217c4907822403912ad6828d8e0b256208",
+        artifact = "net.java.dev.jna:jna:5.13.0",
+        sha1 = "1200e7ebeedbe0d10062093f32925a912020e747",
     )
