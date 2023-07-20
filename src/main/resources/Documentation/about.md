@@ -11,7 +11,7 @@ Originally this code was a part of [multi-site plugin](https://gerrit.googlesour
 
 ## Requirements
 
-Supported Zookeeper version is 3.5.x. For SSL connection minimal Zookeeper version is 3.5.1[ZOOKEEPER-2125](https://issues.apache.org/jira/browse/ZOOKEEPER-2125).
+Supported Zookeeper version is 3.8.x.
 
 ## Setup
 

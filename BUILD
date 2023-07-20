@@ -7,28 +7,6 @@ load(
 )
 
 gerrit_plugin(
-    name = "zookeeper-refdb-zk-3.5",
-    srcs = glob(["src/main/java/**/*.java"]),
-    dir_name = "zookeeper-refdb",
-    manifest_entries = [
-        "Gerrit-PluginName: zookeeper-refdb",
-        "Gerrit-Module: com.googlesource.gerrit.plugins.validation.dfsrefdb.zookeeper.ZkValidationModule",
-        "Implementation-Title: zookeeper ref-db plugin",
-        "Implementation-URL: https://review.gerrithub.io/admin/repos/GerritForge/plugins_zookeeper",
-    ],
-    resources = glob(["src/main/resources/**/*"]),
-    deps = [
-        "@curator-client//jar",
-        "@curator-framework//jar",
-        "@curator-recipes//jar",
-        "@global-refdb//jar",
-        "@netty-all//jar",
-        "@zookeeper-jute_3.5//jar",
-        "@zookeeper_3.5//jar",
-    ],
-)
-
-gerrit_plugin(
     name = "zookeeper-refdb",
     srcs = glob(["src/main/java/**/*.java"]),
     manifest_entries = [
@@ -44,7 +22,9 @@ gerrit_plugin(
         "@curator-framework//jar",
         "@curator-recipes//jar",
         "@global-refdb//jar",
-        "@zookeeper_3.4//jar",
+        "@netty-all//jar",
+        "@zookeeper-jute//jar",
+        "@zookeeper//jar",
     ],
 )
 
@@ -66,20 +46,21 @@ java_library(
     testonly = 1,
     visibility = ["//visibility:public"],
     exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
-        ":zookeeper-refdb-zk-3.5__plugin",
+        ":zookeeper-refdb__plugin",
+        "@curator-client//jar",
         "@curator-framework//jar",
         "@curator-recipes//jar",
         "@curator-test//jar",
-        "@curator-client//jar",
-        "@jackson-annotations//jar",
-        "@jna//jar",
-        "@visible-assertions//jar",
         "@docker-java-api//jar",
+        "@docker-java-transport-zerodep//jar",
         "@docker-java-transport//jar",
         "@duct-tape//jar",
-        "@testcontainers//jar",
-        "@testcontainer-localstack//jar",
-        "@jackson-dataformat-cbor//jar",
+        "@jackson-annotations//jar",
         "@jackson-databind//jar",
+        "@jackson-dataformat-cbor//jar",
+        "@jna//jar",
+        "@testcontainer-localstack//jar",
+        "@testcontainers//jar",
+        "@visible-assertions//jar",
     ],
 )
