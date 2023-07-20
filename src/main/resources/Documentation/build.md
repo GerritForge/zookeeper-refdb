@@ -25,20 +25,54 @@ The output is created in
   bazel-bin/plugins/@PLUGIN@/@PLUGIN@.jar
 ```
 
+## Eclipse project setup
+
 This project can be imported into the Eclipse IDE:
-Add the plugin name to the `CUSTOM_PLUGINS_TEST_DEPS`
+
+- Add the plugin name to the `CUSTOM_PLUGINS_TEST_DEPS`
 set in Gerrit core in `tools/bzl/plugins.bzl`,
-and execute:
+- execute:
 
 ```
   ./tools/eclipse/project.py
 ```
 
-To execute the tests run:
+## Run tests
+
+To execute the tests run
 
 ```
-  bazel test --test_tag_filters=@PLUGIN@
+  bazel test //plugins/zookeeper-refdb/...
 ```
+
+### Run tests on MacOS
+
+Install socat
+
+```
+brew install socat
+```
+
+use socat to allow accessing the docker daemon via TCP
+
+```
+socat -d -v -d TCP-LISTEN:2375,fork UNIX-CONNECT:/var/run/docker.sock
+```
+
+To execute tests run
+
+```
+bazelisk test --test_env='DOCKER_HOST=tcp://127.0.0.1:2375' //plugins/zookeeper-refdb/...
+```
+
+### Debugging tests
+
+```
+  bazel test --test_output=streamed //plugins/zookeeper-refdb/...
+```
+
+If necessary increase log levels in `src/test/resources/log4j.properties`
+to trace testcontainers and docker java API.
 
 [Back to @PLUGIN@ documentation index][index]
 
