@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35bedd93_ee933cfa",
+        "filename": "BUILD",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2023-07-21T13:28:20Z",
+      "side": 0,
+      "message": "Looks like this removal is not directly related to the subject of this change. Could have been done in a predecessor change.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "7347029caeae134bbebc6e3225e9ac5b29c51cec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
