@@ -16,6 +16,24 @@
       "message": "why do we need this tool?",
       "revId": "adcbc5a196b44a6897064add1fdc41b2260ecc56",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b489f4f1_c5800074",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2023-07-21T10:15:33Z",
+      "side": 1,
+      "message": "I tried again and it turned out it\u0027s not needed on MacOS but it might still be useful for debugging in case testcontainers don\u0027t start",
+      "parentUuid": "052d2a18_94a77fb5",
+      "revId": "adcbc5a196b44a6897064add1fdc41b2260ecc56",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
