@@ -18,6 +18,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7587874d_3a4f247b",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2023-07-24T11:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1fbbf73_c723e8dc",
+      "revId": "c2838b02f6dc0154cd052c1bf1fff6317802133a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51a510d7_13bcbd46",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-07-24T08:33:25Z",
       "side": 1,
       "message": "I think this section shall go directly after the \"Run tests\" section and the \"Tracing traffic ...\" section should be the last one.",
+      "revId": "c2838b02f6dc0154cd052c1bf1fff6317802133a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "269f350e_660bb602",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2023-07-24T11:31:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51a510d7_13bcbd46",
       "revId": "c2838b02f6dc0154cd052c1bf1fff6317802133a",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
