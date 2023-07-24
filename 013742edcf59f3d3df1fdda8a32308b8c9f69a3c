@@ -16,6 +16,24 @@
       "message": "the docker container for 3.8.2 is not yet available",
       "revId": "013742edcf59f3d3df1fdda8a32308b8c9f69a3c",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6bb22bc_90961e8d",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperTestContainerSupport.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2023-07-24T12:35:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "431936ba_870d8c09",
+      "revId": "013742edcf59f3d3df1fdda8a32308b8c9f69a3c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
