@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1fbbf73_c723e8dc",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2023-07-24T08:33:25Z",
+      "side": 1,
+      "message": "Either mention that this instruction is Mac specific or leave this out and let the developer use his preferred way of installing tools",
+      "revId": "c2838b02f6dc0154cd052c1bf1fff6317802133a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a510d7_13bcbd46",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2023-07-24T08:33:25Z",
+      "side": 1,
+      "message": "I think this section shall go directly after the \"Run tests\" section and the \"Tracing traffic ...\" section should be the last one.",
+      "revId": "c2838b02f6dc0154cd052c1bf1fff6317802133a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
