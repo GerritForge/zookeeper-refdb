@@ -52,6 +52,24 @@
       "parentUuid": "50c104e7_bdaf84ca",
       "revId": "a202cb8877f72233bbe5017c2fced01f118e1694",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd3c4aa0_d7894d05",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2023-07-26T13:42:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5f5a5ac_81309a3b",
+      "revId": "a202cb8877f72233bbe5017c2fced01f118e1694",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
