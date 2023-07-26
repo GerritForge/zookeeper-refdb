@@ -16,6 +16,24 @@
       "message": "What\u0027s wrong with the usage of the `--test_tag_filters\u003dzookeeper` (the command from the base version)?",
       "revId": "a202cb8877f72233bbe5017c2fced01f118e1694",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50c104e7_bdaf84ca",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2023-07-26T13:20:43Z",
+      "side": 1,
+      "message": "without a target it doesn\u0027t work\n```\nbazel test --test_tag_filters\u003dzookeeper\n...\nERROR: No test targets were found, yet testing was requested\n```\n\n`bazel test --test_tag_filters\u003dzookeeper //...`\nor\n`bazel test --test_tag_filters\u003dzookeeper //plugins/zookeeper/...`\nwork\n\nI think\n`bazel test //plugins/zookeeper-refdb/...`\nis less typing and easier to remember since the name of the plugin is obvious and I keep struggling with the exact spelling of snake cased bazel option names",
+      "parentUuid": "e9bc5f1b_241cd635",
+      "revId": "a202cb8877f72233bbe5017c2fced01f118e1694",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
