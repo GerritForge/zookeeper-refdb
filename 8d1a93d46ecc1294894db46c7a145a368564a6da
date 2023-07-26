@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d0d924_ef728379",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2023-07-26T11:43:08Z",
+      "side": 1,
+      "message": "nit: also mention the reformat with buildifier",
+      "revId": "8d1a93d46ecc1294894db46c7a145a368564a6da",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
