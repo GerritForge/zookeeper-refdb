@@ -34,6 +34,24 @@
       "parentUuid": "e9bc5f1b_241cd635",
       "revId": "a202cb8877f72233bbe5017c2fced01f118e1694",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5f5a5ac_81309a3b",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2023-07-26T13:26:50Z",
+      "side": 1,
+      "message": "Most of the plugins use the former syntax:\n```\nbazel test --test_tag_filters\u003dzookeeper //...\n```\n\nso it shouldn\u0027t be removed. Obviously it needs to be fixed as `//...` was missing.\nYou can add the second form too:\n```\nbazel test //plugins/zookeeper-refdb/...\n```",
+      "parentUuid": "50c104e7_bdaf84ca",
+      "revId": "a202cb8877f72233bbe5017c2fced01f118e1694",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
