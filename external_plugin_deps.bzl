@@ -50,9 +50,3 @@ def external_plugin_deps():
         artifact = "org.apache.zookeeper:zookeeper:3.4.14",
         sha1 = "c114c1e1c8172a7cd3f6ae39209a635f7a06c1a1",
     )
-
-    maven_jar(
-        name = "global-refdb",
-        artifact = "com.gerritforge:global-refdb:3.4.0",
-        sha1 = "a1c7b02ddabe0dd0a989fb30ca18b61fe95ee894",
-    )
