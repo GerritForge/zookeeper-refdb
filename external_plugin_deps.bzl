@@ -49,6 +49,20 @@ def external_plugin_deps():
     )
 
     maven_jar(
+        name = "netty-transport",
+        artifact = "io.netty:netty-transport:4.1.94.Final",
+        attach_source = False,
+        sha1 = "ec783a737f96991a87b1d5794e2f9eb2024d708a",
+    )
+
+    maven_jar(
+        name = "netty-common",
+        artifact = "io.netty:netty-common:4.1.94.Final",
+        attach_source = False,
+        sha1 = "ad4ecf779ebc794cd351f57792f56ea01387b868",
+    )
+
+    maven_jar(
         name = "global-refdb",
         artifact = "com.gerritforge:global-refdb:3.7.4",
         sha1 = "a5f3fcdbc04b7e98c52ecd50d2a56424e60b0575",

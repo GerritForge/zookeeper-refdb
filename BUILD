@@ -23,6 +23,8 @@ gerrit_plugin(
         "@curator-recipes//jar",
         "@global-refdb//jar",
         "@netty-all//jar",
+        "@netty-common//jar",
+        "@netty-transport//jar",
         "@zookeeper-jute//jar",
         "@zookeeper//jar",
     ],
