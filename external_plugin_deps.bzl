@@ -41,25 +41,69 @@ def external_plugin_deps():
         sha1 = "f644829e30004ff4a079c357c4bb34bf5aa5fb94",
     )
 
+    NETTY_VER = "4.1.94.Final"
+
     maven_jar(
-        name = "netty-all",
-        artifact = "io.netty:netty-all:4.1.94.Final",
+        name = "netty-buffer",
+        artifact = "io.netty:netty-buffer:" + NETTY_VER,
         attach_source = False,
-        sha1 = "2a7df0424eed81818157f22613f36b72487ceb34",
+        sha1 = "eec248b26f16e888688e5bb37b7eeda76b78d2f7",
+    )
+
+    maven_jar(
+        name = "netty-codec",
+        artifact = "io.netty:netty-codec:" + NETTY_VER,
+        attach_source = False,
+        sha1 = "c70ef20ca338558147887df60f46341bc47f6900",
+    )
+
+    maven_jar(
+        name = "netty-common",
+        artifact = "io.netty:netty-common:" + NETTY_VER,
+        attach_source = False,
+        sha1 = "ad4ecf779ebc794cd351f57792f56ea01387b868",
+    )
+
+    maven_jar(
+        name = "netty-handler",
+        artifact = "io.netty:netty-handler:" + NETTY_VER,
+        attach_source = False,
+        sha1 = "cd9121ce24d6d3f2898946d04b0ef3ec548b00b4",
+    )
+
+    maven_jar(
+        name = "netty-resolver",
+        artifact = "io.netty:netty-resolver:" + NETTY_VER,
+        attach_source = False,
+        sha1 = "e96f649e8e9dcb29a1f8e95328b99c9eb6cf76c2",
     )
 
     maven_jar(
         name = "netty-transport",
-        artifact = "io.netty:netty-transport:4.1.94.Final",
+        artifact = "io.netty:netty-transport:" + NETTY_VER,
         attach_source = False,
         sha1 = "ec783a737f96991a87b1d5794e2f9eb2024d708a",
     )
 
     maven_jar(
-        name = "netty-common",
-        artifact = "io.netty:netty-common:4.1.94.Final",
+        name = "netty-transport-classes-epoll",
+        artifact = "io.netty:netty-transport-classes-epoll:" + NETTY_VER,
         attach_source = False,
-        sha1 = "ad4ecf779ebc794cd351f57792f56ea01387b868",
+        sha1 = "240e36cd5c2ffaf655913f8857f2d58b26394679",
+    )
+
+    maven_jar(
+        name = "netty-transport-native-epoll",
+        artifact = "io.netty:netty-transport-native-epoll:" + NETTY_VER,
+        attach_source = False,
+        sha1 = "1f77c54f1877d9ed51f207eb64a5634bdcc7efa1",
+    )
+
+    maven_jar(
+        name = "netty-transport-native-unix-common",
+        artifact = "io.netty:netty-transport-native-unix-common:" + NETTY_VER,
+        attach_source = False,
+        sha1 = "3fa5f9d04b6b782d869d6e0657d896eeadca5866",
     )
 
     maven_jar(
