@@ -20,8 +20,6 @@ import com.google.gerrit.pgm.init.api.ConsoleUI;
 import com.google.gerrit.pgm.init.api.InitStep;
 import com.google.gerrit.server.config.AllProjectsName;
 import com.google.gerrit.server.config.AllProjectsNameProvider;
-import com.google.gerrit.server.config.AllUsersName;
-import com.google.gerrit.server.config.AllUsersNameProvider;
 import com.google.gerrit.server.config.SitePaths;
 import com.google.gerrit.server.schema.NoteDbSchemaVersionManager;
 import com.google.inject.AbstractModule;
@@ -87,7 +85,6 @@ public class ZkInit implements InitStep {
           @Override
           protected void configure() {
             bind(AllProjectsName.class).toProvider(AllProjectsNameProvider.class);
-            bind(AllUsersName.class).toProvider(AllUsersNameProvider.class);
           }
         });
   }
