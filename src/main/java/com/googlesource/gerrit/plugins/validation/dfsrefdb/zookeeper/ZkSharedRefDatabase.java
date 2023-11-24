@@ -30,6 +30,7 @@ import org.apache.curator.framework.recipes.atomic.AtomicValue;
 import org.apache.curator.framework.recipes.atomic.DistributedAtomicValue;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.framework.recipes.locks.Locker;
+import org.apache.zookeeper.KeeperException;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 
@@ -89,6 +90,8 @@ public class ZkSharedRefDatabase implements GlobalRefDatabase {
   public void remove(Project.NameKey project) throws GlobalRefDbSystemError {
     try {
       client.delete().deletingChildrenIfNeeded().forPath("/" + project);
+    } catch (KeeperException.NoNodeException e) {
+      logger.atWarning().log("Project '%s' not found in Zookeeper", project);
     } catch (Exception e) {
       throw new GlobalRefDbSystemError(
           String.format("Not able to delete project '%s'", project), e);
