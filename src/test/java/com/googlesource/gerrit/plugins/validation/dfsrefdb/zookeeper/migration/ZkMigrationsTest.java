@@ -18,8 +18,8 @@ import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 import com.google.gerrit.acceptance.LightweightPluginDaemonTest;
@@ -59,13 +59,13 @@ public class ZkMigrationsTest extends LightweightPluginDaemonTest {
   @Test
   public void shouldNotMigrateAnythingForNewSites() throws Exception {
     migrations.migrate(plugin.getSysInjector(), curatorMock, 0);
-    verifyZeroInteractions(curatorMock);
+    verifyNoInteractions(curatorMock);
   }
 
   @Test
   public void shouldNotMigrateAnythingForSchema184() throws Exception {
     migrations.migrate(plugin.getSysInjector(), curatorMock, 184);
-    verifyZeroInteractions(curatorMock);
+    verifyNoInteractions(curatorMock);
   }
 
   @Test
@@ -77,18 +77,18 @@ public class ZkMigrationsTest extends LightweightPluginDaemonTest {
 
     verifyNoMoreInteractions(curatorMock);
     verifyNoMoreInteractions(deleteBuilderMock);
-    verifyZeroInteractions(backgroundVersionableMock);
+    verifyNoInteractions(backgroundVersionableMock);
   }
 
   @Test
   public void shouldNotCallCuratorDeleteIfAlreadyOnLatestVersion() throws Exception {
     migrations.migrate(plugin.getSysInjector(), curatorMock, NoteDbSchemaVersions.LATEST);
-    verifyZeroInteractions(curatorMock);
+    verifyNoInteractions(curatorMock);
   }
 
   @Test
   public void shouldNotCallCuratorDeleteIfOverLatestVersion() throws Exception {
     migrations.migrate(plugin.getSysInjector(), curatorMock, NoteDbSchemaVersions.LATEST + 1);
-    verifyZeroInteractions(curatorMock);
+    verifyNoInteractions(curatorMock);
   }
 }
