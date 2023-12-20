@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e88c48f_eeb75a66",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2023-12-20T08:49:39Z",
+      "side": 1,
+      "message": "This setup and build process is not specific for the `zookeeper-refdb` plugin, but this is how most of the plugins work. I feel like there should be a section about general plugin setup and building in the main Gerrit docs, probably somewhere in the plugin development guide.",
+      "revId": "280382b53f4712db82a593e6f15903fe73d0753b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
