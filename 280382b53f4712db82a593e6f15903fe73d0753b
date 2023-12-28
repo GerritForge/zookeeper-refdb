@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a277c471_045a6ec7",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-12-28T12:41:26Z",
+      "side": 1,
+      "message": "I have seen this section in a document called `build.md` in locations like:\n- `src/main/resources/Documentation/build.md` [1][2]\n\nin the plugins list page [3] you can have a look at it.\n\nReferences:\n[1] https://gerrit.googlesource.com/plugins/high-availability/+/refs/heads/master/src/main/resources/Documentation/build.md\n[2] https://gerrit.googlesource.com/plugins/multi-site/+/refs/heads/master/src/main/resources/Documentation/build.md\n[3] https://gerrit.googlesource.com/plugins/",
+      "revId": "280382b53f4712db82a593e6f15903fe73d0753b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e88c48f_eeb75a66",
         "filename": "README.md",
         "patchSetId": 1
@@ -14,6 +31,23 @@
       "writtenOn": "2023-12-20T08:49:39Z",
       "side": 1,
       "message": "This setup and build process is not specific for the `zookeeper-refdb` plugin, but this is how most of the plugins work. I feel like there should be a section about general plugin setup and building in the main Gerrit docs, probably somewhere in the plugin development guide.",
+      "revId": "280382b53f4712db82a593e6f15903fe73d0753b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d94ca818_004917d5",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2023-12-28T12:41:26Z",
+      "side": 1,
+      "message": "I think this should be:\n```\n ln -s plugins/zookeeper-refdb/external_plugin_deps.bzl plugins/.\n```",
       "revId": "280382b53f4712db82a593e6f15903fe73d0753b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
