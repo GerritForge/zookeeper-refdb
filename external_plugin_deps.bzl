@@ -54,12 +54,6 @@ def external_plugin_deps():
     )
 
     maven_jar(
-        name = "global-refdb",
-        artifact = "com.gerritforge:global-refdb:3.4.0",
-        sha1 = "a1c7b02ddabe0dd0a989fb30ca18b61fe95ee894",
-    )
-
-    maven_jar(
         name = "jackson-annotations",
         artifact = "com.fasterxml.jackson.core:jackson-annotations:2.10.3",
         sha1 = "0f63b3b1da563767d04d2e4d3fc1ae0cdeffebe7",
