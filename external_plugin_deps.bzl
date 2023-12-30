@@ -51,12 +51,6 @@ def external_plugin_deps():
         sha1 = "c114c1e1c8172a7cd3f6ae39209a635f7a06c1a1",
     )
 
-    maven_jar(
-        name = "global-refdb",
-        artifact = "com.gerritforge:global-refdb:3.6.0-rc3.1",
-        sha1 = "9e28fdc65dcdecefd852f6c24dd7eec339a01870",
-    )
-
     JACKSON_VER = "2.10.4"
 
     maven_jar(
