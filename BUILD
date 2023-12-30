@@ -18,10 +18,10 @@ gerrit_plugin(
     ],
     resources = glob(["src/main/resources/**/*"]),
     deps = [
+        ":global-refdb-neverlink",
         "@curator-client//jar",
         "@curator-framework//jar",
         "@curator-recipes//jar",
-        "@global-refdb//jar",
         "@netty-buffer//jar",
         "@netty-codec//jar",
         "@netty-common//jar",
@@ -50,11 +50,18 @@ junit_tests(
 )
 
 java_library(
+    name = "global-refdb-neverlink",
+    neverlink = 1,
+    exports = ["//plugins/global-refdb"],
+)
+
+java_library(
     name = "zookeeper-refdb__plugin_test_deps",
     testonly = 1,
     visibility = ["//visibility:public"],
     exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
         ":zookeeper-refdb__plugin",
+        "//plugins/global-refdb",
         "@curator-client//jar",
         "@curator-framework//jar",
         "@curator-recipes//jar",
