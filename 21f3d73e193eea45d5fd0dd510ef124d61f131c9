@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6638fd37_e5021ead",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2024-01-02T09:21:27Z",
+      "side": 1,
+      "message": "@luca.milanesio@gmail.com CI is grimacing on the merge-up starting with `stable-3.9` 😐",
+      "revId": "21f3d73e193eea45d5fd0dd510ef124d61f131c9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
