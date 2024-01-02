@@ -16,6 +16,29 @@
       "message": "@luca.milanesio@gmail.com CI is grimacing on the merge-up starting with `stable-3.9` 😐",
       "revId": "21f3d73e193eea45d5fd0dd510ef124d61f131c9",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff691898_73930c59",
+        "filename": "BUILD",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2024-01-02T10:45:24Z",
+      "side": 1,
+      "message": "This should have been removed in the merge.",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "21f3d73e193eea45d5fd0dd510ef124d61f131c9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
