@@ -38,7 +38,6 @@ public class ZkInit implements InitStep {
 
   private final ConsoleUI ui;
   private final FileBasedConfig config;
-
   @Inject(optional = true)
   private NoteDbSchemaVersionManager versionManager;
 
