@@ -17,15 +17,21 @@ package com.googlesource.gerrit.plugins.validation.dfsrefdb.zookeeper;
 import static com.google.common.base.Preconditions.checkArgument;
 
 import com.google.common.base.Strings;
+import com.google.gerrit.common.Nullable;
 import com.google.gerrit.extensions.annotations.PluginName;
+import com.google.gerrit.server.config.GerritServerConfig;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.inject.Inject;
+import java.util.List;
 import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.api.ACLProvider;
 import org.apache.curator.retry.BoundedExponentialBackoffRetry;
+import org.apache.zookeeper.ZooDefs;
+import org.apache.zookeeper.data.ACL;
 import org.eclipse.jgit.lib.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +58,8 @@ public class ZookeeperConfig {
 
   public static final String SUBSECTION = "zookeeper";
   public static final String KEY_CONNECT_STRING = "connectString";
+  public static final String KEY_USERNAME = "username";
+  public static final String KEY_PASSWORD = "password";
   public static final String KEY_SESSION_TIMEOUT_MS = "sessionTimeoutMs";
   public static final String KEY_CONNECTION_TIMEOUT_MS = "connectionTimeoutMs";
   public static final String KEY_RETRY_POLICY_BASE_SLEEP_TIME_MS = "retryPolicyBaseSleepTimeMs";
@@ -71,6 +79,10 @@ public class ZookeeperConfig {
   public final String TRANSACTION_LOCK_TIMEOUT_KEY = "transactionLockTimeoutMs";
 
   private final String connectionString;
+  @Nullable
+  private final String zkUsername;
+  @Nullable
+  private final String zkPassword;
   private final String root;
   private final int sessionTimeoutMs;
   private final int connectionTimeoutMs;
@@ -93,13 +105,18 @@ public class ZookeeperConfig {
   private CuratorFramework build;
 
   @Inject
-  public ZookeeperConfig(PluginConfigFactory cfgFactory, @PluginName String pluginName) {
-    this(cfgFactory.getGlobalPluginConfig(pluginName));
+  public ZookeeperConfig(
+      @GerritServerConfig Config gerritConfig,
+      PluginConfigFactory cfgFactory,
+      @PluginName String pluginName) {
+    this(gerritConfig, cfgFactory.getGlobalPluginConfig(pluginName));
   }
 
-  public ZookeeperConfig(Config zkConfig) {
+  public ZookeeperConfig(Config gerritConfig, Config zkConfig) {
     connectionString =
         getString(zkConfig, SECTION, SUBSECTION, KEY_CONNECT_STRING, DEFAULT_ZK_CONNECT);
+    zkUsername = getString(gerritConfig, SECTION, SUBSECTION, KEY_USERNAME, null);
+    zkPassword = getString(gerritConfig, SECTION, SUBSECTION, KEY_PASSWORD, null);
     root = getString(zkConfig, SECTION, SUBSECTION, KEY_ROOT_NODE, "gerrit/multi-site");
     sessionTimeoutMs =
         getInt(zkConfig, SECTION, SUBSECTION, KEY_SESSION_TIMEOUT_MS, defaultSessionTimeoutMs);
@@ -200,18 +217,34 @@ public class ZookeeperConfig {
     }
 
     if (build == null) {
-      this.build =
+      CuratorFrameworkFactory.Builder builder =
           CuratorFrameworkFactory.builder()
               .connectString(connectionString)
               .sessionTimeoutMs(sessionTimeoutMs)
               .connectionTimeoutMs(connectionTimeoutMs)
               .retryPolicy(
                   new BoundedExponentialBackoffRetry(baseSleepTimeMs, maxSleepTimeMs, maxRetries))
-              .namespace(root)
-              .build();
+              .namespace(root);
+      if (zkUsername != null && zkPassword != null) {
+        String authenticationString = zkUsername + ":" + zkPassword;
+        builder
+            .authorization("digest", authenticationString.getBytes())
+            .aclProvider(
+                new ACLProvider() {
+                  @Override
+                  public List<ACL> getDefaultAcl() {
+                    return ZooDefs.Ids.CREATOR_ALL_ACL;
+                  }
+
+                  @Override
+                  public List<ACL> getAclForPath(String path) {
+                    return ZooDefs.Ids.CREATOR_ALL_ACL;
+                  }
+                });
+      }
+      this.build = builder.build();
       this.build.start();
     }
-
     return this.build;
   }
 
