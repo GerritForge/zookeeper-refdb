@@ -16,6 +16,7 @@ package com.googlesource.gerrit.plugins.validation.dfsrefdb.zookeeper;
 
 import com.gerritforge.gerrit.globalrefdb.GlobalRefDatabase;
 import com.google.common.flogger.FluentLogger;
+import com.google.gerrit.extensions.api.config.Config;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.inject.AbstractModule;
