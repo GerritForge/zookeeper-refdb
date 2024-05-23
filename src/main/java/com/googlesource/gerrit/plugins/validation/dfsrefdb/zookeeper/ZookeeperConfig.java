@@ -20,12 +20,18 @@ import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.inject.Inject;
+
+import java.util.List;
 import java.util.Optional;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.api.ACLProvider;
 import org.apache.curator.retry.BoundedExponentialBackoffRetry;
+import org.apache.zookeeper.ZooDefs;
+import org.apache.zookeeper.data.ACL;
 import org.eclipse.jgit.lib.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +58,8 @@ public class ZookeeperConfig {
 
   public static final String SUBSECTION = "zookeeper";
   public static final String KEY_CONNECT_STRING = "connectString";
+  public static final String KEY_USERNAME = "username";
+  public static final String KEY_PASSWORD = "password";
   public static final String KEY_SESSION_TIMEOUT_MS = "sessionTimeoutMs";
   public static final String KEY_CONNECTION_TIMEOUT_MS = "connectionTimeoutMs";
   public static final String KEY_RETRY_POLICY_BASE_SLEEP_TIME_MS = "retryPolicyBaseSleepTimeMs";
@@ -69,8 +77,9 @@ public class ZookeeperConfig {
   public final String KEY_CAS_RETRY_POLICY_MAX_SLEEP_TIME_MS = "casRetryPolicyMaxSleepTimeMs";
   public final String KEY_CAS_RETRY_POLICY_MAX_RETRIES = "casRetryPolicyMaxRetries";
   public final String TRANSACTION_LOCK_TIMEOUT_KEY = "transactionLockTimeoutMs";
-
   private final String connectionString;
+  private Optional<String> zkUsername;
+  private Optional<String> zkPassword;
   private final String root;
   private final int sessionTimeoutMs;
   private final int connectionTimeoutMs;
@@ -93,13 +102,17 @@ public class ZookeeperConfig {
   private CuratorFramework build;
 
   @Inject
-  public ZookeeperConfig(PluginConfigFactory cfgFactory, @PluginName String pluginName) {
+  public ZookeeperConfig(
+      PluginConfigFactory cfgFactory,
+      @PluginName String pluginName) {
     this(cfgFactory.getGlobalPluginConfig(pluginName));
   }
 
   public ZookeeperConfig(Config zkConfig) {
     connectionString =
         getString(zkConfig, SECTION, SUBSECTION, KEY_CONNECT_STRING, DEFAULT_ZK_CONNECT);
+    zkUsername = getOptionalString(zkConfig, SECTION, SUBSECTION, KEY_USERNAME);
+    zkPassword = getOptionalString(zkConfig, SECTION, SUBSECTION, KEY_PASSWORD);
     root = getString(zkConfig, SECTION, SUBSECTION, KEY_ROOT_NODE, "gerrit/multi-site");
     sessionTimeoutMs =
         getInt(zkConfig, SECTION, SUBSECTION, KEY_SESSION_TIMEOUT_MS, defaultSessionTimeoutMs);
@@ -200,19 +213,40 @@ public class ZookeeperConfig {
     }
 
     if (build == null) {
-      this.build =
+      CuratorFrameworkFactory.Builder builder =
           CuratorFrameworkFactory.builder()
               .connectString(connectionString)
               .sessionTimeoutMs(sessionTimeoutMs)
               .connectionTimeoutMs(connectionTimeoutMs)
               .retryPolicy(
                   new BoundedExponentialBackoffRetry(baseSleepTimeMs, maxSleepTimeMs, maxRetries))
-              .namespace(root)
-              .build();
+              .namespace(root);
+      if ((zkUsername.isPresent() && !zkPassword.isPresent()) || (!zkUsername.isPresent() && zkPassword.isPresent())) {
+        throw new IllegalArgumentException("Only one between password or username for Zookeeper was set, please set both to succesfully authenticate");
+      } else {
+        zkUsername.ifPresent(usr -> zkPassword.ifPresent(pwd -> configureAuth(builder, usr + ":" + pwd)));
+      }
+      this.build = builder.build();
       this.build.start();
     }
-
     return this.build;
+  }
+
+  private void configureAuth(CuratorFrameworkFactory.Builder builder, String authString) {
+    builder
+        .authorization("digest", authString.getBytes())
+        .aclProvider(
+            new ACLProvider() {
+              @Override
+              public List<ACL> getDefaultAcl() {
+                return ZooDefs.Ids.CREATOR_ALL_ACL;
+              }
+
+              @Override
+              public List<ACL> getAclForPath(String path) {
+                return ZooDefs.Ids.CREATOR_ALL_ACL;
+              }
+            });
   }
 
   public Long getZkInterProcessLockTimeOut() {

@@ -69,7 +69,7 @@ public class ZookeeperTestContainerSupport {
 
     PluginConfigFactory cfgFactory = mock(PluginConfigFactory.class);
     when(cfgFactory.getGlobalPluginConfig("zookeeper")).thenReturn(sharedRefDbConfig);
-    configuration = new ZookeeperConfig(cfgFactory, "zookeeper");
+    configuration = new ZookeeperConfig( cfgFactory, "zookeeper");
 
     this.curator = configuration.buildCurator();
   }
