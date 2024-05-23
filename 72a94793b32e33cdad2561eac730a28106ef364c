@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "345d50ae_4a2e5e90",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-05-23T16:25:47Z",
+      "side": 1,
+      "message": "TODO: read from secure config",
+      "range": {
+        "startLine": 111,
+        "startChar": 72,
+        "endLine": 111,
+        "endChar": 85
+      },
+      "revId": "72a94793b32e33cdad2561eac730a28106ef364c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f81264c_2e5685f2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-05-23T16:25:47Z",
+      "side": 1,
+      "message": "TODO: read from secure config",
+      "range": {
+        "startLine": 112,
+        "startChar": 72,
+        "endLine": 112,
+        "endChar": 92
+      },
+      "revId": "72a94793b32e33cdad2561eac730a28106ef364c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
