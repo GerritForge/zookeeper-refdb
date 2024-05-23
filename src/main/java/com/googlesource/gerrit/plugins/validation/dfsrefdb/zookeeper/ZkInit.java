@@ -38,6 +38,7 @@ public class ZkInit implements InitStep {
 
   private final ConsoleUI ui;
   private final FileBasedConfig config;
+  private final FileBasedConfig secureConfig;
 
   @Inject(optional = true)
   private NoteDbSchemaVersionManager versionManager;
@@ -55,9 +56,13 @@ public class ZkInit implements InitStep {
     this.pluginName = pluginName;
     this.initInjector = initInjector;
 
+    secureConfig =
+        new FileBasedConfig(site.secure_config.toFile(), FS.DETECTED);
+    secureConfig.load();
     config =
         new FileBasedConfig(site.etc_dir.resolve(pluginName + ".config").toFile(), FS.DETECTED);
     config.load();
+
   }
 
   @Override
@@ -71,7 +76,7 @@ public class ZkInit implements InitStep {
     injector.injectMembers(this);
 
     try {
-      try (CuratorFramework curator = new ZookeeperConfig(config).buildCurator()) {
+      try (CuratorFramework curator = new ZookeeperConfig(secureConfig, config).buildCurator()) {
         zkMigrations.migrate(injector, curator, versionManager.read());
       }
     } catch (StorageException e) {
