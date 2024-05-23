@@ -112,3 +112,11 @@ File '@PLUGIN@.secure.config'
 
 ```ref-database.zookeeper.sslTrustStorePassword```
 :   Optional configuration for the password to the ssl trust store.
+
+```ref-database.zookeeper.username```
+:   Optional, if authentication is required, configuration for the username to the zookeeper node.
+
+```ref-database.zookeeper.password```
+:   Optional, if authentication is required, configuration for the password to the zookeeper node.
+
+
