@@ -20,12 +20,18 @@ import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.inject.Inject;
+
+import java.util.List;
 import java.util.Optional;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.api.ACLProvider;
 import org.apache.curator.retry.BoundedExponentialBackoffRetry;
+import org.apache.zookeeper.ZooDefs;
+import org.apache.zookeeper.data.ACL;
 import org.eclipse.jgit.lib.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +58,8 @@ public class ZookeeperConfig {
 
   public static final String SUBSECTION = "zookeeper";
   public static final String KEY_CONNECT_STRING = "connectString";
+  public static final String KEY_USERNAME = "username";
+  public static final String KEY_PASSWORD = "password";
   public static final String KEY_SESSION_TIMEOUT_MS = "sessionTimeoutMs";
   public static final String KEY_CONNECTION_TIMEOUT_MS = "connectionTimeoutMs";
   public static final String KEY_RETRY_POLICY_BASE_SLEEP_TIME_MS = "retryPolicyBaseSleepTimeMs";
@@ -71,6 +79,8 @@ public class ZookeeperConfig {
   public final String TRANSACTION_LOCK_TIMEOUT_KEY = "transactionLockTimeoutMs";
 
   private final String connectionString;
+  private final String zkUsername;
+  private final String zkPassword;
   private final String root;
   private final int sessionTimeoutMs;
   private final int connectionTimeoutMs;
@@ -100,6 +110,10 @@ public class ZookeeperConfig {
   public ZookeeperConfig(Config zkConfig) {
     connectionString =
         getString(zkConfig, SECTION, SUBSECTION, KEY_CONNECT_STRING, DEFAULT_ZK_CONNECT);
+    zkUsername =
+        getString(zkConfig, SECTION, SUBSECTION, KEY_USERNAME, "globalrefdb");
+    zkPassword =
+        getString(zkConfig, SECTION, SUBSECTION, KEY_PASSWORD, "globalrefdb-secret");
     root = getString(zkConfig, SECTION, SUBSECTION, KEY_ROOT_NODE, "gerrit/multi-site");
     sessionTimeoutMs =
         getInt(zkConfig, SECTION, SUBSECTION, KEY_SESSION_TIMEOUT_MS, defaultSessionTimeoutMs);
@@ -200,66 +214,79 @@ public class ZookeeperConfig {
     }
 
     if (build == null) {
-      this.build =
-          CuratorFrameworkFactory.builder()
-              .connectString(connectionString)
-              .sessionTimeoutMs(sessionTimeoutMs)
-              .connectionTimeoutMs(connectionTimeoutMs)
-              .retryPolicy(
-                  new BoundedExponentialBackoffRetry(baseSleepTimeMs, maxSleepTimeMs, maxRetries))
-              .namespace(root)
-              .build();
+      CuratorFrameworkFactory.Builder builder = CuratorFrameworkFactory.builder()
+          .connectString(connectionString)
+          .sessionTimeoutMs(sessionTimeoutMs)
+          .connectionTimeoutMs(connectionTimeoutMs)
+          .retryPolicy(
+              new BoundedExponentialBackoffRetry(baseSleepTimeMs, maxSleepTimeMs, maxRetries))
+          .namespace(root);
+      if (zkUsername != null && zkPassword != null) {
+        String authenticationString = zkUsername + ":" + zkPassword;
+        builder.authorization("digest", authenticationString.getBytes())
+            .aclProvider(new ACLProvider() {
+              @Override
+              public List<ACL> getDefaultAcl() {
+                return ZooDefs.Ids.CREATOR_ALL_ACL;
+              }
+
+              @Override
+              public List<ACL> getAclForPath(String path) {
+                return ZooDefs.Ids.CREATOR_ALL_ACL;
+              }
+            });
+      }
+      this.build = builder.build();
       this.build.start();
     }
-
     return this.build;
   }
 
-  public Long getZkInterProcessLockTimeOut() {
-    return transactionLockTimeOut;
-  }
+    public Long getZkInterProcessLockTimeOut () {
+      return transactionLockTimeOut;
+    }
 
-  public RetryPolicy buildCasRetryPolicy() {
-    return new BoundedExponentialBackoffRetry(casBaseSleepTimeMs, casMaxSleepTimeMs, casMaxRetries);
-  }
+    public RetryPolicy buildCasRetryPolicy () {
+      return new BoundedExponentialBackoffRetry(casBaseSleepTimeMs, casMaxSleepTimeMs, casMaxRetries);
+    }
 
-  private long getLong(
-      Config cfg, String section, String subSection, String name, long defaultValue) {
-    try {
-      return cfg.getLong(section, subSection, name, defaultValue);
-    } catch (IllegalArgumentException e) {
-      log.error("invalid value for {}; using default value {}", name, defaultValue);
-      log.debug("Failed to retrieve long value: {}", e.getMessage(), e);
+    private long getLong (
+        Config cfg, String section, String subSection, String name,long defaultValue){
+      try {
+        return cfg.getLong(section, subSection, name, defaultValue);
+      } catch (IllegalArgumentException e) {
+        log.error("invalid value for {}; using default value {}", name, defaultValue);
+        log.debug("Failed to retrieve long value: {}", e.getMessage(), e);
+        return defaultValue;
+      }
+    }
+
+    private int getInt (Config cfg, String section, String subSection, String name,int defaultValue){
+      try {
+        return cfg.getInt(section, subSection, name, defaultValue);
+      } catch (IllegalArgumentException e) {
+        log.error("invalid value for {}; using default value {}", name, defaultValue);
+        log.debug("Failed to retrieve integer value: {}", e.getMessage(), e);
+        return defaultValue;
+      }
+    }
+
+    private Optional<String> getOptionalString (
+        Config cfg, String section, String subsection, String name){
+      return Optional.ofNullable(cfg.getString(section, subsection, name)).filter(s -> !s.isEmpty());
+    }
+
+    private String getString (
+        Config cfg, String section, String subsection, String name, String defaultValue){
+      String value = cfg.getString(section, subsection, name);
+      if (!Strings.isNullOrEmpty(value)) {
+        return value;
+      }
       return defaultValue;
     }
-  }
 
-  private int getInt(Config cfg, String section, String subSection, String name, int defaultValue) {
-    try {
-      return cfg.getInt(section, subSection, name, defaultValue);
-    } catch (IllegalArgumentException e) {
-      log.error("invalid value for {}; using default value {}", name, defaultValue);
-      log.debug("Failed to retrieve integer value: {}", e.getMessage(), e);
-      return defaultValue;
+    private Boolean getBoolean (
+        Config cfg, String section, String subSection, String name, Boolean defaultValue){
+      return cfg.getBoolean(section, subSection, name, defaultValue);
     }
   }
-
-  private Optional<String> getOptionalString(
-      Config cfg, String section, String subsection, String name) {
-    return Optional.ofNullable(cfg.getString(section, subsection, name)).filter(s -> !s.isEmpty());
-  }
-
-  private String getString(
-      Config cfg, String section, String subsection, String name, String defaultValue) {
-    String value = cfg.getString(section, subsection, name);
-    if (!Strings.isNullOrEmpty(value)) {
-      return value;
-    }
-    return defaultValue;
-  }
-
-  private Boolean getBoolean(
-      Config cfg, String section, String subSection, String name, Boolean defaultValue) {
-    return cfg.getBoolean(section, subSection, name, defaultValue);
-  }
-}
