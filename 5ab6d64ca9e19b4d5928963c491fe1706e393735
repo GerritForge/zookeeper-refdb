@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8ba1389_034dadf3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-05-30T09:40:28Z",
+      "side": 1,
+      "message": "The injected constructor (`ZookeeperConfig#L106`) receives the annotated `@GerritServerConfig Config gerritConfig`, while here we construct it bu justpassing the `secureConfig`.\n\nAny reason for this inconsistency? Otherwise, please consider to always pass the same `Config` in both construction paths.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d93e925_2d999822",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-05-30T09:40:28Z",
+      "side": 1,
+      "message": "nit: consider annotating these with `@Nullable`",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56f5817b_09caba52",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
         "patchSetId": 5
@@ -48,6 +94,69 @@
       "writtenOn": "2024-05-30T09:39:37Z",
       "side": 1,
       "message": "```suggestion\n        if (zkUsername !\u003d null \u0026\u0026 zkPassword !\u003d null) {\n            configureAuthentication(builder);\n        }\n...\n    private void configureAuthentication(CuratorFrameworkFactory.Builder builder) {\n        String authenticationString \u003d zkUsername + \":\" + zkPassword;\n        builder.authorization(\"digest\", authenticationString.getBytes())\n                .aclProvider(new ACLProvider() {\n                    @Override\n                    public List\u003cACL\u003e getDefaultAcl() {\n                        return ZooDefs.Ids.CREATOR_ALL_ACL;\n                    }\n\n                    @Override\n                    public List\u003cACL\u003e getAclForPath(String path) {\n                        return ZooDefs.Ids.CREATOR_ALL_ACL;\n                    }\n                });\n    }\n```",
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7a067e_cf56a8eb",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-05-30T09:40:28Z",
+      "side": 1,
+      "message": "I think if only one of these was set it would probably be involuntary. I think it would be useful to warn in the log of such an unusual configuration.",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 53
+      },
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d04fbec1_3cfbf1bc",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-05-30T09:40:28Z",
+      "side": 1,
+      "message": "Could you spend two words to explain why we choose this ACL over other possibilities, such as `OPEN_ACL_UNSAFE?",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 55
+      },
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1088007b_72630559",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperTestContainerSupport.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-05-30T09:40:28Z",
+      "side": 1,
+      "message": "Consider adding a test, asserting the `curator` has ACLs set as expected?",
       "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
