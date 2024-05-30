@@ -16,6 +16,40 @@
       "message": "Please, can you do the following:\n- Explain the motivations for this change in the commit description\n- Add documentation in `src/main/resources/Documentation/config.md` explaining how to configure the plugin to authenticate agains Zookeeper cluster.",
       "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f5817b_09caba52",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2024-05-30T09:39:37Z",
+      "side": 1,
+      "message": "nit: It looks that this method is not used and is not bound by the dependency injection framework Guice. Maybe you could remove it in a previous change. IMO adds confusion to the code.",
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e5c162e_b36636b4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1149185
+      },
+      "writtenOn": "2024-05-30T09:39:37Z",
+      "side": 1,
+      "message": "```suggestion\n        if (zkUsername !\u003d null \u0026\u0026 zkPassword !\u003d null) {\n            configureAuthentication(builder);\n        }\n...\n    private void configureAuthentication(CuratorFrameworkFactory.Builder builder) {\n        String authenticationString \u003d zkUsername + \":\" + zkPassword;\n        builder.authorization(\"digest\", authenticationString.getBytes())\n                .aclProvider(new ACLProvider() {\n                    @Override\n                    public List\u003cACL\u003e getDefaultAcl() {\n                        return ZooDefs.Ids.CREATOR_ALL_ACL;\n                    }\n\n                    @Override\n                    public List\u003cACL\u003e getAclForPath(String path) {\n                        return ZooDefs.Ids.CREATOR_ALL_ACL;\n                    }\n                });\n    }\n```",
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
