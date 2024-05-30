@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "957fbc9c_9161c520",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083454
+      },
+      "writtenOn": "2024-05-30T08:21:53Z",
+      "side": 1,
+      "message": "Have you consider adding some tests?",
+      "revId": "e6bb2ba12114750146b45d79801ed7d3104112c5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "94a93641_7324e045",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
         "patchSetId": 2
