@@ -204,6 +204,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31295db3_1c7b2931",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-10T19:48:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e5c162e_b36636b4",
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d04fbec1_3cfbf1bc",
