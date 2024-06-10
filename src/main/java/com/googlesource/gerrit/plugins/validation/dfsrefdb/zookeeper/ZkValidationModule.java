@@ -39,7 +39,7 @@ public class ZkValidationModule extends AbstractModule {
     DynamicItem.bind(binder(), GlobalRefDatabase.class)
         .to(ZkSharedRefDatabase.class)
         .in(Scopes.SINGLETON);
-    bind(CuratorFramework.class).toInstance(cfg.buildCurator());
+    bind(CuratorFramework.class).toInstance(cfg.startCurator());
     bind(ZkConnectionConfig.class)
         .toInstance(
             new ZkConnectionConfig(cfg.buildCasRetryPolicy(), cfg.getZkInterProcessLockTimeOut()));
