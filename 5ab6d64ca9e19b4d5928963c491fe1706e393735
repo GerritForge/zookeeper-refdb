@@ -18,6 +18,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc5df652_e0eee748",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-10T18:22:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f26887cf_930d5a2d",
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df330a23_d8bf1508",
@@ -71,6 +89,30 @@
       "writtenOn": "2024-05-30T09:40:28Z",
       "side": 1,
       "message": "nit: consider annotating these with `@Nullable`",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7ea9454_7994ba5a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-10T18:22:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d93e925_2d999822",
       "range": {
         "startLine": 81,
         "startChar": 0,
@@ -138,6 +180,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c5a561b_d860fb37",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-10T18:22:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df7a067e_cf56a8eb",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 53
+      },
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d04fbec1_3cfbf1bc",
@@ -161,6 +227,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91d9d11_fe44cd1e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-10T18:22:41Z",
+      "side": 1,
+      "message": "I believe this is the same level of permission we have at the moment.\nHowever you raise a good point, I believe it should be configurable, will address in a follow up change.",
+      "parentUuid": "d04fbec1_3cfbf1bc",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 55
+      },
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1088007b_72630559",
@@ -174,6 +264,24 @@
       "writtenOn": "2024-05-30T09:40:28Z",
       "side": 1,
       "message": "Consider adding a test, asserting the `curator` has ACLs set as expected?",
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe66dc65_e651ecf8",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperTestContainerSupport.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-10T18:22:41Z",
+      "side": 1,
+      "message": "Addressed as followup change.",
+      "parentUuid": "1088007b_72630559",
       "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
