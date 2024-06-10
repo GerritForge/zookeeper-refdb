@@ -38,7 +38,7 @@ public class ZookeeperConfig {
   private static final Logger log = LoggerFactory.getLogger(ZookeeperConfig.class);
   public static final int defaultSessionTimeoutMs;
   public static final int defaultConnectionTimeoutMs;
-  public static final String DEFAULT_ZK_CONNECT = "localhost:2181";
+  public static final String DEFAULT_ZK_CONNECT = "localhost:2182";
   private final int DEFAULT_RETRY_POLICY_BASE_SLEEP_TIME_MS = 1000;
   private final int DEFAULT_RETRY_POLICY_MAX_SLEEP_TIME_MS = 3000;
   private final int DEFAULT_RETRY_POLICY_MAX_RETRIES = 3;
@@ -75,6 +75,7 @@ public class ZookeeperConfig {
   public final String KEY_CAS_RETRY_POLICY_MAX_SLEEP_TIME_MS = "casRetryPolicyMaxSleepTimeMs";
   public final String KEY_CAS_RETRY_POLICY_MAX_RETRIES = "casRetryPolicyMaxRetries";
   public final String TRANSACTION_LOCK_TIMEOUT_KEY = "transactionLockTimeoutMs";
+
   private final String connectionString;
   private Optional<String> zkUsername;
   private Optional<String> zkPassword;
@@ -191,7 +192,25 @@ public class ZookeeperConfig {
         connectionString);
   }
 
-  public CuratorFramework buildCurator() {
+  protected CuratorFrameworkFactory.Builder parseCuratorConfig() {
+    CuratorFrameworkFactory.Builder builder =
+        CuratorFrameworkFactory.builder()
+            .connectString(connectionString)
+            .sessionTimeoutMs(sessionTimeoutMs)
+            .connectionTimeoutMs(connectionTimeoutMs)
+            .retryPolicy(
+                new BoundedExponentialBackoffRetry(baseSleepTimeMs, maxSleepTimeMs, maxRetries))
+            .namespace(root);
+    if (zkUsername.isPresent() != zkPassword.isPresent()) {
+      throw new IllegalArgumentException("Only one between password or username for Zookeeper was set, please set both to successfully authenticate");
+    } else {
+      zkUsername.flatMap(usr -> zkPassword.map(pwd -> usr + ":" + pwd))
+          .ifPresent(auth -> configureAuth(builder, auth));
+    }
+    return builder;
+  }
+
+  public CuratorFramework startCurator() {
     if (isSSLEnabled) {
 
       System.setProperty(
@@ -209,20 +228,7 @@ public class ZookeeperConfig {
     }
 
     if (build == null) {
-      CuratorFrameworkFactory.Builder builder =
-          CuratorFrameworkFactory.builder()
-              .connectString(connectionString)
-              .sessionTimeoutMs(sessionTimeoutMs)
-              .connectionTimeoutMs(connectionTimeoutMs)
-              .retryPolicy(
-                  new BoundedExponentialBackoffRetry(baseSleepTimeMs, maxSleepTimeMs, maxRetries))
-              .namespace(root);
-      if ((zkUsername.isPresent() && !zkPassword.isPresent()) || (!zkUsername.isPresent() && zkPassword.isPresent())) {
-        throw new IllegalArgumentException("Only one between password or username for Zookeeper was set, please set both to succesfully authenticate");
-      } else {
-        zkUsername.ifPresent(usr -> zkPassword.ifPresent(pwd -> configureAuth(builder, usr + ":" + pwd)));
-      }
-      this.build = builder.build();
+      this.build = parseCuratorConfig().build();
       this.build.start();
     }
     return this.build;
