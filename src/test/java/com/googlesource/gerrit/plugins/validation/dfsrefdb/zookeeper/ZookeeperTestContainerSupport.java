@@ -71,7 +71,7 @@ public class ZookeeperTestContainerSupport {
     when(cfgFactory.getGlobalPluginConfig("zookeeper")).thenReturn(sharedRefDbConfig);
     configuration = new ZookeeperConfig(cfgFactory, "zookeeper");
 
-    this.curator = configuration.buildCurator();
+    this.curator = configuration.startCurator();
   }
 
   public void cleanup() {
