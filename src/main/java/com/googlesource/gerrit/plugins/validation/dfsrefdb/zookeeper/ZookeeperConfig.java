@@ -191,7 +191,27 @@ public class ZookeeperConfig {
         connectionString);
   }
 
-  public CuratorFramework buildCurator() {
+  protected CuratorFrameworkFactory.Builder parseCuratorConfig() {
+    CuratorFrameworkFactory.Builder builder =
+        CuratorFrameworkFactory.builder()
+            .connectString(connectionString)
+            .sessionTimeoutMs(sessionTimeoutMs)
+            .connectionTimeoutMs(connectionTimeoutMs)
+            .retryPolicy(
+                new BoundedExponentialBackoffRetry(baseSleepTimeMs, maxSleepTimeMs, maxRetries))
+            .namespace(root);
+    if (zkUsername.isPresent() != zkPassword.isPresent()) {
+      throw new IllegalArgumentException(
+          "Only one between password or username for Zookeeper was set, please set both to successfully authenticate");
+    } else {
+      zkUsername
+          .flatMap(usr -> zkPassword.map(pwd -> usr + ":" + pwd))
+          .ifPresent(auth -> configureAuth(builder, auth));
+    }
+    return builder;
+  }
+
+  public CuratorFramework startCurator() {
     if (isSSLEnabled) {
 
       System.setProperty(
@@ -209,23 +229,7 @@ public class ZookeeperConfig {
     }
 
     if (build == null) {
-      CuratorFrameworkFactory.Builder builder =
-          CuratorFrameworkFactory.builder()
-              .connectString(connectionString)
-              .sessionTimeoutMs(sessionTimeoutMs)
-              .connectionTimeoutMs(connectionTimeoutMs)
-              .retryPolicy(
-                  new BoundedExponentialBackoffRetry(baseSleepTimeMs, maxSleepTimeMs, maxRetries))
-              .namespace(root);
-      if (zkUsername.isPresent() != zkPassword.isPresent()) {
-        throw new IllegalArgumentException(
-            "Only one between password or username for Zookeeper was set, please set both to successfully authenticate");
-      } else {
-        zkUsername
-            .flatMap(usr -> zkPassword.map(pwd -> usr + ":" + pwd))
-            .ifPresent(auth -> configureAuth(builder, auth));
-      }
-      this.build = builder.build();
+      this.build = parseCuratorConfig().build();
       this.build.start();
     }
     return this.build;
