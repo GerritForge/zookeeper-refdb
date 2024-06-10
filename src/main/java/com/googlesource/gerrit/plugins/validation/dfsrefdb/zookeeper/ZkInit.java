@@ -36,7 +36,6 @@ public class ZkInit implements InitStep {
 
   private final ConsoleUI ui;
   private final Config config;
-
   @Inject(optional = true)
   private NoteDbSchemaVersionManager versionManager;
 
@@ -72,7 +71,7 @@ public class ZkInit implements InitStep {
     injector.injectMembers(this);
 
     try {
-      try (CuratorFramework curator = new ZookeeperConfig(config).buildCurator()) {
+      try (CuratorFramework curator = new ZookeeperConfig(config).startCurator()) {
         zkMigrations.migrate(injector, curator, versionManager.read());
       }
     } catch (StorageException e) {
