@@ -17,6 +17,7 @@ package com.googlesource.gerrit.plugins.validation.dfsrefdb.zookeeper;
 import static com.google.common.base.Preconditions.checkArgument;
 
 import com.google.common.base.Strings;
+import com.google.gerrit.common.Nullable;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.GerritServerConfig;
 import com.google.gerrit.server.config.PluginConfigFactory;
@@ -35,11 +36,13 @@ import org.eclipse.jgit.lib.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.naming.ConfigurationException;
+
 public class ZookeeperConfig {
   private static final Logger log = LoggerFactory.getLogger(ZookeeperConfig.class);
   public static final int defaultSessionTimeoutMs;
   public static final int defaultConnectionTimeoutMs;
-  public static final String DEFAULT_ZK_CONNECT = "localhost:2181";
+  public static final String DEFAULT_ZK_CONNECT = "localhost:2182";
   private final int DEFAULT_RETRY_POLICY_BASE_SLEEP_TIME_MS = 1000;
   private final int DEFAULT_RETRY_POLICY_MAX_SLEEP_TIME_MS = 3000;
   private final int DEFAULT_RETRY_POLICY_MAX_RETRIES = 3;
@@ -78,7 +81,9 @@ public class ZookeeperConfig {
   public final String TRANSACTION_LOCK_TIMEOUT_KEY = "transactionLockTimeoutMs";
 
   private final String connectionString;
+  @Nullable
   private final String zkUsername;
+  @Nullable
   private final String zkPassword;
   private final String root;
   private final int sessionTimeoutMs;
@@ -196,7 +201,41 @@ public class ZookeeperConfig {
         connectionString);
   }
 
-  public CuratorFramework buildCurator() {
+  protected CuratorFrameworkFactory.Builder parseCuratorConfig() {
+    CuratorFrameworkFactory.Builder builder =
+        CuratorFrameworkFactory.builder()
+            .connectString(connectionString)
+            .sessionTimeoutMs(sessionTimeoutMs)
+            .connectionTimeoutMs(connectionTimeoutMs)
+            .retryPolicy(
+                new BoundedExponentialBackoffRetry(baseSleepTimeMs, maxSleepTimeMs, maxRetries))
+            .namespace(root);
+    if(zkUsername == null && zkPassword == null) {
+      return builder;
+    } else if (zkUsername != null && zkPassword != null) {
+      String authenticationString = zkUsername + ":" + zkPassword;
+      builder
+          .authorization("digest", authenticationString.getBytes())
+          .aclProvider(
+              new ACLProvider() {
+                @Override
+                public List<ACL> getDefaultAcl() {
+                  return ZooDefs.Ids.CREATOR_ALL_ACL;
+                }
+
+                @Override
+                public List<ACL> getAclForPath(String path) {
+                  return ZooDefs.Ids.CREATOR_ALL_ACL;
+                }
+              });
+      return builder;
+    } else {
+      log.error("Only one between username and password was configured, please configure both to succesfully authenticate");
+      throw new RuntimeException("Misconfiguration detected");
+    }
+  }
+
+  public CuratorFramework startCurator() {
     if (isSSLEnabled) {
 
       System.setProperty(
@@ -214,32 +253,7 @@ public class ZookeeperConfig {
     }
 
     if (build == null) {
-      CuratorFrameworkFactory.Builder builder =
-          CuratorFrameworkFactory.builder()
-              .connectString(connectionString)
-              .sessionTimeoutMs(sessionTimeoutMs)
-              .connectionTimeoutMs(connectionTimeoutMs)
-              .retryPolicy(
-                  new BoundedExponentialBackoffRetry(baseSleepTimeMs, maxSleepTimeMs, maxRetries))
-              .namespace(root);
-      if (zkUsername != null && zkPassword != null) {
-        String authenticationString = zkUsername + ":" + zkPassword;
-        builder
-            .authorization("digest", authenticationString.getBytes())
-            .aclProvider(
-                new ACLProvider() {
-                  @Override
-                  public List<ACL> getDefaultAcl() {
-                    return ZooDefs.Ids.CREATOR_ALL_ACL;
-                  }
-
-                  @Override
-                  public List<ACL> getAclForPath(String path) {
-                    return ZooDefs.Ids.CREATOR_ALL_ACL;
-                  }
-                });
-      }
-      this.build = builder.build();
+      this.build = parseCuratorConfig().build();
       this.build.start();
     }
     return this.build;
