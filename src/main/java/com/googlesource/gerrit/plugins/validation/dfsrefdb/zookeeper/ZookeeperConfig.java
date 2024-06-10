@@ -42,7 +42,7 @@ public class ZookeeperConfig {
   private static final Logger log = LoggerFactory.getLogger(ZookeeperConfig.class);
   public static final int defaultSessionTimeoutMs;
   public static final int defaultConnectionTimeoutMs;
-  public static final String DEFAULT_ZK_CONNECT = "localhost:2181";
+  public static final String DEFAULT_ZK_CONNECT = "localhost:2182";
   private final int DEFAULT_RETRY_POLICY_BASE_SLEEP_TIME_MS = 1000;
   private final int DEFAULT_RETRY_POLICY_MAX_SLEEP_TIME_MS = 3000;
   private final int DEFAULT_RETRY_POLICY_MAX_RETRIES = 3;
@@ -201,7 +201,27 @@ public class ZookeeperConfig {
         connectionString);
   }
 
-  public CuratorFramework buildCurator() {
+  protected CuratorFrameworkFactory.Builder parseCuratorConfig() {
+    CuratorFrameworkFactory.Builder builder =
+        CuratorFrameworkFactory.builder()
+            .connectString(connectionString)
+            .sessionTimeoutMs(sessionTimeoutMs)
+            .connectionTimeoutMs(connectionTimeoutMs)
+            .retryPolicy(
+                new BoundedExponentialBackoffRetry(baseSleepTimeMs, maxSleepTimeMs, maxRetries))
+            .namespace(root);
+    if(zkUsername == null && zkPassword == null) {
+      return builder;
+    } else if (zkUsername != null && zkPassword != null) {
+      builder = configureAuth(builder);
+      return builder;
+    } else {
+      log.error("Only one between username and password was configured, please configure both to succesfully authenticate");
+      throw new RuntimeException("Misconfiguration detected");
+    }
+  }
+
+  public CuratorFramework startCurator() {
     if (isSSLEnabled) {
 
       System.setProperty(
@@ -219,24 +239,13 @@ public class ZookeeperConfig {
     }
 
     if (build == null) {
-      CuratorFrameworkFactory.Builder builder =
-          CuratorFrameworkFactory.builder()
-              .connectString(connectionString)
-              .sessionTimeoutMs(sessionTimeoutMs)
-              .connectionTimeoutMs(connectionTimeoutMs)
-              .retryPolicy(
-                  new BoundedExponentialBackoffRetry(baseSleepTimeMs, maxSleepTimeMs, maxRetries))
-              .namespace(root);
-      if (zkUsername != null && zkPassword != null) {
-        configureAuth(builder);
-      }
-      this.build = builder.build();
+      this.build = parseCuratorConfig().build();
       this.build.start();
     }
     return this.build;
   }
 
-  private void configureAuth(CuratorFrameworkFactory.Builder builder) {
+  private CuratorFrameworkFactory.Builder configureAuth(CuratorFrameworkFactory.Builder builder) {
     String authenticationString = zkUsername + ":" + zkPassword;
     builder
         .authorization("digest", authenticationString.getBytes())
@@ -252,6 +261,7 @@ public class ZookeeperConfig {
                 return ZooDefs.Ids.CREATOR_ALL_ACL;
               }
             });
+    return builder;
   }
 
   public Long getZkInterProcessLockTimeOut() {
