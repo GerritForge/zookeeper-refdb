@@ -158,6 +158,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18c7cbfb_b0b81932",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-11T14:10:26Z",
+      "side": 1,
+      "message": "This is needed as it\u0027s injected in the module.\nSee: https://gerrit.googlesource.com/plugins/zookeeper-refdb/+/refs/heads/master/src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkValidationModule.java#32",
+      "parentUuid": "56f5817b_09caba52",
+      "revId": "5ab6d64ca9e19b4d5928963c491fe1706e393735",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e5c162e_b36636b4",
