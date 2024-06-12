@@ -21,7 +21,9 @@ import static org.mockito.Mockito.when;
 
 import com.google.gerrit.entities.Project;
 import com.google.gerrit.server.config.PluginConfigFactory;
+import com.google.gerrit.server.config.SitePaths;
 import org.apache.curator.framework.CuratorFramework;
+import org.eclipse.jgit.errors.ConfigInvalidException;
 import org.eclipse.jgit.lib.Config;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
@@ -69,7 +71,11 @@ public class ZookeeperTestContainerSupport {
 
     PluginConfigFactory cfgFactory = mock(PluginConfigFactory.class);
     when(cfgFactory.getGlobalPluginConfig("zookeeper")).thenReturn(sharedRefDbConfig);
-    configuration = new ZookeeperConfig(new Config(), cfgFactory, "zookeeper");
+    try {
+      configuration = new ZookeeperConfig(new SitePaths(ZookeeperConfigBase.randomTestSite()), cfgFactory, "zookeeper");
+    } catch (Exception e) {
+      System.out.println("Could not load Zookeeper credentials");
+    }
 
     this.curator = configuration.startCurator();
   }
@@ -90,4 +96,6 @@ public class ZookeeperTestContainerSupport {
         .creatingParentContainersIfNeeded()
         .forPath(pathFor(projectName, ref.getName()), writeObjectId(ref.getObjectId()));
   }
+
+
 }
