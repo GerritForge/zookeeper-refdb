@@ -14,27 +14,25 @@
 
 package com.googlesource.gerrit.plugins.validation.dfsrefdb.zookeeper;
 
-import static com.google.common.base.Preconditions.checkArgument;
-
 import com.google.common.base.Strings;
-import com.google.gerrit.common.Nullable;
 import com.google.gerrit.extensions.annotations.PluginName;
-import com.google.gerrit.server.config.GerritServerConfig;
 import com.google.gerrit.server.config.PluginConfigFactory;
+import com.google.gerrit.server.config.SitePaths;
 import com.google.inject.Inject;
-import java.util.List;
-import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
-import org.apache.curator.framework.api.ACLProvider;
 import org.apache.curator.retry.BoundedExponentialBackoffRetry;
-import org.apache.zookeeper.ZooDefs;
-import org.apache.zookeeper.data.ACL;
+import org.eclipse.jgit.errors.ConfigInvalidException;
 import org.eclipse.jgit.lib.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.util.Optional;
+
+import static com.google.common.base.Preconditions.checkArgument;
 
 public class ZookeeperConfig {
   private static final Logger log = LoggerFactory.getLogger(ZookeeperConfig.class);
@@ -58,8 +56,6 @@ public class ZookeeperConfig {
 
   public static final String SUBSECTION = "zookeeper";
   public static final String KEY_CONNECT_STRING = "connectString";
-  public static final String KEY_USERNAME = "username";
-  public static final String KEY_PASSWORD = "password";
   public static final String KEY_SESSION_TIMEOUT_MS = "sessionTimeoutMs";
   public static final String KEY_CONNECTION_TIMEOUT_MS = "connectionTimeoutMs";
   public static final String KEY_RETRY_POLICY_BASE_SLEEP_TIME_MS = "retryPolicyBaseSleepTimeMs";
@@ -79,8 +75,6 @@ public class ZookeeperConfig {
   public final String TRANSACTION_LOCK_TIMEOUT_KEY = "transactionLockTimeoutMs";
 
   private final String connectionString;
-  @Nullable private final String zkUsername;
-  @Nullable private final String zkPassword;
   private final String root;
   private final int sessionTimeoutMs;
   private final int connectionTimeoutMs;
@@ -90,6 +84,8 @@ public class ZookeeperConfig {
   private final int casBaseSleepTimeMs;
   private final int casMaxSleepTimeMs;
   private final int casMaxRetries;
+
+  private final Optional<String> zkCredentials;
 
   private Boolean isSSLEnabled;
   private Optional<String> sslKeyStoreLocation;
@@ -104,23 +100,23 @@ public class ZookeeperConfig {
 
   @Inject
   public ZookeeperConfig(
-      @GerritServerConfig Config gerritConfig,
+      SitePaths sitePaths,
       PluginConfigFactory cfgFactory,
-      @PluginName String pluginName) {
-    this(gerritConfig, cfgFactory.getGlobalPluginConfig(pluginName));
+      @PluginName String pluginName) throws ConfigInvalidException, IOException {
+    this(new SecureCredentialsFactory(sitePaths).loadCredentials(), cfgFactory.getGlobalPluginConfig(pluginName));
   }
 
-  public ZookeeperConfig(Config gerritConfig, Config zkConfig) {
+  public ZookeeperConfig(Optional<String> zkCredentials, Config zkConfig) {
     connectionString =
         getString(zkConfig, SECTION, SUBSECTION, KEY_CONNECT_STRING, DEFAULT_ZK_CONNECT);
-    zkUsername = getString(gerritConfig, SECTION, SUBSECTION, KEY_USERNAME, null);
-    zkPassword = getString(gerritConfig, SECTION, SUBSECTION, KEY_PASSWORD, null);
     root = getString(zkConfig, SECTION, SUBSECTION, KEY_ROOT_NODE, "gerrit/multi-site");
     sessionTimeoutMs =
         getInt(zkConfig, SECTION, SUBSECTION, KEY_SESSION_TIMEOUT_MS, defaultSessionTimeoutMs);
     connectionTimeoutMs =
         getInt(
             zkConfig, SECTION, SUBSECTION, KEY_CONNECTION_TIMEOUT_MS, defaultConnectionTimeoutMs);
+
+    this.zkCredentials = zkCredentials;
 
     baseSleepTimeMs =
         getInt(
@@ -206,15 +202,8 @@ public class ZookeeperConfig {
             .retryPolicy(
                 new BoundedExponentialBackoffRetry(baseSleepTimeMs, maxSleepTimeMs, maxRetries))
             .namespace(root);
-    if(zkUsername == null && zkPassword == null) {
-      return builder;
-    } else if (zkUsername != null && zkPassword != null) {
-      configureAuth(builder);
-      return builder;
-    } else {
-      log.error("Only one between username and password was configured, please configure both to succesfully authenticate");
-      throw new RuntimeException("Misconfiguration detected");
-    }
+    zkCredentials.ifPresent(credentials -> configureAuth(builder, credentials));
+    return builder;
   }
 
   public CuratorFramework startCurator() {
@@ -241,10 +230,8 @@ public class ZookeeperConfig {
     return this.build;
   }
 
-  private void configureAuth(CuratorFrameworkFactory.Builder builder) {
-    String authenticationString = zkUsername + ":" + zkPassword;
-    builder
-        .authorization("digest", authenticationString.getBytes());
+  private void configureAuth(CuratorFrameworkFactory.Builder builder, String credentials) {
+    builder.authorization("digest", credentials.getBytes());
   }
 
   public Long getZkInterProcessLockTimeOut() {
