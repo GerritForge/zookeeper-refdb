@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9615f65a_fb7f63be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-12T11:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25824e4d_e902115b",
+      "revId": "5bf66daf0d8a83dede1e4b361cc12cdf54cec493",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f917fad6_58f2aed4",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
         "patchSetId": 12
