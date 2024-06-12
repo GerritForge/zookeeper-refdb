@@ -37,8 +37,8 @@ public class ZookeeperACLParsingTest {
   @Test
   public void shouldCorrectlyParseAuthConfigIfProvided() {
     Config secureConfig = new Config();
-    secureConfig.setString("ref-database", ZookeeperConfig.SUBSECTION, ZookeeperConfig.KEY_USERNAME, "globalrefdb");
-    secureConfig.setString("ref-database", ZookeeperConfig.SUBSECTION, ZookeeperConfig.KEY_PASSWORD, "globalrefdb-secret");
+    secureConfig.setString("ref-database", ZookeeperConfig.SUBSECTION, SecureCredentialsFactory.KEY_USERNAME, "globalrefdb");
+    secureConfig.setString("ref-database", ZookeeperConfig.SUBSECTION, SecureCredentialsFactory.KEY_PASSWORD, "globalrefdb-secret");
 
     PluginConfigFactory cfgFactory = mock(PluginConfigFactory.class);
     when(cfgFactory.getGlobalPluginConfig(PLUGIN_NAME)).thenReturn(new Config());
