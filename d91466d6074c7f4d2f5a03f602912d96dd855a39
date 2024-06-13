@@ -18,6 +18,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2679212f_f096e47b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-13T21:53:13Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "e837917c_67e3636c",
+      "revId": "d91466d6074c7f4d2f5a03f602912d96dd855a39",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c86f0c3d_fc816ea2",
