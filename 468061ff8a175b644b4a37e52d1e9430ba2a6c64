@@ -16,6 +16,24 @@
       "message": "security-related configs (for example `sslKeyStorePassword` and `sslTrustStorePassword`) are coming from the `zookeeper-refdb.secure.config` file, which is already provided in your `zkConfig` via the `cfgFactory.getGlobalPluginConfig(pluginName)` call, no need to read from `gerrit.config` nor `secure.config`",
       "revId": "468061ff8a175b644b4a37e52d1e9430ba2a6c64",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d641f2_a3876520",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-13T14:27:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7403381b_390878f7",
+      "revId": "468061ff8a175b644b4a37e52d1e9430ba2a6c64",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
