@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "235cd995_e9059b69",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-13T10:51:48Z",
+      "side": 1,
+      "message": "Yes and no, I had to do this precisely because of the test, as I couldn\u0027t access the result of the parsing when it was only one method.",
+      "parentUuid": "73b947e0_3974dcb5",
+      "revId": "c1571be167b4aa3ef632abcd34880c9bbe29baf6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7282984_e1fbf39f",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
         "patchSetId": 8
@@ -84,6 +102,24 @@
       "writtenOn": "2024-06-13T10:18:31Z",
       "side": 1,
       "message": "according to the prod code, you are missing a test: when the exception is raised in the case that one of them is present and the other is missing.",
+      "revId": "c1571be167b4aa3ef632abcd34880c9bbe29baf6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77d40e1c_ccd9c9cc",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperACLParsingTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-13T10:51:48Z",
+      "side": 1,
+      "message": "Good point, I added it in the next change, but it belongs here...",
+      "parentUuid": "ceb6a774_49863be7",
       "revId": "c1571be167b4aa3ef632abcd34880c9bbe29baf6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
