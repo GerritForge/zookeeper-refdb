@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3f6da3f_c5e1f6b9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-13T12:36:52Z",
+      "side": 1,
+      "message": "I think it would be best to leave it as is, taking this out into a separate change would be over complicating things IMHO.",
+      "parentUuid": "08fad75d_f17fd8ef",
+      "revId": "c1571be167b4aa3ef632abcd34880c9bbe29baf6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7282984_e1fbf39f",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
         "patchSetId": 8
