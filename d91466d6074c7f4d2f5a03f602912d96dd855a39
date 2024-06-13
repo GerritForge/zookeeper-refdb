@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e837917c_67e3636c",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-06-13T18:40:32Z",
+      "side": 0,
+      "message": "unrelated change",
+      "revId": "d91466d6074c7f4d2f5a03f602912d96dd855a39",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
