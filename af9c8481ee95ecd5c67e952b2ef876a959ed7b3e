@@ -59,6 +59,29 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b5fab5b_2e52dd27",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-06-13T18:46:45Z",
+      "side": 1,
+      "message": "The ZkInit is not automatically reading the `zookeeper-refdb.secure.config`, so user and password would be ignored when the `ZookeeperConfig` is instantiated at L73.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "af9c8481ee95ecd5c67e952b2ef876a959ed7b3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "095cd31d_5dc335db",
