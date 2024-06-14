@@ -311,6 +311,30 @@
       },
       "revId": "af9c8481ee95ecd5c67e952b2ef876a959ed7b3e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5da1b3a_1be17e7e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2024-06-14T06:43:26Z",
+      "side": 1,
+      "message": "@ponch78@gmail.com, @danielesassoli@gmail.com, we can\u0027t just use `get()` here, because both `zkUsername` and `zkPassword` might be empty, and that would be a valid configuration.\n\nThe guard is just defensive against _partial_ configurations, in which one or the other, but not both are defined.",
+      "parentUuid": "72162b22_1fb577a6",
+      "range": {
+        "startLine": 223,
+        "startChar": 8,
+        "endLine": 223,
+        "endChar": 106
+      },
+      "revId": "af9c8481ee95ecd5c67e952b2ef876a959ed7b3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
