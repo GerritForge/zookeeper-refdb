@@ -335,6 +335,30 @@
       },
       "revId": "af9c8481ee95ecd5c67e952b2ef876a959ed7b3e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "893754c0_39cec4b2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1054778
+      },
+      "writtenOn": "2024-06-14T07:24:55Z",
+      "side": 1,
+      "message": "mmm...true you are right. Let\u0027s keep the flatmap + map then.",
+      "parentUuid": "b5da1b3a_1be17e7e",
+      "range": {
+        "startLine": 223,
+        "startChar": 8,
+        "endLine": 223,
+        "endChar": 106
+      },
+      "revId": "af9c8481ee95ecd5c67e952b2ef876a959ed7b3e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
