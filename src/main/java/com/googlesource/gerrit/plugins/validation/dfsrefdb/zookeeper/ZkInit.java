@@ -20,24 +20,22 @@ import com.google.gerrit.pgm.init.api.ConsoleUI;
 import com.google.gerrit.pgm.init.api.InitStep;
 import com.google.gerrit.server.config.AllProjectsName;
 import com.google.gerrit.server.config.AllProjectsNameProvider;
-import com.google.gerrit.server.config.SitePaths;
+import com.google.gerrit.server.config.GlobalPluginConfigProvider;
 import com.google.gerrit.server.schema.NoteDbSchemaVersionManager;
+import com.google.gerrit.server.securestore.SecureStore;
 import com.google.inject.AbstractModule;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
 import com.googlesource.gerrit.plugins.validation.dfsrefdb.zookeeper.migration.ZkMigrations;
-import java.io.IOException;
 import org.apache.curator.framework.CuratorFramework;
-import org.eclipse.jgit.errors.ConfigInvalidException;
-import org.eclipse.jgit.storage.file.FileBasedConfig;
-import org.eclipse.jgit.util.FS;
+import org.eclipse.jgit.lib.Config;
 
 @Singleton
 public class ZkInit implements InitStep {
 
   private final ConsoleUI ui;
-  private final FileBasedConfig config;
+  private final Config config;
 
   @Inject(optional = true)
   private NoteDbSchemaVersionManager versionManager;
@@ -47,17 +45,20 @@ public class ZkInit implements InitStep {
 
   private final String pluginName;
   private final Injector initInjector;
+  private final SecureStore secureStore;
 
   @Inject
-  ZkInit(ConsoleUI ui, SitePaths site, @PluginName String pluginName, Injector initInjector)
-      throws IOException, ConfigInvalidException {
+  ZkInit(
+      ConsoleUI ui,
+      @PluginName String pluginName,
+      Injector initInjector,
+      SecureStore secureStore,
+      GlobalPluginConfigProvider pluginConfigProvider) {
     this.ui = ui;
     this.pluginName = pluginName;
     this.initInjector = initInjector;
-
-    config =
-        new FileBasedConfig(site.etc_dir.resolve(pluginName + ".config").toFile(), FS.DETECTED);
-    config.load();
+    this.secureStore = secureStore;
+    this.config = new ZkMergedConfig(pluginConfigProvider.get(pluginName));
   }
 
   @Override
@@ -87,5 +88,20 @@ public class ZkInit implements InitStep {
             bind(AllProjectsName.class).toProvider(AllProjectsNameProvider.class);
           }
         });
+  }
+
+  private class ZkMergedConfig extends Config {
+    ZkMergedConfig(Config baseConfig) {
+      super(baseConfig);
+    }
+
+    @Override
+    public String getString(String section, String subsection, String name) {
+      String secure = secureStore.getForPlugin(pluginName, section, subsection, name);
+      if (secure != null) {
+        return secure;
+      }
+      return super.getString(section, subsection, name);
+    }
   }
 }
