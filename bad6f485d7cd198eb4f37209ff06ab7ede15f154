@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "572ae623_17a8cac3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-14T13:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdbd8597_1420821e",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "bad6f485d7cd198eb4f37209ff06ab7ede15f154",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7df16f67_de6eaeaa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-14T13:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1546369_f51ae04a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "bad6f485d7cd198eb4f37209ff06ab7ede15f154",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "986b2d48_69a0df99",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkInit.java",
         "patchSetId": 11
@@ -106,6 +154,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d212401_e8694bb8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-14T13:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71fc5627_e8127150",
+      "range": {
+        "startLine": 41,
+        "startChar": 61,
+        "endLine": 41,
+        "endChar": 65
+      },
+      "revId": "bad6f485d7cd198eb4f37209ff06ab7ede15f154",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f5489b3_25d7008c",
@@ -129,6 +201,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75ade1f8_0b67e4d6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-14T13:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f5489b3_25d7008c",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 117
+      },
+      "revId": "bad6f485d7cd198eb4f37209ff06ab7ede15f154",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "168f1e38_0caa327b",
@@ -142,6 +238,30 @@
       "writtenOn": "2024-06-13T18:53:02Z",
       "side": 1,
       "message": "typo: successfully",
+      "range": {
+        "startLine": 204,
+        "startChar": 122,
+        "endLine": 204,
+        "endChar": 133
+      },
+      "revId": "bad6f485d7cd198eb4f37209ff06ab7ede15f154",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65b2565d_d2d9bb15",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperConfig.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-14T13:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "168f1e38_0caa327b",
       "range": {
         "startLine": 204,
         "startChar": 122,
@@ -187,6 +307,24 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d8b6754_a0283ff1",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperACLParsingTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-14T13:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ed5ed64_238511a7",
+      "revId": "bad6f485d7cd198eb4f37209ff06ab7ede15f154",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8ea1cf2_0361edc9",
@@ -200,6 +338,30 @@
       "writtenOn": "2024-06-13T18:53:02Z",
       "side": 1,
       "message": "```suggestion\n  public void shouldNotSetUpAuthIfNotProvided() {\n```",
+      "range": {
+        "startLine": 25,
+        "startChar": 14,
+        "endLine": 25,
+        "endChar": 46
+      },
+      "revId": "bad6f485d7cd198eb4f37209ff06ab7ede15f154",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de56040b_3c8f4015",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperACLParsingTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-14T13:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8ea1cf2_0361edc9",
       "range": {
         "startLine": 25,
         "startChar": 14,
@@ -233,6 +395,30 @@
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f21a11f1_18c7856d",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperACLParsingTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-14T13:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "713265fa_8c3676f1",
+      "range": {
+        "startLine": 66,
+        "startChar": 120,
+        "endLine": 66,
+        "endChar": 131
+      },
+      "revId": "bad6f485d7cd198eb4f37209ff06ab7ede15f154",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "373e49eb_af3754ee",
@@ -246,6 +432,30 @@
       "writtenOn": "2024-06-13T18:53:02Z",
       "side": 1,
       "message": "typo: successfully",
+      "range": {
+        "startLine": 80,
+        "startChar": 120,
+        "endLine": 80,
+        "endChar": 131
+      },
+      "revId": "bad6f485d7cd198eb4f37209ff06ab7ede15f154",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54416b81_f50cadea",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/validation/dfsrefdb/zookeeper/ZookeeperACLParsingTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1155599
+      },
+      "writtenOn": "2024-06-14T13:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "373e49eb_af3754ee",
       "range": {
         "startLine": 80,
         "startChar": 120,
