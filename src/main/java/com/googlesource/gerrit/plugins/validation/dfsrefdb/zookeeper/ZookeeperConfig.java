@@ -202,7 +202,8 @@ public class ZookeeperConfig {
             .namespace(root);
     if (zkUsername.isPresent() != zkPassword.isPresent()) {
       throw new IllegalArgumentException(
-          "Only one between password or username for Zookeeper was set, please set both to successfully authenticate");
+          "Only one between password or username for Zookeeper was set, please set both to"
+              + " successfully authenticate");
     } else {
       zkUsername
           .flatMap(usr -> zkPassword.map(pwd -> usr + ":" + pwd))
