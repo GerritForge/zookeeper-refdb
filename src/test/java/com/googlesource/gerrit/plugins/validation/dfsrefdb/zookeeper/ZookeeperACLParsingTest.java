@@ -84,7 +84,8 @@ public class ZookeeperACLParsingTest {
     assertTrue(
         e.getMessage()
             .contains(
-                "Only one between password or username for Zookeeper was set, please set both to successfully authenticate"));
+                "Only one between password or username for Zookeeper was set, please set both to"
+                    + " successfully authenticate"));
   }
 
   @Test
@@ -103,6 +104,7 @@ public class ZookeeperACLParsingTest {
     assertTrue(
         e.getMessage()
             .contains(
-                "Only one between password or username for Zookeeper was set, please set both to successfully authenticate"));
+                "Only one between password or username for Zookeeper was set, please set both to"
+                    + " successfully authenticate"));
   }
 }
