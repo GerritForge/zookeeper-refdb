@@ -37,11 +37,9 @@ public class ZkInit implements InitStep {
   private final ConsoleUI ui;
   private final Config config;
 
-  @Inject(optional = true)
-  private NoteDbSchemaVersionManager versionManager;
+  @Inject private NoteDbSchemaVersionManager versionManager;
 
-  @Inject(optional = true)
-  private ZkMigrations zkMigrations;
+  @Inject private ZkMigrations zkMigrations;
 
   private final String pluginName;
   private final Injector initInjector;
