@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.validation.dfsrefdb.zookeeper;
 
+import com.google.gerrit.common.Nullable;
 import com.google.gerrit.exceptions.StorageException;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.pgm.init.api.ConsoleUI;
@@ -38,9 +39,11 @@ public class ZkInit implements InitStep {
   private final Config config;
 
   @Inject(optional = true)
+  @Nullable
   private NoteDbSchemaVersionManager versionManager;
 
   @Inject(optional = true)
+  @Nullable
   private ZkMigrations zkMigrations;
 
   private final String pluginName;
@@ -71,12 +74,14 @@ public class ZkInit implements InitStep {
     Injector injector = getInjector(initInjector);
     injector.injectMembers(this);
 
-    try {
-      try (CuratorFramework curator = new ZookeeperConfig(config).startCurator()) {
-        zkMigrations.migrate(injector, curator, versionManager.read());
+    if (zkMigrations != null && versionManager != null) {
+      try {
+        try (CuratorFramework curator = new ZookeeperConfig(config).startCurator()) {
+          zkMigrations.migrate(injector, curator, versionManager.read());
+        }
+      } catch (StorageException e) {
+        // No version information: skip migration as it is most likely a new site
       }
-    } catch (StorageException e) {
-      // No version information: skip migration as it is most likely a new site
     }
   }
 
