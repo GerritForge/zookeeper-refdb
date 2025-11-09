@@ -7,7 +7,7 @@ out-of-sync refs across gerrit sites. It also enables concurrent writes on a
 multi-master setup by enabling a shared locking mechanism for refs across multiple
 nodes.
 
-Originally this code was a part of [multi-site plugin](https://gerrit.googlesource.com/plugins/multi-site/) but currently can be use independently.
+Originally this code was a part of [multi-site plugin](https://github.com/GerritForge/multi-site/) but currently can be use independently.
 
 ## Requirements
 

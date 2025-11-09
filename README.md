@@ -12,5 +12,5 @@ Requirements for using this plugin are:
 
 The global ref-db is a typical use-case of a Gerrit multi-master scenario
 in a multi-site setup. Refer to the
-[Gerrit multi-site plugin](https://gerrit.googlesource.com/plugins/multi-site/+/master/DESIGN.md)
+[Gerrit multi-site plugin](https://github.com/GerritForge/multi-site/blob/master/DESIGN.md)
 for more details on the high level architecture.
