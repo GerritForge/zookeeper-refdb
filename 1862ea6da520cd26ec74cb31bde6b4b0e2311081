@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0f1132_13383fd7",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-11-09T06:59:49Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "ed513250_6e90f136",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 96
+      },
+      "revId": "1862ea6da520cd26ec74cb31bde6b4b0e2311081",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1432da31_af815907",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-09T06:59:28Z",
       "side": 1,
       "message": "This is now hosted on GitHub.\n\n\n\n```suggestion\nOriginally this code was a part of [multi-site plugin](https://github.com/GerritForge/multi-site/) but currently can be use independently.\n```",
+      "range": {
+        "startLine": 10,
+        "startChar": 55,
+        "endLine": 10,
+        "endChar": 106
+      },
+      "revId": "1862ea6da520cd26ec74cb31bde6b4b0e2311081",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f737874_9e563e23",
+        "filename": "src/main/resources/Documentation/about.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-11-09T06:59:49Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "1432da31_af815907",
       "range": {
         "startLine": 10,
         "startChar": 55,
