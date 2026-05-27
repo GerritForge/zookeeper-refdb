@@ -1,0 +1,74 @@
+module(name = "gerrit-zookeeper-refdb")
+
+bazel_dep(name = "rules_java", version = "8.16.1")
+bazel_dep(name = "rules_jvm_external", version = "6.10")
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+
+CURATOR_VER = "5.5.0"
+
+ZOOKEEPER_VER = "3.8.2"
+
+NETTY_VER = "4.1.94.Final"
+
+JACKSON_VER = "2.15.2"
+
+TESTCONTAINERS_VERSION = "1.18.3"
+
+DOCKER_JAVA_VERS = "3.3.2"
+
+maven.install(
+    name = "zookeeper-refdb_plugin_deps",
+    artifacts = [
+        "com.fasterxml.jackson.core:jackson-annotations:" + JACKSON_VER,
+        "com.fasterxml.jackson.core:jackson-core:" + JACKSON_VER,
+        "com.fasterxml.jackson.core:jackson-databind:" + JACKSON_VER,
+        "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:" + JACKSON_VER,
+        "com.github.docker-java:docker-java-api:" + DOCKER_JAVA_VERS,
+        "com.github.docker-java:docker-java-transport:" + DOCKER_JAVA_VERS,
+        "com.github.docker-java:docker-java-transport-zerodep:" + DOCKER_JAVA_VERS,
+        "io.netty:netty-buffer:" + NETTY_VER,
+        "io.netty:netty-codec:" + NETTY_VER,
+        "io.netty:netty-common:" + NETTY_VER,
+        "io.netty:netty-handler:" + NETTY_VER,
+        "io.netty:netty-resolver:" + NETTY_VER,
+        "io.netty:netty-transport:" + NETTY_VER,
+        "io.netty:netty-transport-classes-epoll:" + NETTY_VER,
+        "io.netty:netty-transport-native-epoll:" + NETTY_VER,
+        "io.netty:netty-transport-native-unix-common:" + NETTY_VER,
+        "net.java.dev.jna:jna:5.13.0",
+        "org.apache.curator:curator-client:" + CURATOR_VER,
+        "org.apache.curator:curator-framework:" + CURATOR_VER,
+        "org.apache.curator:curator-recipes:" + CURATOR_VER,
+        "org.apache.curator:curator-test:" + CURATOR_VER,
+        "org.apache.zookeeper:zookeeper:" + ZOOKEEPER_VER,
+        "org.apache.zookeeper:zookeeper-jute:" + ZOOKEEPER_VER,
+        "org.rnorth.duct-tape:duct-tape:1.0.8",
+        "org.rnorth.visible-assertions:visible-assertions:2.1.2",
+        "org.testcontainers:localstack:" + TESTCONTAINERS_VERSION,
+        "org.testcontainers:testcontainers:" + TESTCONTAINERS_VERSION,
+    ],
+    duplicate_version_warning = "error",
+    excluded_artifacts = [
+        "com.google.code.findbugs:jsr305",
+        "com.google.errorprone:error_prone_annotations",
+        "com.google.guava:failureaccess",
+        "com.google.guava:guava",
+        "com.google.j2objc:j2objc-annotations",
+        "commons-codec:commons-codec",
+        "commons-io:commons-io",
+        "org.apache.httpcomponents:httpclient",
+        "org.apache.httpcomponents:httpcore",
+        "org.checkerframework:checker-qual",
+        "org.slf4j:slf4j-api",
+    ],
+    fail_if_repin_required = True,
+    fail_on_missing_checksum = True,
+    fetch_sources = True,
+    lock_file = "//:zookeeper-refdb_plugin_deps.lock.json",
+    repositories = [
+        "https://repo1.maven.org/maven2",
+    ],
+    version_conflict_policy = "pinned",
+)
+use_repo(maven, "zookeeper-refdb_plugin_deps")
