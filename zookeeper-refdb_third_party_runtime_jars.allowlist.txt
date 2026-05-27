@@ -1,0 +1,17 @@
+audience-annotations
+curator-client
+curator-framework
+curator-recipes
+logback-classic
+logback-core
+netty-buffer
+netty-codec
+netty-common
+netty-handler
+netty-resolver
+netty-transport
+netty-transport-classes-epoll
+netty-transport-native-epoll
+netty-transport-native-unix-common
+zookeeper
+zookeeper-jute
