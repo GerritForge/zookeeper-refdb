@@ -2,6 +2,7 @@ audience-annotations
 curator-client
 curator-framework
 curator-recipes
+gerrit-bsl-license
 logback-classic
 logback-core
 netty-buffer
