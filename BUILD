@@ -30,12 +30,15 @@ gerrit_plugin(
     manifest_entries = [
         "Gerrit-PluginName: zookeeper-refdb",
         "Gerrit-Module: com.gerritforge.gerrit.plugins.validation.dfsrefdb.zookeeper.ZkValidationModule",
+        "Gerrit-HttpModule: com.gerritforge.gerrit.plugins.bsl.HttpModule",
         "Gerrit-InitStep: com.gerritforge.gerrit.plugins.validation.dfsrefdb.zookeeper.ZkInit",
         "Implementation-Title: zookeeper ref-db plugin",
         "Implementation-URL: https://review.gerrithub.io/admin/repos/GerritForge/plugins_zookeeper",
     ],
     resources = glob(["src/main/resources/**/*"]),
-    deps = PLUGIN_DEPS,
+    deps = PLUGIN_DEPS + [
+        "//plugins/gerrit-bsl-license",
+    ],
 )
 
 gerrit_plugin_tests(
