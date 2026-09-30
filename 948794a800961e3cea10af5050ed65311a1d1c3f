@@ -222,6 +222,30 @@
       },
       "revId": "948794a800961e3cea10af5050ed65311a1d1c3f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d8d38f1_bdbef3a0",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkSharedRefDatabase.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-09-30T19:20:51Z",
+      "side": 1,
+      "message": "\u003e We still hold the ref lock during recovery, so another writer should not be able to change the value.\n\u003e \n\u003e We expect either *A* or *B*.\n\nWell, that is the way the multi-site uses it and we should not assume that this API is always used with a global lock.\n\n\u003e If we find *C*, it means something unexpected happened: perhaps a writer bypassed the lock? Or there is another bug?\n\nNo, it is absolutely normal that when two concurrent writers are competing for an update, one succeeds and the other fails.\n\nExample: current value \u003d `foo`\n\n- Writer A: `foo` \u003d\u003e `bar`\n- Writer B: `foo` \u003d\u003e `goofy`\n\nThen one who wins is B, however A is getting an interrupted exception.\n\nWhen A is trying to understand if it was successful or not, it may find `foo` but also my find `goofy` and that\u0027s OK, nothing bad happened.\n\n\u003e I think we should report this unexpected case explicitly rather than treat it as a normal CAS failure.\n\nNo, I do believe it\u0027s a normal CAS failure.\n\n\u003e Both `false` and throwing the exception trigger rollback in the caller, so they will be handled in the same way, but we will be able to understand that something fishy is going on.\n\nExactly, that\u0027s the point. There is no difference in what the client should do, therefore an exception isn\u0027t needed here because there isn\u0027t really any exception circumstance happening.",
+      "parentUuid": "0eb1381c_d3214255",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 22
+      },
+      "revId": "948794a800961e3cea10af5050ed65311a1d1c3f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
