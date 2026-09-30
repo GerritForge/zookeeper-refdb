@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92e1658e_7c8b63f1",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkSharedRefDatabase.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-09-30T19:21:10Z",
+      "side": 1,
+      "message": "Answered 😃",
+      "parentUuid": "23412cf2_46148e95",
+      "range": {
+        "startLine": 226,
+        "startChar": 12,
+        "endLine": 226,
+        "endChar": 67
+      },
+      "revId": "948794a800961e3cea10af5050ed65311a1d1c3f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d7f1667_8ad5db87",
         "filename": "src/main/java/com/gerritforge/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkSharedRefDatabase.java",
         "patchSetId": 7
