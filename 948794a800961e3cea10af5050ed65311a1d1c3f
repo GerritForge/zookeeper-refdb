@@ -270,6 +270,30 @@
       },
       "revId": "948794a800961e3cea10af5050ed65311a1d1c3f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b17721a_5121e857",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkSharedRefDatabase.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-09-30T19:52:49Z",
+      "side": 1,
+      "message": "\u003e \u003e We still hold the ref lock during recovery, so another writer should not be able to change the value.\n\u003e \u003e \n\u003e \u003e We expect either *A* or *B*.\n\u003e \n\u003e Well, that is the way the multi-site uses it and we should not assume that this API is always used with a global lock.\n\nmulti-site (nor high-availability) does not lock the ref; global-refdb does (in `RefUpdateValidator.compareAndGetLatestLocalRef`).\n\nBut I take your point: the CAS API exists in itself and theoretically could be called without acquiring the lock.\n\n\u003e \n\u003e \u003e If we find *C*, it means something unexpected happened: perhaps a writer bypassed the lock? Or there is another bug?\n\u003e \n\u003e No, it is absolutely normal that when two concurrent writers are competing for an update, one succeeds and the other fails.\n\u003e \n\u003e Example: current value \u003d `foo`\n\u003e \n\u003e - Writer A: `foo` \u003d\u003e `bar`\n\u003e - Writer B: `foo` \u003d\u003e `goofy`\n\u003e \n\u003e Then one who wins is B, however A is getting an interrupted exception.\n\u003e \n\u003e When A is trying to understand if it was successful or not, it may find `foo` but also my find `goofy` and that\u0027s OK, nothing bad happened.\n\nYes, your example is valid.\nWithout a lock, there is also another possible sequence:\n\n1. Writer A: sends a CAS for `foo` \u003d\u003e `bar`.\n2. A is interrupted while waiting for the reply.\n3. ZooKeeper still executes A\u0027s queued CAS, changing `foo` \u003d\u003e `bar`.\n4. Writer B successfully changes `bar` \u003d\u003e `goofy`.\n5. A\u0027s recovery read finds `goofy`.\n\nFinding `goofy` doesn\u0027t necessarily mean our `foo` \u003d\u003e `bar` CAS failed.\n\nStill, I agree that returning false is reasonable here. We cannot confirm success, and the batch caller attempts rollback either way.\n\nlet me change it, should make the code easier.\n\u003e \n\u003e \u003e I think we should report this unexpected case explicitly rather than treat it as a normal CAS failure.\n\u003e \n\u003e No, I do believe it\u0027s a normal CAS failure.\n\u003e \n\u003e \u003e Both `false` and throwing the exception trigger rollback in the caller, so they will be handled in the same way, but we will be able to understand that something fishy is going on.\n\u003e \n\u003e Exactly, that\u0027s the point. There is no difference in what the client should do, therefore an exception isn\u0027t needed here because there isn\u0027t really any exception circumstance happening.",
+      "parentUuid": "9d8d38f1_bdbef3a0",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 22
+      },
+      "revId": "948794a800961e3cea10af5050ed65311a1d1c3f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
