@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ea01a0_fd6e09ff",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkSharedRefDatabase.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-09-30T19:14:09Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "8a549f0c_98d48979",
+      "range": {
+        "startLine": 191,
+        "startChar": 4,
+        "endLine": 191,
+        "endChar": 86
+      },
+      "revId": "948794a800961e3cea10af5050ed65311a1d1c3f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65dc44b9_174da0a9",
@@ -47,6 +71,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4c26b0_559cc9dc",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkSharedRefDatabase.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-09-30T19:14:09Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "65dc44b9_174da0a9",
+      "range": {
+        "startLine": 203,
+        "startChar": 13,
+        "endLine": 203,
+        "endChar": 22
+      },
+      "revId": "948794a800961e3cea10af5050ed65311a1d1c3f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18207762_a91e3fee",
@@ -60,6 +108,24 @@
       "writtenOn": "2026-09-30T18:19:00Z",
       "side": 1,
       "message": "```suggestion\n          \"Interrupted CAS completed at path %s; the new value is already present: %s. Returning \u0027true\u0027\",\n```",
+      "revId": "948794a800961e3cea10af5050ed65311a1d1c3f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8526576b_25be2dc6",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkSharedRefDatabase.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-09-30T19:14:09Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "18207762_a91e3fee",
       "revId": "948794a800961e3cea10af5050ed65311a1d1c3f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
@@ -100,6 +166,30 @@
       "writtenOn": "2026-09-30T18:19:00Z",
       "side": 1,
       "message": "I am not really sure that we do need to make this distinction: what do know is that the operation did not succeed and therefore we *must* tell the caller.\n\nThere could be two conditions because the operation did not succeed:\n\n1. The CAS failed *because of the interruption came before* the operation could complete\n2. The CAS failed *regardless* of the interruption, because instead another concurrent operation took over and won the race.\n\nThe question is: what should the client do differently in case 1. or 2.?\n\nIMHO both cases are the same case: the operation did not succeed and we should return `false` in both situations.",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 22
+      },
+      "revId": "948794a800961e3cea10af5050ed65311a1d1c3f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb1381c_d3214255",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkSharedRefDatabase.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-09-30T19:14:09Z",
+      "side": 1,
+      "message": "We still hold the ref lock during recovery, so another writer should not be able to change the value.\n\nWe expect either *A* or *B*.\n\nIf we find *C*, it means something unexpected happened: perhaps a writer bypassed the lock? Or there is another bug?\n\nI think we should report this unexpected case explicitly rather than treat it as a normal CAS failure.\n\nBoth `false` and throwing the exception trigger rollback in the caller, so they will be handled in the same way, but we will be able to understand that something fishy is going on.",
+      "parentUuid": "2d7f1667_8ad5db87",
       "range": {
         "startLine": 216,
         "startChar": 0,
