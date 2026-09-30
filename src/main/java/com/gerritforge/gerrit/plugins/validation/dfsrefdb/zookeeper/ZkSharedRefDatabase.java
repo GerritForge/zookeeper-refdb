@@ -20,6 +20,7 @@ import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.entities.Project;
 import com.google.inject.Inject;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Optional;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
@@ -137,6 +138,12 @@ public class ZkSharedRefDatabase implements GlobalRefDatabase {
       }
 
       return newDistributedValue.succeeded();
+    } catch (InterruptedException e) {
+      return recoverInterruptedCompareAndPut(
+          pathFor(projectName, oldRef.getName()),
+          writeObjectId(oldRef.getObjectId()),
+          writeObjectId(newRefValue),
+          e);
     } catch (Exception e) {
       logger.atWarning().withCause(e).log(
           "Error trying to perform CAS at path %s", pathFor(projectName, oldRef.getName()));
@@ -164,6 +171,12 @@ public class ZkSharedRefDatabase implements GlobalRefDatabase {
           distributedRefValue.compareAndSet(writeGeneric(expectedValue), writeGeneric(newValue));
 
       return newDistributedValue.succeeded();
+    } catch (InterruptedException e) {
+      return recoverInterruptedCompareAndPut(
+          pathFor(project, refName),
+          expectedValue == null ? null : writeGeneric(expectedValue),
+          writeGeneric(newValue),
+          e);
     } catch (Exception e) {
       String message =
           String.format(
@@ -171,6 +184,43 @@ public class ZkSharedRefDatabase implements GlobalRefDatabase {
       logger.atWarning().withCause(e).log("%s", message);
       throw new GlobalRefDbSystemError(message, e);
     }
+  }
+
+  private boolean recoverInterruptedCompareAndPut(
+      String path, byte[] oldValue, byte[] newValue, InterruptedException interruption) {
+    logger.atInfo().log("CAS at path %s was interrupted; checking its outcome", path);
+    // We must clear the current thread's interrupt flag.
+    // This is because we want to run a `read` operation, and if the flag remained set
+    // this might throw another InterruptedException.
+    boolean ignored = Thread.interrupted();
+    byte[] storedValue;
+    try {
+      storedValue = client.getData().forPath(path);
+    } catch (Exception e) {
+      logger.atWarning().withCause(e).log(
+          "Cannot read the value while recovering interrupted CAS at path %s", path);
+      throw new GlobalRefDbSystemError(
+          String.format("Cannot determine the outcome of interrupted CAS at path %s", path), e);
+    }
+
+    if (Arrays.equals(storedValue, newValue)) {
+      logger.atInfo().log(
+          "Interrupted CAS completed at path %s; the new value is already present: %s",
+          path, new String(newValue, StandardCharsets.US_ASCII));
+      return true;
+    }
+    if (Arrays.equals(storedValue, oldValue)) {
+      logger.atInfo().log(
+          "Interrupted CAS did not complete at path %s; the old value is still present: %s",
+          path, new String(oldValue, StandardCharsets.US_ASCII));
+      return false;
+    }
+
+    String unexpectedValueStr = new String(storedValue, StandardCharsets.US_ASCII);
+    throw new GlobalRefDbSystemError(
+        String.format(
+            "Unexpected value after interrupted CAS at path %s: %s", path, unexpectedValueStr),
+        interruption);
   }
 
   @Override
