@@ -342,6 +342,30 @@
       },
       "revId": "948794a800961e3cea10af5050ed65311a1d1c3f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b70e9ed_f5ac9307",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/validation/dfsrefdb/zookeeper/ZkSharedRefDatabase.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-09-30T22:00:38Z",
+      "side": 1,
+      "message": "\u003e multi-site (nor high-availability) does not lock the ref; global-refdb does (in RefUpdateValidator.compareAndGetLatestLocalRef).\n\nYes, I wrongly referred to multi-site, but I meant the \"multi-site\" use-case. This is a simple compare-and-put, not a ref-update wrapper.\n\n\u003e But I take your point: the CAS API exists in itself and theoretically could be called without acquiring the lock.\n\nExactly the point 😊",
+      "parentUuid": "a9ffd2c8_400e6f75",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 22
+      },
+      "revId": "948794a800961e3cea10af5050ed65311a1d1c3f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
