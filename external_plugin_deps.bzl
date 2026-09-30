@@ -30,6 +30,18 @@ def external_plugin_deps():
     ZOOKEEPER_VER = "3.8.2"
 
     maven_jar(
+        name = "audience-annotations",
+        artifact = "org.apache.yetus:audience-annotations:0.12.0",
+        sha1 = "e0efa60318229590103e31c69ebdaae56d903644",
+    )
+
+    maven_jar(
+        name = "snappy-java",
+        artifact = "org.xerial.snappy:snappy-java:1.1.10.1",
+        sha1 = "4a1e1a22cba39145dfa20f2fef4e1ca38c8e02a1",
+    )
+
+    maven_jar(
         name = "zookeeper",
         artifact = "org.apache.zookeeper:zookeeper:" + ZOOKEEPER_VER,
         sha1 = "963e953f8e362fc3f253832876be2ae2dcde58d7",
