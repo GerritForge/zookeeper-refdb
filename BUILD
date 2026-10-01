@@ -46,6 +46,10 @@ junit_tests(
     ],
     deps = [
         ":zookeeper-refdb__plugin_test_deps",
+        "@audience-annotations//jar",
+        "@snappy-java//jar",
+        "@zookeeper-jute//jar",
+        "@zookeeper//jar",
     ],
 )
 

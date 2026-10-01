@@ -25,6 +25,7 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
 import com.gerritforge.gerrit.plugins.validation.dfsrefdb.zookeeper.migration.ZkMigrations;
+import javax.annotation.Nullable;
 import org.apache.curator.framework.CuratorFramework;
 import org.eclipse.jgit.lib.Config;
 
@@ -33,13 +34,8 @@ public class ZkInit implements InitStep {
 
   private final ConsoleUI ui;
   private final Config config;
-
-  @Inject(optional = true)
-  private NoteDbSchemaVersionManager versionManager;
-
-  @Inject(optional = true)
-  private ZkMigrations zkMigrations;
-
+  private final NoteDbSchemaVersionManager versionManager;
+  private final ZkMigrations zkMigrations;
   private final String pluginName;
   private final Injector initInjector;
   private final SecureStore secureStore;
@@ -50,12 +46,16 @@ public class ZkInit implements InitStep {
       @PluginName String pluginName,
       Injector initInjector,
       SecureStore secureStore,
-      GlobalPluginConfigProvider pluginConfigProvider) {
+      GlobalPluginConfigProvider pluginConfigProvider,
+      @Nullable NoteDbSchemaVersionManager versionManager,
+      @Nullable ZkMigrations zkMigrations) {
     this.ui = ui;
     this.pluginName = pluginName;
     this.initInjector = initInjector;
     this.secureStore = secureStore;
     this.config = new ZkMergedConfig(pluginConfigProvider.get(pluginName));
+    this.versionManager = versionManager;
+    this.zkMigrations = zkMigrations;
   }
 
   @Override
