@@ -51,6 +51,8 @@ gerrit_plugin_tests(
     ],
     deps = [
         ":zookeeper-refdb__plugin_test_deps",
+        "@zookeeper-refdb_plugin_deps//:org_apache_zookeeper_zookeeper",
+        "@zookeeper-refdb_plugin_deps//:org_apache_zookeeper_zookeeper_jute",
     ],
 )
 
